@@ -1,0 +1,317 @@
+
+/****通用详实*****/
+#main{
+    margin-left: 2em;
+}
+
+/**  子导航 **/
+#bread_crumb{
+    height: 3em;
+    line-height: 3em;
+    background: #f5f5f5;
+
+    font-weight: bold;
+    padding-left: 1em;
+}
+#bread_crumb li {
+    float: left;
+}
+#bread_crumb li i{
+    display: inline-block;
+    width: 16px;
+    height: 1em;
+    background: url("../images/pic.png") no-repeat;
+    position: relative;
+    left: 2px;
+}
+/*** 全矿菜单****/
+#sub_menu li{
+    float:left ;
+    width: 5em;
+    height: 2.5em;
+    line-height: 2.5em;
+    text-align: center;
+    background-color: #3b95cb;
+}
+#sub_menu .sub_menu{
+    width: 6.5em;
+   text-align: center;
+    margin-right: 1em;
+}
+#sub_menu li a{
+    color: #ffffff;
+
+}
+.sub_menu span{
+    display: inline-block;
+    width:0px;
+    border: 6px solid transparent;
+    border-top-color:#ffffff ;
+    position: relative;
+    top: 5px;
+    left: 0.5em;
+}
+
+
+#note1{
+    width: 6.5em;
+     height: 2.5em;
+    line-height: 2.5em;
+    text-align: center;
+    background: #d4e7f0;
+    position: relative;
+
+
+}
+/**** 饼状图部分****/
+#content p{
+    height: 2.5em;
+    line-height: 2.5em;
+    padding-left: 2em;
+    background: #d4e7f0;
+    border: 1px solid #d2d2d2;
+}
+#content{
+    border: 1px solid #d2d2d2;
+    margin-top: 1em;
+}
+#sector_data{
+    text-align: center;
+}
+#sector_data div{
+    display: inline-block;
+    width: 35em;
+
+}
+/******生产 掘进*****/
+.box_wrap_right{
+
+    float: right;
+}
+.box_wrap_left li{
+    float: left;
+    width: 6em;
+    height: 2.5em;
+    text-align: center;
+    line-height: 2.5em;
+    background: #c4e2f2;
+}
+li.active{
+    background: #3b95c8;
+}
+
+.box_wrap{
+    margin:1.5em 0 1em;
+}
+
+.box_wrap_right li{
+    float: left;
+    margin-left: 0.5em;
+}
+.box_wrap_right{
+ display: inline-block;
+    overflow: hidden;
+}
+.box_wrap_left{
+    display: inline-block;
+}
+
+
+
+/* *******  我的仓库部分  *************/
+
+.date{
+    width: 14em;
+    display: inline-table;
+}
+.calendar{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background: url("../images/icon_data.png") no-repeat;
+}
+#activity-btn{
+    display: inline-table;
+    position: relative;
+    top: -13px;
+}
+/****概况部分******/
+.groupItem{
+    border: 1px solid #d6dbe1;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+    border-left: 0px;
+
+
+}
+.item-header{
+    border-bottom:1px solid #dddddd ;
+    height: 3em;
+    line-height: 3em;
+    padding: 0em 1em;
+    position: relative;
+}
+.item-header>span{
+    font-size: 16px;
+}
+.item-header a{
+    margin: 10px 0 0;
+    padding: 1px;
+    top: 0;
+    font-size: 11px;
+    font-weight: normal;
+    position: absolute;
+    text-decoration: none;
+    float: left;
+    width: 16px;
+    height: 16px;
+}
+.refresh{
+    background: url("../Images/action-refresh.png") no-repeat;
+    right: 26px;
+}
+.min{
+     background: url("../Images/action-min.png") no-repeat;
+     right: 5px;
+ }
+.max{
+    background: url("../Images/action-max.png") no-repeat;
+    right: 5px;
+}
+
+/****  查询搜索部分  ********/
+.search-btns{
+    text-align: right;
+    margin-bottom: 0.5em;
+}
+
+
+
+#searchFromTable>table td {
+    padding: 0.5em;
+}
+.searchFromTable>table td {
+    padding: 0.5em;
+}
+.searchDiv{
+    padding-bottom: 1em;
+    /*display:none;*/
+    border-bottom: 1px solid #d5d9dc
+}
+.searchFromTable1>table td{
+    padding: 0.5em;
+}
+/****** 我的账号*******/
+.educe-active-panel{
+    text-align: right;
+}
+.activity-box{
+    padding:10px;
+    border-bottom: 1px solid #dddddd;
+}
+.re_application li{
+    display: inline-block;
+    padding: 10px 21px 15px;
+    cursor: pointer;
+    color: #555;
+    font-weight: bold;
+}
+li.active-box{
+    color: #23527c;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    margin-bottom: -1px;
+    border-radius: 4px 4px 0 0;
+}
+.row{
+    margin-left: 0px;
+    margin-right:0px ;
+}
+.col-md-5{
+    padding: 0px;
+}
+
+i.lack{
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 1px solid #D9534F;
+    background:#D9534F;
+    border-radius:50% ;
+    margin-right: 0.5em;
+    position: relative;
+    top: 2px;
+}
+i.overrun{
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 1px solid #E3AA0F;
+    background:#E3AA0F ;
+    border-radius:50% ;
+    margin-right: 0.5em;
+    position: relative;
+    top: 2px;
+}
+/*****生产记录********/
+#container2{
+    height:245px;
+    width: 45%;
+    display: inline-block;
+}
+#container1{
+    height:245px;
+    width: 45%;
+    display: inline-block;
+
+}
+#educe{
+    display: inline-block;
+    text-align: right;
+
+}
+#portal-chart{
+    position: relative;
+}
+#educe{
+    position: absolute;
+    right: 0.5em;
+    top: 0.5em;
+}
+.item-content p{
+    display: inline-block;
+    width: 45%;
+    text-align: center;
+
+}
+.item-content p span{
+    font-size: 18px;
+    font-weight: bold;
+}
+/******** 新建材料计划          ********/
+.formTable table{
+    width: 97%;
+    margin-left: 1.5em;
+}
+.formTable td{
+    padding: 10px;
+}
+
+
+.table-hover > tbody > tr:hover {
+    background-color: #FAF7F7;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

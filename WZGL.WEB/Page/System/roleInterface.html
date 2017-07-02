@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/bootstrap.min.css" />
+    <link href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../CSS/master.css" />
+    <link rel="stylesheet" href="../../CSS/System/roleInterface.css" />
+    <link rel="stylesheet" href="../../CSS/infomation.css" />
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+    <script src="../../Scripts/jquery.pagination.js"></script>
+    <title></title>
+</head>
+<body>
+    <div id="documentContent">
+        <div class="container">
+            <div class="container_content">
+                <div class="container_btn" style="border-bottom:1px solid #ddd;">
+                    <ul class="btn_vessel lf">
+                        <li class="btn btn_newly">
+                            <a href="#">
+                                <i></i>
+                                新增角色
+                            </a>
+                        </li>
+                        <!--<li class="btn btn_all_choose">-->
+                        <!--<a href="#">-->
+                        <!--<i class="fa fa-check-square-o"></i>-->
+                        <!--全选-->
+                        <!--</a>-->
+                        <!--</li>-->
+                        <!--<li class="btn btn_delete"><a href="#"><i></i>删除</a>-->
+                        <!--</li>-->
+                    </ul>
+                    <div class="rt">
+                        <button id="searchBtn" type="button" class="btn btn-info search">
+                            <i></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- -->
+                <div id="searchContent" class="searchDiv searchFromTable" style="display: none;padding:10px 0;border-bottom:1px solid #ddd;" >
+                    <table width="100%">
+                        <tbody>
+                            <tr>
+                                <td width="27%" style="text-align: right">角色名称</td>
+                                <td width="18%">
+                                    <span>
+                                        <div class="input-group date">
+                                            <input type="text" class="form-control" id="userName" >
+                                        </div>
+                                    </span>
+                                </td>
+                                <!--<td width="150" style="text-align: right">来源</td>-->
+                                <td style="text-align: right" width="18%">是否复用</td>
+                                <td style="text-align: left" width="37%">
+                                    <span>
+                                        <select id="YesNo" name="是否复用" class="form-control component-select">
+                                            <option value=""></option>
+                                            <option value="true" class="select-cmd">是</option>
+                                            <option value="false" class="select-cmd">否</option>
+                                        </select>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>&nbsp;</p>
+                    <div>
+                        <div id="secBtn" class="text-center">
+                            <button type="button" class="btn btn-primary" onclick="selectRole()">查询</button>
+                            <button type="button" class="btn btn-default btn-reset">重置</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- -->
+                <div class="table_vessel" id="roleview">
+                   <table id="userInterface" class="table table-responsive">
+                        <thead>
+                            <tr>
+
+                                <th>角色名称</th>
+                                <th>部门复用</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           <!--  <tr>
+
+                                <td>角色1</td>
+                                <td data_value="true">是</td>
+                                <td>
+                                    <a class="amend" href="#">修改</a>
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>角色2</td>
+                                <td data_value="1" class="second_part">是</td>
+                                <td>
+
+                                    <a class="amend" href="#">修改</a>
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>角色3</td>
+                                <td data_value="true" class="third_part">是</td>
+                                <td>
+                                    <a class="amend" href="#">修改</a>
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>角色4</td>
+                                <td data_value="0" class="fourth_part">否</td>
+                                <td>
+                                    <a class="amend" href="#">修改</a>
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>角色5</td>
+                                <td data_value="true" class="fifth_part">是</td>
+                                <td>
+                                    <a class="amend" href="#">修改</a>
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+                <table>
+                    <tr>
+                        <td width="1%" colspan="6">
+                            <div id="Pagination" class="pagination" style="float: right;">
+                                <!-- 这里显示分页 -->
+                            </div>
+                            <div id="hiddenresult" style="display: none;" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- 弹出新建-->
+        <!--遮罩-->
+        <div id="newShade" class="cd-popup">
+            <!--<div class="newShade_lay"></div>--><!--遮罩层-->
+            <div class="popUp_container">
+                <div class="popUp_header">
+                    <span id="userTitle" class="ph_popup_icon"></span>
+                    <a id="phPopUpClose" href="#" class="ph_popup_close">
+                        <span class=" fa fa-times"></span>
+                    </a>
+                </div>
+                <div class="popUP_buttons" style="">
+                    <div class="activity-box" id="activityTable" style="margin: 0px; text-align: left; border-bottom: 1px solid #d5d9dc;padding: 0.5em;">
+                        <ul>
+                            <li class="btn btn_save">
+                                <a href="#"><i></i>保存</a>
+                            </li>
+                            <li class="btn btn_return">
+                                <a href="#"><i></i>返回</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="popUp_section">
+                    <table id="" class="table user_table table-responsive">
+                        <tr>
+                            <td>
+                                <label>是否复用</label>
+                            </td>
+                            <td>
+                                <select id="whetherReuse" class="form-control">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>角色名称</label>
+                            </td>
+                            <td>
+                                <input id="sectionName" type="text" style="width:176px;border-radius:4px;border-color:#ccc;height:34px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>角色权限</label></td>
+                            <td>
+                                <div id="roletreeview">
+                                    <table class="table jurisdiction table-responsive" style="border-bottom:1px solid #DDD;">
+                                        <thead>
+                                            <tr>
+                                                <th>角色名称</th>
+                                                <th>权限分配</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!--<tr>
+                                            <td><span></span>系统</td>
+                                            <td><input type="checkbox" /><label>显示</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="part1"><span></span>系统</td>
+                                            <td><input type="checkbox" /><label>显示</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="part2"><span></span>系统</td>
+                                            <td><input type="checkbox" /><label>显示</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="part3"><span></span>系统</td>
+                                            <td><input type="checkbox" /><label>显示</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="part4"><span></span>系统</td>
+                                            <td><input type="checkbox" /><label>显示</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="part5"><span></span>系统</td>
+                                            <td><input type="checkbox" /><label>显示</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span></span>系统</td>
+                                            <td><input type="checkbox" /><label>显示</label></td>
+                                        </tr>-->
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="../../Scripts/System/roleInterface.js"></script>
+</body>
+</html>

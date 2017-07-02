@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../../CSS/master.css" />
+    <link rel="stylesheet" href="../../CSS/nr-date.css">
+    <link rel="stylesheet" href="../../CSS/index.css" />
+    <link rel="stylesheet" href="../../CSS/infomation.css" />
+    <link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../CSS/layer.css" />
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/jquery.pagination.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+    <title>采面管理</title>
+</head>
+<body>
+    <div class="container">
+
+        <div id="container">
+            <div class="from-group" style="text-align:left; padding: 10px; border-bottom: 1px solid #dddddd;">
+                <button type="button" class="btn btn_newly" onclick="add()">
+                    <a href="javaScript:void(0)"><i></i>新增记录</a>
+                </button>
+                <button type="button" class="btn btn_newly" onclick="add2()">
+                    <a href="javaScript:void(0)"><i></i>新增分组</a>
+                </button>
+
+                <button type="button" class="btn bg-info search" style="float:right;">
+                    <i></i>
+                </button>
+
+            </div>
+            <div class="searchDiv searchFromTable" style="padding-top: 1.5em; display:none;">
+                <table style="margin: 0 auto">
+                    <tbody align="left">
+                        <tr>
+                            <td style="text-align: right">工作面编号</td>
+                            <td>
+                                <input type="text" class="form-control  component-input"
+                                       id="txt_Coalfacecode" />
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <p>&nbsp;</p>
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <button type="button" class="btn btn-primary" onclick="search()">查询</button>
+                        <button type="button" class="btn btn-default btn-reset" onclick="reset()">重置</button>
+                    </div>
+                </div>
+            </div>
+            <div id="dataTable-box">
+                <div class="dataTable text-center">
+                    <div id="viewHtml">
+                        <div class="table-head">
+                            <table class="table table-hover" id="gridTable">
+                                <thead>
+                                    <tr class="listDataTh">
+
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            <a href="javaScript:viewDoc(0)" title="工作面编号">工作面编号</a>
+                                        </td>
+                                        <td width="" title="分组编号" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                            <a style="cursor: pointer" href="#">分组编号</a>
+                                        </td>
+                                        <td width="" title="工作面采长" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                            <a style="cursor: pointer" href="#">采长（米）</a>
+                                        </td>
+                                        <td width="" title="工作面煤厚" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                            <a style="cursor: pointer" href="#">煤厚（米）</a>
+                                        </td>
+                                        <td width="" title="工作面采高" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                            <a style="cursor: pointer" href="#">采高（米）</a>
+                                        </td>
+                                        <td width="" title="工作面倾角" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                            <a style="cursor: pointer" href="#">倾角（度）</a>
+                                        </td>
+                                        <td width="" title="工作面排产" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                            <a style="cursor: pointer" href="#">排产（吨）</a>
+                                        </td>
+                                        <td width="" title="工作面月产水平" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                            <a style="cursor: pointer" href="#">月产水平（吨）</a>
+                                        </td>
+                                        <td width="" title="操作" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                            <a style="cursor: pointer" href="#">操作</a>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="listDataTr"></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div id="tunnlPagination" class="pagination" style="float: right;">
+                            <!-- 这里显示分页 -->
+                        </div>
+                        <div id="tunnlhiddenresult" style="display: none;" />
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="cd-popup" id="maskIframe">
+            <div class="cd-popup-container">
+                <div class="aui_header">
+                    <span class="aui_icon">添加工作面</span>
+                    <a href="#" class="cd-popup-close aui_close" style="line-height: 40px;">
+                        <span class=" fa fa-times" aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <div class="cd-content">
+                    <div class="searchDiv searchFromTable1" style="padding-top: 1.5em;">
+
+                        <table align="center" id="divcoalmines" style="display: block">
+                            <tbody>
+                                <tr>
+                                    <td width="150" style="text-align: right">工作面编号</td>
+                                    <td style="text-align: left">
+                                        <span>
+                                            <input type="text" class="form-control component-input" id="Coalfacecode" name="Coalfacecode" />
+                                            <input name="Coalfaceid" id="Coalfaceid" type="hidden" />
+                                        </span>
+                                    </td>
+                                    <td width="150" style="text-align: right">采面分组</td>
+                                    <td style="text-align: left">
+                                        <span>
+                                            <select style="width:179px;" id="Groupid" name="Groupid" class="form-control component-select"></select>
+                                          
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right">采长（米）</td>
+                                    <td>
+                                        <span>
+                                            <input type="text" class="form-control component-input" id="Mininglength" name="Mininglength" />
+                                        </span>
+                                    </td>
+                                    <td width="150" style="text-align: right">煤厚（米）</td>
+                                    <td>
+                                        <span>
+                                            <input type="text" class="form-control component-input" id="Coalthick" name="Coalthick" />
+
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right">采高（米）</td>
+                                    <td>
+                                        <span>
+                                            <input type="text" class="form-control component-input" id="Mininghigh" name="Mininghigh" />
+                                        </span>
+                                    </td>
+                                    <td width="150" style="text-align: right">倾角（度）</td>
+                                    <td>
+                                        <span>
+                                            <input type="text" class="form-control component-input" id="Dip" name="Dip" />
+
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right">排产（吨）</td>
+                                    <td>
+                                        <span>
+                                            <input type="text" class="form-control component-input" id="Pc" name="Pc" />
+                                        </span>
+                                    </td>
+                                    <td style="text-align: right">月产水平（吨）</td>
+                                    <td>
+                                        <span>
+                                            <input type="text" class="form-control component-input" id="Monthlyoutputlevel" name="Monthlyoutputlevel" />
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="cd-buttons" style="">
+                    <div class="activity-box" id="activityTable" style="margin: 0px; text-align: left; border-bottom: 1px solid #d5d9dc; padding: 0.5em; text-align: center;">
+                        <ul>
+                            <li class="btn btn_save" onclick="save()">
+                                <a href="javaScript:void(0)"><i></i>保存</a>
+                            </li>
+                            <li class="btn btn_return">
+                                <a href="javaScript:void(0)"><i></i>返回</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cd-popup" id="cd2">
+            <div class="cd-popup-container" style="padding-bottom:20px;">
+
+                <div class="aui_header">
+                    <span class="aui_icon">添加分组</span>
+                    <a href="#" class="cd-popup-close aui_close" style="line-height: 40px;">
+                        <span class=" fa fa-times" aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <div class="cd-content">
+                    <div class="activity-box" id="activityTable" style="margin: 0px; text-align: left; border-bottom: 1px solid #d5d9dc; padding: 0.5em; ">
+                        <ul>
+                            <li class="btn btn_save" onclick="savefz()">
+                                <a href="javaScript:void(0)"><i></i>保存</a>
+                            </li>
+                            <li class="btn btn_return">
+                                <a href="javaScript:void(0)"><i></i>返回</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="searchDiv searchFromTable1" style="padding-top: 1.5em;">
+
+                        <table align="center" id="divcoalmines" style="display: block">
+                            <tbody>
+                                <tr>
+                                    <td width="150" style="text-align: right">分组名称</td>
+                                    <td width="80%" colspan="3">
+                                        <span>
+                                            <input type="text" id="groupcode" class="form-control component-input" name="categoryname" style="width: 380px;">
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="searchDiv searchFromTable1">
+                    <table class="table table-hover" style="text-align:left" id="tab_fz">
+                        <thead>
+                            <tr class="listDataTh">
+                                <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                    分组名称
+                                </td>
+                                <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                    操作
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../Scripts/custom.js"></script>
+    <script type="text/javascript">
+        /*弹框JS内容*/
+
+        //打开窗口
+        function add2() {
+            $("#groupcode").val('');
+            init();
+            $("#cd2").addClass('is-visible');
+        }
+        //关闭窗口
+        $('.cd-popup-close').on('click', function (event) {
+            $(".cd-popup").removeClass('is-visible');
+            parent.deleteGlobalShade();
+        });
+        //返回按钮事件
+        $('.btn_return').on('click', function (event) {
+            $(".cd-popup").removeClass('is-visible');
+            parent.deleteGlobalShade();
+        });
+        //ESC关闭
+        $(document).keyup(function (event) {
+            if (event.which == '27') {
+                $('.cd-popup').removeClass('is-visible');
+            }
+        })
+    </script>
+
+    <script src="../../Scripts/System/coalface.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+@import url('message.css');
+#headerNav{
+    position: relative;
+}
+#headerNav .finishedSeach{
+    position: absolute;
+    right: 20px;
+    top: 0px;
+    height: 43px;
+    padding: 4px;
+}
+#headerNav .finishedSeach .input-group{
+    width: 240px;
+    margin-left: 10px;
+}
+#headerNav .finishedSeach input{
+    padding:6px 5px;
+    border: 1px solid #CCCCCC;
+    width: 100%;
+  border-radius:4px;
+}
+.btn-myapp{
+    background:#56A8E7;
+    color:#fff;
+    font-weight:800 ;
+}
+.btn-myapp:hover,.btn-myapp:active,.btn-myapp:focus,.btn-myapp:visited{
+    color:#fff;
+    font-weight:800 ;
+    background: #0C86C2;
+}
+#contentBox{
+	height:100%;
+}
+#contentBox a{
+	color:#9F9F9F;
+}
+#contentBox a:hover,#contentBox a:active,#contentBox a:visited,#contentBox a:focus{
+	text-decoration:none;
+}
+#contentBox a:hover{
+	background:#EEEEEE;
+}
+#contentBox .header_nav a.on_active{
+	border-bottom:3px solid #5ab45a;
+	color:#5ab45a;
+}
+#contentBox a.on_active:hover{
+	background:none;
+}
+.header_nav{
+    height: 40px;
+    line-height: 40px;
+    /* padding: 10px 15px 0 15px; */
+	padding:0 15px;
+	margin-bottom:10px;
+    background: #f8f8f8
+}
+.header_nav:after,.header_btn:after{
+	display:table;
+	content:'';
+	clear:both;
+}
+.header_nav li,.header_btn li{
+	float:left;
+	padding:0 15px;
+	position:relative;
+}
+.header_nav a{
+	/* display:block; */
+	padding:10px 15px;
+}
+#contentBox .header_btn a.on_active{
+	color:#fff;
+	background:#5ab45a;
+	border-color:#5ab45a;
+}
+.header_btn li{
+	padding:10px;
+}
+.header_btn li:hover{
+	
+}
+.header_btn li a{
+	font-size:12px;
+	padding: 3px 10px;
+    border: 1px solid #bcbcbc;
+    border-radius: 24px;
+}
+.header_nav span,.header_btn span{
+	display: inline-block;
+    min-width: 10px;
+    padding: 1px 4px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #fc4d54;
+    margin-bottom: 2px;
+    position: absolute;
+    border-radius: 100px;
+}
+.header_nav span{
+	top: 6px;
+	right:0;
+}
+.header_btn span{
+	top:-6px;
+	right:-7px;
+}
+/*  */
+.tab_list{
+	padding:10px;
+	position:relative;
+}
+.tabLiFace{
+	position:absolute;
+	left:0;
+}
+.tabLiFace .noAvatar {
+    width: 38px;
+    color: #fff;
+    text-align: center;
+    line-height: 38px;
+    font-size: 12px;
+    border-radius: 4px;
+    background: #428bcb;
+    height: 38px;
+    margin: 5px 10px;
+}
+.tabLiCon {
+   margin-left:40px;
+    font-size: 12px;
+}
+.tabLiCon .tabLiConBox {
+    padding:0 10px;
+}
+.tabLiCon .tabLiConA {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 14px;
+    margin-top: 4px;
+}
+.tabLiConB {
+	display:flex;
+}
+.tabLiConB .tabLiTagLeft {
+    display: block;
+    color: #a7a7a7;
+    line-height: 22px;
+}
+.tabLiCon .tabLiConB .tabLiTagRight {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    box-flex: 1;
+    display: block;
+    height: 22px;
+}
+.tabLiCon .tabLiConB .tabLiCon-status {
+    color: #aeaeae;
+    font-size: 12px;
+    border: 1px solid #aeaeae;
+    border-radius: 3px;
+    margin-left: 3px;
+    display: inline-block;
+    text-align: center;
+    padding: 0px 3px;
+    height: 22px;
+    line-height: 22px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100px;
+}
+#manageTabContent,#administrativeTabContent{
+	padding:20px;
+	text-align:center;
+}
+.label_number{
+	padding:2px 8px;
+	background:#488FCD;
+	color:#fff;
+}
+#headerNav #MyStartChecked {
+    padding:0;
+    border:1px solid #ddd;
+}
+/*historySeach*/
+#headerNav .finishedSeach .myStartBtn input{
+    width: auto;
+    margin-right: 5px;
+}
+.finishedSeach .myStartBtn{
+    float: left;
+    width: 120px;
+    padding: 6px 10px 6px 10px;
+    height:33px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 10px;
+    background:#fff;
+}
+label{
+    display: inline;
+    font-weight: normal;
+    margin: 0;
+    max-width: none;
+}
+.btn-info.search {
+    height:33px;
+}

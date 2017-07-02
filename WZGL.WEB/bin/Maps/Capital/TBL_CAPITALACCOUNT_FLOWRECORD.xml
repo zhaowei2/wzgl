@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="FlowerCord" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+    <typeAlias alias="Tbl_Capitalaccount_flowercordInfo"  type="WZGL.MODEL.Capital.TBL_CAPITALACCOUNT_FLOWRECORD,WZGL.MODEL" />
+  </alias>
+  <parameterMaps>
+    <parameterMap id="swapParas" class="Hashtable">
+      <parameter property="Sql"        dbType="VARCHAR(MAX)"/>
+      <parameter property="Sort"        dbType="VARCHAR2" />
+      <parameter property="Pindex"      dbType="Int32"/>
+      <parameter property="Psize"       dbType="Int32"/>
+      <parameter property="Pcount"       column="Pcount"      dbType="Int32" direction="Output" />
+      <parameter property="TotalCount"   column="TotalCount" dbType="Int32"   direction="Output"/>
+    </parameterMap>
+  </parameterMaps>
+  <statements>
+    <procedure id="GetListByProc" parameterMap="swapParas" resultClass="Tbl_Capitalaccount_flowercordInfo" >
+      getPageData
+    </procedure>
+    <insert id="Insert" parameterClass="Tbl_Capitalaccount_flowercordInfo" resultClass="Int32">
+      INSERT INTO TBL_CAPITALACCOUNT_FLOWRECORD(flowrecordid,organizationid,capitalaccountid,flowrecordtype,amount,appeardate,processnumber,source)  values( #flowrecordid#,#organizationid#,#capitalaccountid#,#flowrecordtype#,#amount#,#appeardate#,#processnumber#,#source#)
+    </insert>
+    <update id="Update" parameterClass="Tbl_Capitalaccount_flowercordInfo" resultClass="Int32">
+      UPDATE TBL_CAPITALACCOUNT_FLOWRECORD SET organizationid=#organizationid#,capitalaccountid=#capitalaccountid#,flowrecordtype=#flowrecordtype#,amount=#amount#,appeardate=#appeardate#,processnumber=#processnumber#,source=#source#  where flowrecordid=#flowrecordid#
+    </update>
+    <delete id="Delete" parameterClass="string" resultClass="Int32">
+      DELETE FROM TBL_CAPITALACCOUNT_FLOWRECORD WHERE  $value$
+    </delete>
+    <select id="GetList" parameterClass="string" resultClass="Tbl_Capitalaccount_flowercordInfo">
+      select flowrecordid,organizationid,capitalaccountid,flowrecordtype,amount,appeardate,processnumber,source  FROM  TBL_CAPITALACCOUNT_FLOWRECORD WHERE  $values$
+    </select>
+    <select id="GetListByOrgan" parameterClass="string" resultClass="Tbl_Capitalaccount_flowercordInfo">
+     $value$   
+    </select>
+    
+    
+    <select id="GetCount" parameterClass="string" resultClass="Int32">
+      select  count(*) from  TBL_CAPITALACCOUNT_FLOWRECORD
+      where  1=1   $value$
+    </select>
+  </statements>
+</sqlMap>

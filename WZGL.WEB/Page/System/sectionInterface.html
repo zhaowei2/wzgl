@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/bootstrap.min.css"/>
+    <link href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../CSS/master.css"/>
+    <link rel="stylesheet" href="../../CSS/System/sectionInterface.css" />
+    <title></title>
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+</head>
+<body>
+    <div id="documentContent">
+        <div class="container">
+            <div class="container_content">
+                <div class="container_btn">
+                    <ul class="btn_vessel">
+                        <li class="btn btn_newly">
+                            <a href="#">
+                                <i></i>
+                                新增战线
+                            </a>
+                        </li>
+                        <!--<li class="btn btn_all_choose">-->
+                            <!--<a href="#">-->
+                                <!--<i class="fa fa-check-square-o"></i>-->
+                                <!--全选-->
+                            <!--</a>-->
+                        <!--</li>-->
+                        <!--<li class="btn btn_delete"><a href="#"><i></i>删除</a>-->
+                        <!--</li>-->
+                    </ul>
+                </div>
+                <div class="table_vessel" id="orgview">
+                    <!--<table id="sectionInterface" class="table table-responsive">
+                        <thead>
+                            <tr>
+                                
+                                <th>部门名称</th>
+                                <th>部门类型</th>
+
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>-->
+                        <!--    <tr>
+                               
+                                <td class="part0"><span></span>系统</td>
+                                <td>系统管理</td>
+                                <td>
+                                    <a class="addChirdren" href="#">添加子集</a>
+                                    <a class="amend" href="#">修改</a>
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                            
+                                <td class="part1"><span></span>系统2</td>
+                                <td>系统管理2</td>
+
+                                <td>
+
+                                    <a class="addChirdren" href="#">添加子集</a>
+                                    <a class="amend" href="#">修改</a>
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                        
+                                <td class="part2"><span></span>系统3</td>
+                                <td>系统管理3</td>
+
+                                <td>
+                                    <a class="addChirdren" href="#">添加子集</a>
+                                    <a class="amend" href="#">修改</a>
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                        
+                                <td class="part3"> <span></span>系统4</td>
+                                <td>系统管理4</td>
+
+                                <td>
+                                    <a class="addChirdren" href="#">添加子集</a>
+                                    <a class="amend" href="#">修改</a>
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                      
+                                <td class="part4"> <span><b style="display:none">12-69</b></span>系统5</td>
+                                <td>系统管理5</td>
+
+                                <td>
+                                    <a class="addChirdren" href="#">添加子集</a>
+                                    <a class="amend" href="#">修改</a>
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                               
+                                <td class="part5"> <span></span>系统6</td>
+                                <td>系统管理6</td>
+
+                                <td>
+                                    <a class="addChirdren" href="#">添加子集</a>
+                                    <a class="amend" href="#">修改</a>
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                               
+                                <td class="part0"><span></span>系统</td>
+                                <td class="">系统管理</td>
+
+                                <td>
+                                    <a class="addChirdren" href="#">添加子集</a>
+                                    <a class="amend" href="#">修改</a>
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>-->
+                        <!--</tbody>
+                    </table>-->
+                </div>
+            </div>
+        </div>
+        <!-- 弹出新建-->
+        <!--遮罩-->
+        <div id="newShade" class="cd-popup">
+            <!--<div class="newShade_lay"></div>--><!--遮罩层-->
+            <div class="popUp_container">
+                <div class="popUP_header">
+                    <span class="ph_popup_icon">新建</span>
+                    <a id="phPopUpClose" href="#" class="ph_popup_close">
+                        <span class=" fa fa-times"></span>
+                    </a>
+                </div>
+
+                <div class="popUP_section">
+                    <form>
+                        <div class="form-group" style="text-align:center;">
+                            <div style="display:inline-block;margin:0 auto;">
+                                <label for="sectionName">部门名称</label>
+                                <input id="sectionName" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group" style="text-align:center;">
+                            <div style="display:inline-block;margin:0 auto;">
+                                <label for="sectionType">部门类型</label>
+                                <select class="form-control" id="sectionType">
+                                    <!--<option value="">系统管理1</option>
+                                <option value="">系统管理2</option>
+                                <option value="">系统管理3</option>-->
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="popUP_buttons" style="">
+                    <div class="activity-box" id="activityTable" style="margin: 0px; text-align: left; border-top: 1px solid #d5d9dc;padding: 0.5em;">
+                        <ul style="text-align:center;">
+                            <li class="btn btn_save">
+                                <a href="#"><i></i>保存</a>
+                            </li>
+                            <li class="btn btn_return">
+                                <a href="#"><i></i>返回</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="../../Scripts/System/sectionInterface.js"></script>
+</body>
+</html>

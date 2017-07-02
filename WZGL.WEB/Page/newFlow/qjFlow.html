@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+        function load()
+        {
+            $("#TASK_CODE").val('QJDH' + getNowFormatDate());
+            $("#DEFINE_CODE").val(DEFINE_CODE);
+            $("#TASK_TYPE").val(TASK_TYPE);
+            //alert(TASK_TYPE);
+        }
+        var DEFINE_CODE = GetQueryString("DEFINE_CODE");
+        var TASK_TYPE = GetQueryString("TYPE_CODE");
+
+        function FqFlow() {
+            var data = $("#frmManage").serializeArray();
+            var json = '{"model":"AA","data":[{"title":"' + $('#TASK_TILTE').val() + '", "startdate":"' + $('#STARTDATE').val() + '","enddate":"' + $('#ENDDATE').val() + '","days":' + $('#DAYS').val() + ',"reason":"' + $('#REASON').val() + '"}]}';
+            data.push({ name: 'TASK_JSON', value: json });
+            //lert(data);
+
+
+            $.ajax({
+                type: "POST",
+                url: '../../Controllers/Flow/Flow.ashx?action=addAndSendTask',
+                data: data,
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.IsSuccess == "true") {
+                       // $('#gird').datagrid("reload");
+                        // $('#divManage').window('close');
+                        alert(msg.Message);
+                    }
+                    else {
+                        alert(msg.Message);
+                    }
+                },
+                error: function (msg) {
+                    alert( msg.Message);
+                }
+            });
+
+        }
+
+        function getNowFormatDate() {
+            var date = new Date();
+            var seperator1 = "";
+            var seperator2 = "";
+            var month = date.getMonth() + 1;
+            var strDate = date.getDate();
+            if (month >= 1 && month <= 9) {
+                month = "0" + month;
+            }
+            if (strDate >= 0 && strDate <= 9) {
+                strDate = "0" + strDate;
+            }
+            var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+                    + date.getHours() + seperator2 + date.getMinutes()
+                    + seperator2 + date.getSeconds();
+            return currentdate;
+        }
+    </script>
+</head>
+<body onload="load()">
+
+    <div>
+
+                    <button value="发起" onclick="FqFlow()">发起</button>
+  
+    </div>
+    <form id="frmManage" method="post">
+        <table>
+           
+            <tr class="fitem">
+                <td class="tdc">
+                    <div style="text-align: right">申请单号：</div>
+                        <input type="hidden" id="DEFINE_CODE" name="DEFINE_CODE" />
+                      <input type="hidden" id="TASK_TYPE" name="TASK_TYPE" />
+                    
+                </td>
+                <td class="tdd" colspan="3">
+                    <input class="easyui-textbox" type="text" style="width: 350px" id="TASK_CODE"  name="TASK_CODE" />
+                    <label style="color: red">*</label>
+                </td>
+
+            </tr>
+            <tr class="fitem">
+                <td class="tdc">
+                    <div style="text-align: right">请假标题：</div>
+
+                </td>
+                <td class="tdd" colspan="3">
+                    <input class="easyui-textbox" type="text" style="width: 250px" id="TASK_TILTE" name="TASK_TILTE" />
+                    <label style="color: red">*</label>
+                </td>
+
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

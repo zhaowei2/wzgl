@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/bootstrap.css"/>
+    <link rel="stylesheet" href="../../CSS/master.css"/>
+    <link rel="stylesheet" href="../../CSS/nr-date.css">
+    <link rel="stylesheet" href="../../CSS/index.css"/>
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <title></title>
+</head>
+<body>
+<div class="container">
+    <form id="document_content" style="margin-top: 0px">
+        <div id="container">
+            <div class="from-group" style="text-align: right; padding: 10px ;border-bottom: 1px solid #dddddd;">
+                <button type="button" class="btn bg-info search">
+                    <i></i>
+                </button>
+            </div>
+            <div class="searchDiv searchFromTable"  style="padding-top: 1.5em;">
+                <table style="margin: 0 auto">
+                    <tbody align="left">
+                    <tr>
+                        <td style="text-align: right">部门</td>
+                        <td>
+                                <span>
+                                    <select name="部门" class="form-control component-select">
+                                        <option value="全部" class="select-cmd">全部</option>
+                                    </select>
+                                </span>
+                        </td>
+                        <td style="text-align: right">状态</td>
+                        <td>
+                                <span>
+                                    <select name="状态" class="form-control component-select"style="width: 200px">
+                                        <option value="全部" class="select-cmd">全部</option>
+                                        <option value="已批准" class="select-cmd">已批准</option>
+                                        <option value="进行中" class="select-cmd">进行中</option>
+                                        <option value="未批准" class="select-cmd">未批准</option>
+                                    </select>
+                                </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="150" style="text-align: right">开始时间</td>
+                        <td width="20%">
+                                <span>
+                                     <div class="input-group date">
+                                         <input type="text" class="form-control
+                    wdate component-input" id="inp2" placeholder="添加日期" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false"/>
+                                    <span class="input-group-addon">
+                                           <span class="glyphicon glyphicon-calendar calendar"></span>
+                                     </span>
+                                     </div>
+                                </span>
+                        </td>
+                        <td width="150" style="text-align: right">结束时间</td>
+                        <td width="20%">
+                                <span>
+                                     <div class="input-group date">
+                                         <input type="text" class="form-control
+                    wdate component-input" id="inp1" placeholder="添加日期" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false"/>
+                                    <span class="input-group-addon">
+                                           <span class="glyphicon glyphicon-calendar calendar"></span>
+                                     </span>
+                                     </div>
+                                </span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>&nbsp;</p>
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <button type="button" class="btn btn-primary">查询</button>
+                        <button type="button" class="btn btn-default btn-reset">重置</button>
+                    </div>
+                </div>
+            </div>
+            <div id="dataTable-box">
+                <div class="dataTable text-center">
+                    <div id="viewHtml">
+                        <div class="table-head">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr class="listDataTh" style="border-top: 1px solid #dddddd;">
+                                    <td class="listDataTrTd" style="word-break: break-all;" >
+                                        <a href="javaScript:viewDoc(0)" title="申请日期">分组</a>
+                                    </td>
+                                    <td width="" title="申请人" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                        <a style="cursor:pointer" href="#">工作面编码</a>
+                                    </td>
+                                    <td width="" title="部门" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                        <a style="cursor:pointer" href="#">工作面采长</a>
+                                    </td>
+                                    <td width="" title="申请金额" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                        <a style="cursor:pointer" href="#">工作面煤厚</a>
+                                    </td>
+                                    <td width="" title="批准金额" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                        <a style="cursor:pointer" href="#">工作面采高</a>
+                                    </td>
+                                    <td width="" title="批准金额" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                        <a style="cursor:pointer" href="#">工作面倾角</a>
+                                    </td>
+                                    <td width="" title="批准金额" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                        <a style="cursor:pointer" href="#">工作面排产</a>
+                                    </td>
+                                    <td width="" title="批准金额" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                        <a style="cursor:pointer" href="#">工作面月产水平</a>
+                                    </td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="listDataTr">
+                                    <td class="listDataTrTd" style="word-break: break-all;" >
+                                        <a href="javaScript:viewDoc(0)" title=""></a>
+                                    </td>
+                                    <td class="listDataTrTd" style="word-break: break-all;">
+                                        <a href="javaScript:viewDoc(0)" title=""></a>
+                                    </td>
+                                    <td class="listDataTrTd" style="word-break: break-all;" >
+                                        <a href="javaScript:viewDoc(0)" title=""></a>
+                                    </td>
+                                    <td class="listDataTrTd" style="word-break: break-all;">
+                                        <a href="javaScript:viewDoc(0)" title=""></a>
+                                    </td>
+                                    <td class="listDataTrTd" style="word-break: break-all;">
+                                        <a href="javaScript:viewDoc(0)" title=""></a>
+                                    </td>
+                                    <td class="listDataTrTd" style="word-break: break-all;">
+                                        <a href="javaScript:viewDoc(0)" title=""></a>
+                                    </td>
+                                    <td class="listDataTrTd" style="word-break: break-all;">
+                                        <a href="javaScript:viewDoc(0)" title=""></a>
+                                    </td>
+                                    <td class="listDataTrTd" style="word-break: break-all;">
+                                        <a href="javaScript:viewDoc(0)" title=""></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="../../Scripts/nr-date.js"></script>
+<script>
+    (function(){
+        calender("#inp2").init({format : 'yyyy-MM-dd',
+            date : [2016,12,15],
+            button : true
+        },function(date){
+            this.value= date
+        });
+    })();
+    (function(){
+        calender("#inp1").init({format : 'yyyy-MM-dd',
+            date : [2016,12,15],
+            button : true
+        },function(date){
+            this.value= date
+        });
+    })();
+
+
+</script>
+<script src="../../Scripts/custom.js"></script>
+</body>
+</html>

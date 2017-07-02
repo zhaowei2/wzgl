@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="Scripts/jquery-1.11.3.js"></script>
+    <script src="Scripts/System/login.js"></script>
+    <title></title>
+    <style>
+        body{
+            padding:0;
+            margin: 0;
+            font-family: "Arial",sans-serif;
+            background: #D4DFDF;
+            font-size: 12px;
+            background-size: cover;
+            min-width: 800px;
+        }
+
+        .form-background{
+            background: url("Images/login_background_01.png") no-repeat;
+            position: relative;
+            background-size: 100%;
+            height: 393px;
+            text-align: center;
+        }
+        h1{
+            margin: 0;
+            margin-top: 3%;
+            padding: 3% 0;
+            font-size: 5.3em;
+            text-align: center;
+            color: #007CC2;
+        }
+        .form{
+            position: relative;
+            display: inline-block;
+            width: 640px;
+            height: 308px;
+            background: #F4F4F4;
+        }
+        .logo-parent{
+            width: 50%;
+            height:288px;
+            float: left;
+        }
+        .logo{
+            margin: 50px 10px 10px 10px;
+            height:240px;
+            width: 270px;
+            background: url("Images/login_background-02.png");
+            background-repeat:no-repeat;
+            background-size:80%;
+        }
+        .from-trans{
+            position: relative;
+            top:20%;
+            padding: 30px;
+            width: 640px;
+            height: 308px;
+            display: inline-block;
+            background: transparent;
+            border:1px solid #98A19F;
+            border-radius: 20px;
+            box-shadow: 0 0 10px #98A19F;
+        }
+        .form-form{
+            float: left;
+        }
+        .form form{
+            padding:44px 23px;
+        }
+        .form form input{
+            font-size: 16px;
+            padding-left: 30px;
+            height: 40px;
+            width: 236px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border-color: #CBCBCB;
+        }
+        #userName{
+             background: url("Images/user-icon.png") no-repeat 5px 11px;
+         }
+        #passWord{
+            background: url("Images/password-icon.png") no-repeat 5px 11px;
+        }
+        #btn{
+            width: 100%;
+            height: 40px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background: #51B3F9;
+            border-color: #87C9F6;
+        }
+        .pass-verification{
+            margin: 0 ;
+            margin-bottom: 10px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            text-align: right;
+            color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="conpany-text">
+        <h1>测试版管理系统</h1>
+    </div>
+    <div class="form-background">
+        <div class="from-trans">
+            <div class="form">
+                <div class="logo-parent">
+                    <div class="logo">
+                      <!--<img style="height: 308px;float: left" src="WebPage/Images/login_background-02.png" alt=""/>-->
+                    </div>
+                </div>
+                <div class="form-form">
+                    <form action="#">
+                        <!-- 用户名-->
+                        <input id="userName" type="text" placeholder="请输入用户名" value="admin"/><br/>
+                        <!-- 密码-->
+                        <input id="passWord" type="password" placeholder="请输入密码" value="123456"><br/>
+                 <!--      <p class="pass-verification">
+                            <!-- 验证提示信息-->
+                           <span id="verifyInfor">
+                                <!--密码错误-->
+                            </span>
+                    <!--    </p>-->
+                     
+                        <!-- 登录按钮-->
+                        
+                        <input id="btn" type="button" value="登录" onclick="logOn()">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

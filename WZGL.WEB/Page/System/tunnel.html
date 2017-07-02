@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/master.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/layer.css" />
+    <script src="js/jquery-1.11.3.js"></script>
+
+    <title></title>
+</head>
+<body>
+    <div class="form-content">
+        <div class="container">
+            <form id="document_content">
+                <div id="main">
+                    <div class="activityTable" style="padding-bottom: 0.5em; border-bottom: 1px solid #dddddd;">
+                        <ul style="display: inline-block">
+                            <li class="btn btn_newly cd-popup-trigger0">
+                                <a href="#"><i></i>新增物资</a>
+                            </li>
+                            <li class="btn btn_flush">
+                                <a href="#"><i></i>批量更新</a>
+                            </li>
+                            <li class="btn btn_maintain">
+                                <a href="#"><i></i>分类维护
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="search-active-panel form-inline" style="display: inline-block; float: right">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-info educe">
+                                    <i></i>
+                                </button>
+                                <button type="button" class="btn btn-info search">
+                                    <i></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="searchDiv" style="display: none" id="searchFromTable">
+                        <table align="center">
+                            <tbody>
+                                <tr>
+                                    <td width="150" style="text-align: right">物资编码</td>
+                                    <td width="20%">
+                                        <span>
+                                            <input name="物资编码" type="text" class="form-control component-input" />
+                                        </span>
+                                    </td>
+                                    <td width="150" style="text-align: right">类型</td>
+                                    <td style="text-align: left">
+                                        <span>
+                                            <select name="类型" class="form-control component-select">
+                                                <option value="3" class="select-cmd">3</option>
+                                                <option value="2" class="select-cmd">2</option>
+                                                <option value="1" class="select-cmd">1</option>
+                                            </select>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="150" style="text-align: right">品类</td>
+                                    <td style="text-align: left">
+                                        <span>
+                                            <select name="品类" class="form-control component-select">
+                                                <option value="3" class="select-cmd">3</option>
+                                                <option value="2" class="select-cmd">2</option>
+                                                <option value="1" class="select-cmd">1</option>
+                                            </select>
+                                        </span>
+                                    </td>
+                                    <td width="150" style="text-align: right">品名</td>
+                                    <td width="20%">
+                                        <span>
+                                            <input name="品名" type="text" class="form-control component-input" />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <td width="150" style="text-align: right">规格</td>
+                                <td width="25%">
+                                    <span>
+                                        <input name="品名" type="text" class="form-control component-input" />
+                                    </span>
+                                </td>
+                                <td width="150" style="text-align: right">单价</td>
+                                <td width="25%">
+                                    <span>
+                                        <input name="品名" type="text" class="form-control component-input" />
+                                    </span>
+                                </td>
+                                <tr>
+                                </tr>
+                                <tr>
+                                    <td width="150" style="text-align: right">对口专业</td>
+                                    <td style="text-align: left">
+                                        <span>
+                                            <select name="对口专业" class="form-control component-select">
+                                                <option value="3" class="select-cmd">3</option>
+                                                <option value="2" class="select-cmd">2</option>
+                                                <option value="1" class="select-cmd">1</option>
+                                            </select>
+                                        </span>
+                                    </td>
+                                    <td width="150" style="text-align: right">对口产品</td>
+                                    <td style="text-align: left">
+                                        <span>
+                                            <select name="对口产品" class="form-control component-select">
+                                                <option value="3" class="select-cmd">3</option>
+                                                <option value="2" class="select-cmd">2</option>
+                                                <option value="1" class="select-cmd">1</option>
+                                            </select>
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align: right">回收类型</td>
+                                    <td>
+                                        <span>
+                                            <select name="回收类型" class="form-control component-select">
+                                                <option value="3" class="select-cmd">3</option>
+                                                <option value="2" class="select-cmd">2</option>
+                                                <option value="1" class="select-cmd">1</option>
+                                            </select>
+                                        </span>
+                                    </td>
+                                    <td style="text-align: right">回收率</td>
+                                    <td>
+                                        <span>
+                                            <input name="回收率" type="text" class="form-control component-input" />
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>&nbsp;</p>
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <button type="button" class="btn btn-primary">查询</button>
+                                <button type="button" class="btn btn-default btn-reset">重置</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="dataTable-box">
+                        <div class="dataTable text-center">
+                            <div id="viewHtml">
+                                <div class="table-head">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr class="listDataTh" style="border-top: 1px solid #dddddd;">
+                                                <td width="" title="产品名称" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">物资编码</a>
+                                                </td>
+                                                <td width="" title="产品类别" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">类型</a>
+                                                </td>
+                                                <td width="" title="单位" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">品类</a>
+                                                </td>
+                                                <td width="" title="产品规格" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">品名</a>
+                                                </td>
+                                                <td width="" title="单价" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">规格</a>
+                                                </td>
+                                                <td width="" title="单价" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">单位</a>
+                                                </td>
+                                                <td width="" title="单价" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">单价</a>
+                                                </td>
+                                                <td width="" title="单价" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">对口专业</a>
+                                                </td>
+                                                <td width="" title="预警状态" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">回收类型</a>
+                                                </td>
+                                                <td width="" title="预警状态" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">对口仓库</a>
+                                                </td>
+                                                <td width="" title="预警状态" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">回收率</a>
+                                                </td>
+                                                <td width="" title="预警状态" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">操作</a>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="listDataTr">
+                                                <td class="listDataTrTd" style="word-break: break-all; vertical-align: middle;">
+                                                    <a href="javaScript:viewDoc(0)" title="产品名称">产品名称</a>
+                                                </td>
+                                                <td class="listDataTrTd" style="word-break: break-all; vertical-align: middle;">
+                                                    <a href="javaScript:viewDoc(0)" title="产品名称">产品名称</a>
+                                                </td>
+                                                <td class="listDataTrTd" style="word-break: break-all; vertical-align: middle;">
+                                                    <a href="javaScript:viewDoc(0)" title="产品名称">产品名称</a>
+                                                </td>
+                                                <td class="listDataTrTd" style="word-break: break-all; vertical-align: middle;">
+                                                    <a href="javaScript:viewDoc(0)" title="产品名称">产品名称</a>
+                                                </td>
+                                                <td class="listDataTrTd" style="word-break: break-all; vertical-align: middle;">
+                                                    <a href="javaScript:viewDoc(0)" title="产品名称">产品名称</a>
+                                                </td>
+                                                <td class="listDataTrTd" style="word-break: break-all; vertical-align: middle;">
+                                                    <a href="javaScript:viewDoc(0)" title="产品类别">产品类别</a>
+                                                </td>
+                                                <td class="listDataTrTd" style="word-break: break-all; vertical-align: middle;">
+                                                    <a href="javaScript:viewDoc(0)" title="T">T</a>
+                                                </td>
+                                                <td class="listDataTrTd" style="word-break: break-all; vertical-align: middle;">
+                                                    <a href="javaScript:viewDoc(0)" title="产品规格">产品规格</a>
+                                                </td>
+                                                <td class="listDataTrTd" style="word-break: break-all; vertical-align: middle;">
+                                                    <a href="javaScript:viewDoc(0)" title="11">11</a>
+                                                </td>
+                                                <td class="listDataTrTd" style="word-break: break-all; vertical-align: middle;">
+                                                    <a href="javaScript:viewDoc(0)" title="预警状态">危险</a>
+                                                </td>
+                                                <td class="listDataTrTd" style="word-break: break-all; vertical-align: middle;">
+                                                    <a href="javaScript:viewDoc(0)" title="11">11</a>
+                                                </td>
+                                                <td class="listDataTrTd" style="word-break: break-all;">
+                                                    <a href="javaScript:viewDoc(0)" title="11" class="btn btn-info edit"><i></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cd-popup">
+                    <div class="cd-popup-container">
+                        <div class="aui_header">
+                            <span class="aui_icon">添加物资</span>
+                            <a href="#" class="cd-popup-close aui_close" style="line-height: 40px;">
+                                <span class=" fa fa-times" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <div class="cd-buttons" style="">
+                            <div class="activity-box" id="activityTable" style="margin: 0px; text-align: left; border-bottom: 1px solid #d5d9dc; padding: 0.5em;">
+                                <ul>
+                                    <li class="btn btn_save"><a href="#"><i></i>保存</a>
+                                    </li>
+                                    <li class="btn btn_return"><a href="#"><i></i>返回</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="cd-content">
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $(".search").click(function () {
+                $("#searchFromTable").slideToggle("slow");
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        /*弹框JS内容*/
+        jQuery(document).ready(function ($) {
+            //打开窗口
+            $('.cd-popup-trigger0').on('click', function (event) {
+                event.preventDefault();
+                $('.cd-popup').addClass('is-visible');
+                //$(".dialog-addquxiao").hide()
+            });
+            //关闭窗口
+            $('.cd-popup').on('click', function (event) {
+                if ($(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup')) {
+                    event.preventDefault();
+                    $(".cd-popup").removeClass('is-visible');
+                }
+            });
+            //ESC关闭
+            $(document).keyup(function (event) {
+                if (event.which == '27') {
+                    $('.cd-popup').removeClass('is-visible');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../../CSS/master.css" />
+    <link rel="stylesheet" href="../../CSS/nr-date.css">
+    <link rel="stylesheet" href="../../CSS/index.css" />
+    <link rel="stylesheet" href="../../CSS/infomation.css" />
+    <link rel="stylesheet" href="../../CSS/layer.css" />
+    <link href="../../CSS/tree.css" rel="stylesheet" />
+    <link href="../../CSS/warehousein.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+    <script src="../../Scripts/jquery.pagination.js"></script>
+    <script src="../../Scripts/tree.js"></script>
+    <script src="../../Scripts/Warehouse/warehousein.js"></script>
+ 
+</head>
+<body>
+    <div class="form-content">
+        <div class="container">
+            <form id="document_content">
+                <div id="container">
+                    <div class="from-group" style="text-align: right; padding: 10px ;">
+                        <button type="button" class="btn bg-info search">
+                            <i></i>
+                        </button>
+                    </div>
+                    <div class="searchDiv searchFromTable" style="padding-top: 1.5em;border-top:1px solid #ddd;border-bottom:0px;display:none;">
+                        <table align="center" style="width:100%">
+                            <table align="center" style="width:100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: right;">开始日期</td>
+                                        <td>
+                                            <div class="input-group date">
+                                                <input type="text" class="form-control
+                                                    wdate component-input"
+                                                       id="inp1" placeholder="开始日期" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon  calendar"></span>
+                                                </span>
+                                            </div>
+
+                                        </td>
+
+                                        <td style="text-align: right;width:18%">结束日期</td>
+                                        <td style="width:37%;">
+                                            <div class="input-group date">
+                                                <input type="text" class="form-control
+                                                    wdate component-input"
+                                                       id="inp2" placeholder="结束日期" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon  calendar"></span>
+                                                </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right; width:27%">部门</td>
+                                        <td style="text-align: left; position: relative;width:18%; position: relative">
+                                            <div id="wrapper" style="position: absolute; top: 6px; z-index: 8;">
+                                                <div class="card-drop" style="border: 1px solid #CCCCCC; margin: 0">
+                                                    <a class='toggle' href="#">
+                                                        <span class='label-active' id="label-active1">请选择部门</span>
+                                                        <input type="hidden" id="selorganizationid" name="selorganizationid" />
+                                                    </a>
+                                                    <ul id="treeOrganization1" class="tree"></ul>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td style="text-align: right;width:18%">流程单号</td>
+                                        <td style="width:37%;">
+                                            <span>
+                                                <input type="text" id="processnumber" class="form-control component-input" name="txtcode" style="width:196px">
+
+                                            </span>
+                                        </td>
+                                    </tr>
+                                 
+
+                                </tbody>
+                            </table>
+                        </table>
+
+                        <p>&nbsp;</p>
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <button type="button" class="btn btn-primary" onclick="Select()">查询</button>
+                                <button type="button" class="btn btn-default btn-reset" onclick="Reset()">重置</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="searchFromTable">
+
+                        <table class="table table-hover">
+                            <thead id="bt">
+                                <tr class="listDataTh" style="border-top: 1px solid #dddddd;">
+                                    <td width="" title="" class="listDataThTd nowrap" style="width:6%; position: relative;overflow:hidden;white-space:nowrap;text-overflow: ellipsis;"></td>
+                                    <td width="" title="" class="listDataThTd nowrap" style="width:34%; overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                        <a style="cursor:pointer" href="#">流程单号</a>
+</td>
+                                    <td width="" title="" class="listDataThTd nowrap" style="width:30%; overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                        <a style="cursor:pointer" href="#">部门</a>
+</td>
+                                    <td width="" title="" class="listDataThTd nowrap" style="text-align: center; width: 30%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                        <a style="cursor:pointer" href="#">消耗日期</a>
+</td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="accordion searchFromTable" id="outList">
+                        <!--<div class="item">
+                            <h4 class="panel-title">
+                                <table class="table table-hover">
+                                    <tbody> 
+                                        <tr class="listDataTh" style="border-top: 1px solid #dddddd;">
+                                            <td width="" title="" class="listDataThTd nowrap" style="position: relative;overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                <a class="pager-tree" href="#"></a>
+                                            </td>
+                                            <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                材料申请流程单
+                                            </td>
+                                            <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                部门名称
+                                            </td>
+                                            <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                出入库日期
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </h4>
+
+                        </div>
+                        <div class="item_text">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr class="listDataTh" style="border-top: 1px solid #dddddd;">
+                                        <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            材料名称
+                                        </td>
+                                        <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            数量
+                                        </td>
+                                        <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            单价
+                                        </td>
+                                        <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            金额
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="listDataTr">
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            60000084818848
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            三铁
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            2016-12-5
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            2016-12-5
+                                        </td>
+                                    </tr>
+                                    <tr class="listDataTr">
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            60000084818848
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            三铁
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            2016-12-5
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            2016-12-5
+                                        </td>
+                                    </tr>
+                                    <tr class="listDataTr">
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            60000084818848
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            三铁
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            2016-12-5
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            2016-12-5
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="item">
+
+                            <h4 class="panel-title">
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr class="listDataTh" style="border-top: 1px solid #dddddd;">
+                                            <td width="" title="" class="listDataThTd nowrap" style="position: relative; overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                <a class="pager-tree" href="#"></a>
+                                            </td>
+                                            <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                材料申请流程单
+                                            </td>
+                                            <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                部门名称
+                                            </td>
+                                            <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                出入库日期
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </h4>
+
+                        </div>
+                        <div class="item_text">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr class="listDataTh" style="border-top: 1px solid #dddddd;">
+                                        <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            材料名称
+                                        </td>
+                                        <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            数量
+                                        </td>
+                                        <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            单价
+                                        </td>
+                                        <td width="" title="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            金额
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="listDataTr">
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            60000084818848
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            三铁
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            2016-12-5
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            2016-12-5
+                                        </td>
+                                    </tr>
+                                    <tr class="listDataTr">
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            60000084818848
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            三铁
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            2016-12-5
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            2016-12-5
+                                        </td>
+                                    </tr>
+                                    <tr class="listDataTr">
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            60000084818848
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            三铁
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            2016-12-5
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            2016-12-5
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>-->
+                    </div>
+                    <table>
+                        <tr>
+                            <td width="1%" colspan="6">
+                                <div id="Pagination" class="pagination" style="float: right;">
+                                    <!-- 这里显示分页 -->
+                                </div>
+                                <div id="hiddenresult" style="display: none;" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        function  listTree(q) {
+            console.log("1");
+            var item = $(q).parents(".item");
+            item.next().slideToggle(100);
+            $('.item_text').not(item.next()).slideUp('fast');
+            if (q.className.indexOf("collapsed") === -1) {
+                $(".pager-tree ").removeClass("collapsed");
+                $(q).addClass("collapsed");
+            } else {
+                $(q).removeClass("collapsed");
+            }
+
+        };
+
+        $(document).ready(function () {
+            $(".search").click(function () {
+                $(".searchDiv").slideToggle("slow");
+            });
+        });
+
+
+    </script>
+
+    <script src="../../Scripts/nr-date.js"></script>
+    <script>
+        (function () {
+            calender("#inp1").init({
+                format: 'yyyy-MM-dd',
+
+            }, function (date) {
+                this.value = date
+            });
+        })();
+        (function () {
+            calender("#inp2").init({
+                format: 'yyyy-MM-dd',
+
+            }, function (date) {
+                this.value = date
+            });
+        })();
+    </script>
+</body>
+</html>

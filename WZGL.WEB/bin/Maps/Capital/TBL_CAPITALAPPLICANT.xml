@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="TBL_CAPITALAPPLICANT" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+    <typeAlias alias="Tbl_capitalcantInfo"  type="WZGL.MODEL.Capital.TBL_CAPITALAPPLICANT,WZGL.MODEL" />
+  </alias>
+  <parameterMaps>
+    <parameterMap id="swapParas" class="Hashtable">
+      <parameter property="Sql"        dbType="VARCHAR(MAX)"/>
+      <parameter property="Sort"        dbType="VARCHAR2" />
+      <parameter property="Pindex"      dbType="Int32"/>
+      <parameter property="Psize"       dbType="Int32"/>
+      <parameter property="Pcount"       column="Pcount"      dbType="Int32" direction="Output" />
+      <parameter property="TotalCount"   column="TotalCount" dbType="Int32"   direction="Output"/>
+    </parameterMap>
+  </parameterMaps>
+  <statements>
+    <procedure id="GetListByProc" parameterMap="swapParas" resultClass="Tbl_capitalcantInfo" >
+      getPageData
+    </procedure>
+    <insert id="Insert" parameterClass="Tbl_capitalcantInfo" resultClass="Int32">
+      INSERT INTO TBL_CAPITALAPPLICANT(capitalapplicantid,organizationid,applicantname,instructions,applicantamount,approveamount,submitdate,remitdate,applicationno)  values(#capitalapplicantid#,#organizationid#,#applicantname#,#instructions#,#applicantamount#,#approveamount#,#submitdate#,#remitdate#,#applicationno#)
+    </insert>
+    <update id="Update" parameterClass="Tbl_capitalcantInfo" resultClass="Int32">
+      UPDATE TBL_CAPITALAPPLICANT SET organizationid=#organizationid#,applicantname=#applicantname#,instructions=#instructions#,applicantamount=#applicantamount#,approveamount=#approveamount#,submitdate=#submitdate#,remitdate=#remitdate#,applicationno=#applicationno#  where capitalapplicantid=#capitalapplicantid#
+    </update>
+    <delete id="Delete" parameterClass="string" resultClass="Int32">
+      DELETE FROM TBL_CAPITALAPPLICANT WHERE  $value$
+    </delete>
+    <select id="GetList" parameterClass="string" resultClass="Tbl_capitalcantInfo">
+      SELECT capitalapplicantid,organizationid,applicantname,instructions,applicantamount,approveamount,convert(varchar(10),submitdate,120) submitdate,convert(varchar(10),remitdate,120) remitdate ,applicationno  FROM  TBL_CAPITALAPPLICANT WHERE 1=1 $value$
+    </select>
+
+    <select id="GetCount" parameterClass="string" resultClass="Int32">
+     $value$
+    </select>
+  </statements>
+</sqlMap>

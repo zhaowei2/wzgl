@@ -1,0 +1,39 @@
+#informMessage{
+  margin-top: 0px;
+    margin-left: 20px;
+}
+#administrativeTabContent h4 span{
+    border-bottom: 3px solid #5AB45A;
+}
+#administrativeTabContent h4 {
+    font-size:16px;
+}
+.lf{
+    float: left;
+}
+.rt{
+    float: right;
+}
+.tab_content:after{
+    content: " ";
+    display: table;
+    clear: both;
+}
+.tab_content{
+    text-align:left;
+}
+.tab_content .lf{
+    margin: 0 10px;
+}
+.tab_content ul{
+    border-bottom: 1px solid #CCCCCC;
+}
+.tab_content li{
+    margin: 10px 0 ;
+}
+.tab_content a{
+    padding:5px 10px 5px 0;
+}
+.menu_list{
+    width: 200px;
+}

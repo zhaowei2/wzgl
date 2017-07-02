@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="TBL_DICT" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+    <typeAlias alias="DictInfo"  type="WZGL.MODEL.System.TBL_DICT,WZGL.MODEL" />
+  </alias>
+  <parameterMaps>
+    <parameterMap id="swapParas" class="Hashtable">
+      <parameter property="Sql"        dbType="VARCHAR(MAX)"/>
+      <parameter property="Sort"        dbType="VARCHAR2" />
+      <parameter property="Pindex"      dbType="Int32"/>
+      <parameter property="Psize"       dbType="Int32"/>
+      <parameter property="Pcount"       column="Pcount"      dbType="Int32" direction="Output" />
+      <parameter property="TotalCount"   column="TotalCount" dbType="Int32"   direction="Output"/>
+    </parameterMap>
+  </parameterMaps>
+  <statements>
+    <procedure id="GetListByProc" parameterMap="swapParas" resultClass="DictInfo" >
+      getPageData
+    </procedure>
+    <insert id="Insert" parameterClass="DictInfo" resultClass="Int32">
+      INSERT INTO TBL_DICT(dictid,dictname)VALUES(#dictid#,#dictname#)
+    </insert>
+    <update id="Update" parameterClass="DictInfo" resultClass="Int32">
+      UPDATE TBL_DICT SET dictname=#dictname# where dictid=#dictid#
+    </update>
+    <delete id="Delete" parameterClass="string" resultClass="Int32">
+      DELETE FROM TBL_DICT WHERE  $value$
+    </delete>
+    <select id="GetList" parameterClass="string" resultClass="DictInfo">
+      select dictid,dictname  FROM  TBL_DICT WHERE  $values$ order by sort
+    </select>
+    <select id="GetCount" parameterClass="string" resultClass="Int32">
+      select  count(*) from  TBL_DICT
+      where  1=1   $value$
+    </select>
+  </statements>
+</sqlMap>

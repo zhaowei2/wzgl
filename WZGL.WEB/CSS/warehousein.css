@@ -1,0 +1,48 @@
+        .table {
+            margin-bottom: 0px;
+        }
+
+        #bt td {
+            font-size: 16px;
+        }
+
+    
+        .panel-title a {
+            display: block;
+        }
+
+            .panel-title a:before {
+                content: "+";
+                position: absolute;
+                top: 4px;
+                left: 15px;
+                font-size: 28px;
+                line-height: 24px;
+                color: #247CAA;
+            }
+
+            .panel-title a.collapsed:before {
+                content: "-";
+                position: absolute;
+                top: 4px;
+                left: 20px;
+                font-size: 28px;
+                line-height: 24px;
+                color: #247CAA;
+            }
+
+        .item table tbody tr {
+            background: #FFFFFF;
+        }
+
+        #container {
+            text-align: center;
+        }
+
+        .item_text {
+            display: none;
+            text-align: right;
+        }
+        .accordion{
+            border-bottom:1px solid #ddd;
+        }

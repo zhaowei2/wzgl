@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../../CSS/master.css" />
+    <link rel="stylesheet" href="../../CSS/nr-date.css" />
+    <link rel="stylesheet" href="../../CSS/index.css" />
+    <link rel="stylesheet" href="../../CSS/infomation.css" />
+    <link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../CSS/tree.css" />
+    <link rel="stylesheet" href="../../CSS/layer.css" />
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/jquery.pagination.js"></script>
+
+
+    <script src="../../Scripts/Capital/Capital.js"></script>
+    <title></title>
+    <style>
+    </style>
+</head>
+<body>
+    <div class="form-content">
+        <div class="container">
+            <form id="document_content">
+                <div id="portal" class="row">
+                    <div id="portal_l" class="groupItem">
+                        <div class="item-header">
+                            <span>账户概况</span>
+                            <div class="action">
+                                <a href="#" class="refresh" title="刷新"></a>
+                                <a href="javascript:void(0)" class="min" title="收起"></a>
+                                <a href="javascript:void(0)" class="max" style="display: none" title="展开"></a>
+                            </div>
+                        </div>
+                        <div class="item-content">
+                            <div class="btn-alarm-setting" style="text-align: right; ">
+                                <button type="button" class="btn btn-info alarm-setting" style="background-color: #ffffff; border: 0;" title="预警设置">
+                                    <i></i>
+                                </button>
+                            </div>
+                            <div>
+                                <table style="margin:0 auto 10px">
+                                    <tbody>
+                                        <tr style="height: 3.5em">
+                                            <td style="word-break: break-all; width:150px;text-align: right ">账户类型&nbsp;:&nbsp;</td>
+                                            <td style="word-break: break-all;width:250px;text-align: left"> 专业机动&nbsp;</td>
+                                            <td style="word-break: break-all;  width:150px;text-align: right ">所属部门&nbsp;:&nbsp;</td>
+                                            <td style="word-break: break-all; width:250px;text-align: left">&nbsp;通风科</td>
+                                            <td style="word-break: break-all;  width:150px;text-align: right ">本月预算&nbsp;:&nbsp;</td>
+                                            <td style="word-break: break-all; width:250px;text-align: left">&nbsp;1000000<span>元</span></td>
+                                            <td style="word-break: break-all;  width:150px;text-align: right ">账户余额&nbsp;:&nbsp;</td>
+                                            <td style="word-break: break-all; width:250px;text-align: left">1000000&nbsp;<span>元</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="portal_r" class="groupItem">
+                        <div class="item-header">
+                            <span>账户流水图表</span>
+                            <div class="action">
+                                <a href="#" class="refresh" title="刷新"></a>
+                                <a href="javascript:void(0)" class="min" title="收起"></a>
+                                <a href="javascript:void(0)" class="max" style="display: none" title="展开"></a>
+                            </div>
+                        </div>
+                        <div class="item-content">
+                        </div>
+                    </div>
+
+
+
+                    <div class="from-group" style="text-align: right; border-bottom: 1px solid #dddddd; ">
+                        <button type="button" class="btn bg-info flush">
+                            <i></i>
+                        </button>
+                        <button type="button" class="btn bg-info search">
+                            <i></i>
+                        </button>
+                    </div>
+
+                    <div id="jl" class="content-panel">
+                        <div class="searchDiv searchFromTable" style="padding-top: 1.5em;">
+                            <table style="margin: 0 auto">
+                                <tbody align="left">
+                                    <tr>
+                                        <td style="text-align: right">流水类型</td>
+                                        <td>
+                                            <span>
+                                                <select name="流水类型" class="form-control component-select">
+                                                    <option value="全部" class="select-cmd">全部</option>
+                                                    <option value="入账" class="select-cmd">入账</option>
+                                                    <option value="出账" class="select-cmd">出账</option>
+                                                </select>
+                                            </span>
+                                        </td>
+
+                                        <td width="150" style="text-align: right">来源/去向</td>
+                                        <td style="text-align: left">
+                                            <span>
+                                                <select name="来源/去向" class="form-control component-select">
+                                                    <option value="全部" class="select-cmd">全部</option>
+                                                    <option value="预算拨款" class="select-cmd">预算拨款</option>
+                                                    <option value="资金申请" class="select-cmd">资金申请</option>
+                                                    <option value="材料申请" class="select-cmd">材料申请</option>
+                                                </select>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="150" style="text-align: right">开始时间</td>
+                                        <td width="20%">
+                                            <span>
+                                                <div class="input-group date">
+                                                    <input type="text" class="form-control
+                    wdate component-input" id="inp2" placeholder="添加日期" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon calendar"></span>
+                                                    </span>
+                                                </div>
+                                            </span>
+                                        </td>
+                                        <td width="150" style="text-align: right">结束时间</td>
+                                        <td width="20%">
+                                            <span>
+                                                <div class="input-group date">
+                                                    <input type="text" class="form-control
+                    wdate component-input" id="inp1" placeholder="添加日期" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon  calendar"></span>
+                                                    </span>
+                                                </div>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>&nbsp;</p>
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                    <button type="button" class="btn btn-primary">查询</button>
+                                    <button type="button" class="btn btn-default btn-reset">重置</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="dataTable-box-jl">
+                            <div class="dataTable text-center">
+                                <div id="viewHtml-jl">
+                                    <div class="table-head">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr class="listDataTh">
+                                                    <td width="" title="发生时间" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                        <a style="cursor:pointer" href="#">发生时间</a>
+                                                    </td>
+                                                    <td width="" title="流水类型" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                        <a style="cursor:pointer" href="#">流水类型</a>
+                                                    </td>
+                                                    <td width="" title="来源/去向" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                        <a style="cursor:pointer" href="#">来源/去向</a>
+                                                    </td>
+                                                    <td width="" title="流程单号" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                        <a style="cursor:pointer" href="#">流程单号</a>
+                                                    </td>
+                                                    <td width="" title="金额" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                        <a style="cursor:pointer" href="#">金额</a>
+                                                    </td>
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="listDataTr">
+                                                    <td class="listDataTrTd" style="word-break: break-all;">
+                                                        <a href="javaScript:viewDoc(0)" title="发生时间">2016 12 09</a>
+                                                    </td>
+                                                    <td class="listDataTrTd" style="word-break: break-all;">
+                                                        <a href="javaScript:viewDoc(0)" title="流水类型">出账</a>
+                                                    </td>
+                                                    <td class="listDataTrTd" style="word-break: break-all;">
+                                                        <a href="javaScript:viewDoc(0)" title="来源/去向"></a>
+                                                    </td>
+                                                    <td class="listDataTrTd" style="word-break: break-all;">
+                                                        <a href="javaScript:viewDoc(0)" title="单号"></a>
+                                                    </td>
+                                                    <td class="listDataTrTd" style="word-break: break-all;">
+                                                        <a href="javaScript:viewDoc(0)" title="责任人"></a>
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="../../Scripts/nr-date.js"></script>
+
+    <script src="../../Scripts/custom.js"></script>
+</body>
+</html>

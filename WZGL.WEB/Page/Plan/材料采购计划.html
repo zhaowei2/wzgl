@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/bootstrap.css"/>
+    <link rel="stylesheet" href="../../CSS/master.css"/>
+    <link rel="stylesheet" href="../../CSS/nr-date.css">
+    <link rel="stylesheet" href="../../CSS/index.css"/>
+    <link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.css"/>
+    <link rel="stylesheet" href="../../CSS/layer.css"/>
+    <link href="../../CSS/Plan/message.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <title></title>
+</head>
+<body>
+<div class="form-content">
+    <div class="container">
+        <form id="document_content">
+            <div id="container">
+                <div id="activityTable" class="activity-box" >
+                    <ul>
+                        <li class="btn btn_commit"><a href="#"><i></i>提交</a>
+                        </li>
+                        <li class="btn btn_save"><a href="#"><i></i>保存</a>
+                        </li>
+                        <li class="btn btn_return"><a href="#"><i></i>返回</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="searchDiv" id="tiy" style=" display: none;opacity: 1;position: fixed; width: 100%;z-index: 10;background-color: #FFFFFF;border-top: 0px;border-bottom: 1px solid #2a91da;padding: 10px;">
+                <div id="flowHtmlForm" style="width: 75%;padding: 0 15px;margin: auto;position: relative; ">
+                    <fieldset style="border-radius: 4px;border: solid 1px #d9d9d9;">
+                        <legend style="border: none;width: 80px;margin-left: 10px;margin-bottom: 0px;font-size: 16px;color: #33333f;padding-left: 15px;">意见</legend>
+                        <div id="textarea_counter" style="position: absolute;right: 42px;top: 0px; background: #fff;padding: 0 20px;"><span class="count">0</span>/240</div>
+                        <textarea name="_attitude" cols="" rows="4" id="document_content__attitude" class="form-control textarea_frame" maxlength="240" placeholder="提交备注" style="border: none;box-shadow: none;resize: none;"></textarea>
+                        <select id="fieldset_remark_usual" name="selse" style="margin:10px;width:120px;"><option>常用意见</option></select>
+                    </fieldset>
+                </div>
+                <div id="div_button_place" class="button-css text-center" style="margin-top: 15px">
+                    <button type="button" class="btn btn-primary" name="btn_act_committo">确认提交</button></div>
+            </div>
+            <script src="../../Scripts/Plan/message_board.js"></script>
+            <div id="toast-container" class="toast-top-right" aria-live="polite" role="alert">
+                <div class="toast toast-error" style="display: block;">
+                    <div class="toast-progress" style="width: 300px;"></div>
+                    <button type="button" class="toast-close-button" role="button">×</button>
+                    <div class="toast-message">成交金额不能为0</div>
+                </div>
+            </div>
+            <script src="../../Scripts/Plan/experience.js"></script>
+            <div id="toAll" class="formTable" style="margin-top: 0.5em">
+                <div id="formHtml">
+                    <p style="text-align: right;margin-bottom: 7px">流程单号：<span><input style="width: 179px; display: inline-block;" discript="申请单号" class="form-control component-input"  type="text"  name="申请单号"  value="YGQJ16120003" title="YGQJ16120003"  text="readonly"></span>
+                    </p>
+                    <table border="1" cellpadding="1" cellspacing="1" style="  width: 98%;border: 1px solid rgb(180, 204, 238);" align="center">
+                        <tbody id="editTbody">
+
+                        <tr>
+                            <td style="border: 1px solid rgb(180, 204, 238);" width="150" colspan="5">
+                                <strong>采购计划</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid rgb(180, 204, 238); text-align: right;">申请人：</td>
+                            <td style="border: 1px solid rgb(180, 204, 238);">
+                                       <span>
+                                           <input class="form-control component-input"  type="text"  name="申请人" style="width:196px;">
+                                       </span>
+                            </td>
+                            <td style="border: 1px solid rgb(180, 204, 238); text-align: right;">部门：</td>
+                            <td style="border: 1px solid rgb(180, 204, 238);" colspan="3">
+                                       <span>
+                                           <input class="form-control component-input"  type="text"  name="部门" style="width: 196px">
+                                       </span>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid rgb(180, 204, 238); text-align: right;" width="150">计划类型：</td>
+                            <td style="border: 1px solid rgb(180, 204, 238);">
+                                       <span >
+                                       <select style="width:196px;" class="form-control component-select" name="计划类型" iscommonfilter="false" fieldtype="SelectField" readonlyshowvalonly="false" onchange="" style="">
+                                           <option value=" " class="select-cmd"> </option>
+                                           <option value="销售费用" class="select-cmd">销售费用</option>
+                                           <option value="续费" class="select-cmd">续费</option>
+                                           <option value="保证金" class="select-cmd">保证金</option>
+                                           <option value="维修费" class="select-cmd">维修费</option>
+                                           <option value="服务费" class="select-cmd">服务费</option>
+                                       </select>
+                                       </span>
+                            </td>
+                            <td style="border: 1px solid rgb(180, 204, 238); text-align: right;" width="150">年月：</td>
+                            <td style="border: 1px solid rgb(180, 204, 238);">
+                                       <span>
+                                           <div class="input-group date">
+                                               <input type="text" class="form-control
+                                                    wdate component-input" id="inp2" placeholder="年月" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false">
+                                              <span class="input-group-addon">
+                                                  <span class="glyphicon glyphicon-calendar calendar"></span>
+                                              </span>
+                                           </div>
+                                       </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid rgb(180, 204, 238); text-align: right;" width="150">提交日期：</td>
+                            <td style="border: 1px solid rgb(180, 204, 238);">
+                                       <span>
+                                           <div class="input-group date">
+                                               <input type="text" class="form-control
+                                                    wdate component-input" id="inp1" placeholder="添加日期" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false">
+                                              <span class="input-group-addon">
+                                                  <span class="glyphicon glyphicon-calendar calendar"></span>
+                                              </span>
+                                           </div>
+                                       </span>
+                        </td>
+                            <td style="border: 1px solid rgb(180, 204, 238); text-align: right;" width="150">到货日期：</td>
+                            <td style="border: 1px solid rgb(180, 204, 238);">
+                                       <span>
+                                           <div class="input-group date">
+                                               <input type="text" class="form-control
+                                                    wdate component-input" id="inp3" placeholder="添加日期" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false">
+                                              <span class="input-group-addon">
+                                                  <span class="glyphicon glyphicon-calendar calendar"></span>
+                                              </span>
+                                           </div>
+                                       </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="border: 1px solid rgb(180, 204, 238); text-align: right;">
+                                备注：</td>
+                            <td style="border: 1px solid rgb(180, 204, 238);" colspan="3">
+                                <span>
+                                    <textarea class="form-control"  name="材料说明"  style="margin: 0px; width: 674px; height: 68px;"></textarea>
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="border: 1px solid rgb(180, 204, 238);padding: 5px 10px;" colspan="4" >
+                                <strong style="line-height: 36px">材料明细</strong>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../../Scripts/nr-date.js"></script>
+<script>
+    (function(){
+        calender("#inp1").init({format : 'yyyy-MM-dd',
+            date : [2016,12,15],
+            button : true
+        },function(date){
+            this.value= date
+        });
+    })();
+    (function(){
+        calender("#inp2").init({format : 'yyyy-MM',
+            date : [2016,12,15],
+            button : true
+        },function(date){
+            this.value= date
+        });
+    })();
+    (function(){
+        calender("#inp3").init({format : 'yyyy-MM-dd',
+            date : [2016,12,15],
+            button : true
+        },function(date){
+            this.value= date
+        });
+    })();
+</script>
+<script>
+    var index= 1,tr_index=1;
+    $(document).ready(function(){
+        var tr = "<tr class='tr1'>" +
+                "<td colspan='6'>" +
+                "<div style='margin:5px '>" +
+                  "<div id='formList'> " +
+                   "<ul style='margin-left: 24px;'>" +
+                         "<li class='btn btn_newly xingjian' onclick=add(" + index + ") style='margin-right: 5px'><a href='#'><i></i>新建</a> </li>" +
+                         "<li class='btn btn_delete shanchu'><a href='#'><i></i>删除</a> </li> " +
+                         "<li class='btn baochun' style='border: 1px solid #ccc; display: none; margin-right: 5px;ss'><a style='color: #101010 ' href='#'>保存</a> </li>" +
+                         "<li class='btn quxiao' style='border: 1px solid #ccc; display: none;'><a style='color: #101010' href='#'>取消所有</a></li>" +
+                   "</ul>" +
+                  "</div>" +
+                "<div id='table_gridView' class='dataTable' style='margin-top: 0.5em'>" +
+                "<table class='table listDataTable' id='gridTable' style='border-top:1px solid #ddd;z-index:1;table-layout:auto;' border='0' cellpadding='0' cellspacing='0'> " +
+                "<thead>" +
+                " <tr class='listDataTh'>" +
+                " <td class='listDataThFirstTd' scope='col'> <input type='checkbox' click='selectAll(this.checked)'> </td>" +
+                " <td class='listDataThTd' coltext='材料编码'  style='overflow: hidden;'> <input  value='00' type='hidden'> <a style='cursor:pointer' href='#'>材料编码</a> </td>" +
+                " <td class='listDataThTd'   style='overflow: hidden;'> <input  value='00' type='hidden'> <a>材料名称</a> </td> " +
+                " <td class='listDataThTd' coltext='单价' style='overflow: hidden;'> <input value='00' type='hidden'> <a style='cursor:pointer' href='#'>单价</a> </td> " +
+                " <td class='listDataThTd' coltext='数量'  style='overflow: hidden;'> <input  value='00' type='hidden'> <a style='cursor:pointer' href='#' >数量</a> </td>" +
+                " <td class='listDataThTd'  style='overflow: hidden;'> <input  value='00' type='hidden'> <a style='cursor:pointer' href='#' >计量单位</a> </td> " +
+                "<td class='listDataThTd'   nowrap='nowrap' style='overflow: hidden;'> <input  value='00' type='hidden'> <a style='cursor:pointer' href='#'>金额</a> </td> " +
+                "<td class='listDataThTd' style='width:120px'>操作</td> " +
+                "</tr> " +
+                "</thead> " +
+                "<tbody  id='td_" + index + "' class='dataBody'> </tbody>" +
+                "</table>" +
+                "</div>" +
+                "</div>" +
+                "</td>" +
+                "</tr>";
+        $("#editTbody").append(tr);
+
+//    添加
+        var type = 0;
+        $(".xingjian").on("click", function () {
+            $(this).siblings().show();
+            $(".grid-button-redact").hide();
+//取消当前行
+            $(".grid-button-cancel").on("click", function () {
+                $(this).parent().parent().remove();
+                $(".shanchu").nextAll("li").hide();
+                type = 1;
+            });
+//取消
+            $(".quxiao").on("click", function () {
+                var hb=(this.parentNode.parentNode.nextElementSibling.firstElementChild.lastElementChild);
+                $(hb).empty();
+                $(".baochun").hide();
+                $(".grid-button-redact").show();
+                $(this).hide();
+            });
+
+        });
+//    保存
+        $(".baochun").on("click", function () {
+            var tr = (this.parentNode.parentNode.nextElementSibling.firstElementChild.lastElementChild.lastElementChild);
+            var tbo=(this.parentNode.parentNode.nextElementSibling.firstElementChild.lastElementChild);
+            console.log(tr);
+
+            var tdContent;
+            var newfont=$('td.component-input').val();
+            var newfont1=$(this.parentNode.parentNode.nextElementSibling.firstElementChild.lastElementChild.lastElementChild);
+            var inputList =newfont1.find("input.component-input");
+            for(var i=0;i< inputList.length;i++){
+                console.log(inputList[i].value);
+                tdContent+="<td>"+inputList[i].value+"</td>";
+                console.log(tdContent);
+            }
+            if(tdContent){
+                $(tr).html('<td class="listDataThFirstTd" scope="col"> <input type="checkbox" click="selectAll(this.checked)"> </td>'+tdContent+'<td class="listDataThTd" style="width:120px">操作</td>');
+            }
+            $(tr).find('td').html(newfont);
+            $(".grid-button-cancel").hide();
+            $(".grid-button-redact").show();
+            $(".baochun").hide();
+            $(this).nextAll("li").hide();
+
+
+// 操作表格
+        });
+
+//    保存
+        $(".baochun").on("click", function () {
+            var tr = (this.parentNode.parentNode.nextElementSibling.firstElementChild.lastElementChild.lastElementChild);
+            var tbo=(this.parentNode.parentNode.nextElementSibling.firstElementChild.lastElementChild);
+            console.log(tr);
+
+            var tdContent;
+            var newfont=$('td.component-input').val();
+            var newfont1=$(this.parentNode.parentNode.nextElementSibling.firstElementChild.lastElementChild.lastElementChild);
+            var inputList =newfont1.find("input.component-input");
+            for(var i=0;i< inputList.length;i++){
+                console.log(inputList[i].value);
+                tdContent+="<td>"+inputList[i].value+"</td>";
+                console.log(tdContent);
+            }
+            if(tdContent){
+                $(tr).html('<td class="listDataThFirstTd" scope="col"> <input type="checkbox" click="selectAll(this.checked)"> </td>'+tdContent+'<td class="listDataThTd" style="width:120px">操作</td>');
+            }
+            $(tr).find('td').html(newfont);
+            $(".grid-button-cancel").hide();
+            $(".grid-button-redact").show();
+            $(".baochun").hide();
+            $(this).nextAll("li").hide();
+
+        });
+//删除
+        $(".shanchu").on("click", function () {
+            console.log("1");
+            var tbo=this.parentNode.parentNode.nextElementSibling.firstElementChild.lastElementChild;
+            //console.log(tbo.id);
+            //var check = document.getElementsByName("check");
+            var check=$(tbo).find("input");
+            //console.log(check);
+            for (var i = 0; i < check.length; i++) {
+                if (check[i].checked==true) {
+                    //console.log(check[i]);
+                    $(check[i].parentNode.parentNode).remove();
+                    /* document.getElementById(tbo.id).deleteRow(i);
+                     i--;*/
+                }
+            }
+            $(this).nextAll("li").hide();
+        });
+    });
+
+    function add(index) {
+        var tr1 = "<tr class='s' id='td_" + index + "_" + tr_index + "'>" +
+                "<td><input  type=\"checkbox\" name=\"check\"/> </td>" +
+                "<td><input  class=\"form-control component-input\"  type=\"text\"  name=\"材料编码\" style='width: 75%;display: inline-block;' >" +
+                "<a id='liebiao'  class='btn btn-info liebiao' onclick='dakai()' style='position: relative;top: -1px;margin-left: 5px'>列表</a>" +
+                "</td>" +
+                "<td><input  class=\"form-control component-input\"  type=\"text\"  name=\"材料名称\" >" +
+                "</td>" +
+                "<td><input  class=\"form-control component-input\"  type=\"text\"  name=\"单价\" ></td>" +
+                "<td><input  class=\"form-control component-input\"  type=\"text\"  name=\"数量\" ></td>" +
+                "<td><input  class=\"form-control component-input\"  type=\"text\"  name=\"计量单位\" ></td>" +
+                "<td><input  class=\"form-control component-input\"  type=\"text\"  name=\"金额\" ></td>" +
+                "<td><input type=\"button\" value=\"取消\"  class=\"grid-button-cancel\">" +
+                "<input type='button' id='bji' value='编辑' class='grid-button-redact'>" +
+                "</td>" +
+                "</tr>";
+        $("#td_" + index).append(tr1);
+
+        tr_index++;
+
+    }
+</script>
+<div class="cd-popup"  style="">
+    <div class="cd-popup-container">
+        <div class="aui_header" style="z-index: 20">
+            <span>材料编码表</span>
+            <a href="#" id="close" class="cd-popup-close aui_close" style="line-height: 40px;">
+                <span class=" fa fa-times" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div style="overflow: hidden; overflow-y: scroll;padding: 5px" >
+            <div class="cd-content" style="z-index: 55" >
+                <div class="from-group" style="text-align: right; padding: 10px ;border-bottom: 1px solid #dddddd;">
+                    <button type="button" class="btn bg-info search">
+                        <i></i>
+                    </button>
+                </div>
+                <div class="searchDiv searchFromTable"  style="padding-top: 1.5em;">
+                    <table style="margin: 0 auto">
+                        <tbody align="left">
+                        <tr>
+                            <td style="text-align: right">材料编码</td>
+                            <td>
+                            <span>
+                                <select name="部门" class="form-control component-select">
+                                    <option value="全部" class="select-cmd">全部</option>
+                                </select>
+                            </span>
+                            </td>
+                            <td style="text-align: right">材料名称</td>
+                            <td>
+                                <span>
+                                    <select name="状态" class="form-control component-select"style="width: 200px">
+                                        <option value="全部" class="select-cmd">全部</option>
+                                        <option value="已批准" class="select-cmd">已批准</option>
+                                        <option value="进行中" class="select-cmd">进行中</option>
+                                        <option value="未批准" class="select-cmd">未批准</option>
+                                    </select>
+                                </span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p>&nbsp;</p>
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <button type="button" class="btn btn-primary">查询</button>
+                            <button type="button" class="btn btn-default btn-reset">重置</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="dataTable-box">
+                    <div class="dataTable text-center">
+                        <div id="viewHtml">
+                            <div class="table-head">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr class="listDataTh" style="border-top: 1px solid #dddddd;">
+                                        <td width="" title="申请人" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            <a style="cursor:pointer" href="#">材料编码</a>
+                                        </td>
+                                        <td width="" title="部门" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            <a style="cursor:pointer" href="#">材料名称</a>
+                                        </td>
+                                        <td width="" title="申请金额" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            <a style="cursor:pointer" href="#">单价</a>
+                                        </td>
+                                        <td width="" title="批准金额" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            <a style="cursor:pointer" href="#">计量单位</a>
+                                        </td>
+                                        <td width="" title="状态" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            <a style="cursor:pointer" href="#">操作</a>
+                                        </td>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="listDataTr">
+
+
+                                        <td class="listDataTrTd" style="word-break: break-all;" >
+                                            <a href="javaScript:viewDoc(0)" title="产品类别">产品类别</a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;" >
+                                            <a href="javaScript:viewDoc(0)" title="T">T</a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            <a href="javaScript:viewDoc(0)" title="产品规格">产品规格</a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            <a href="javaScript:viewDoc(0)" title="11">11</a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            <button class="btn btn-info" >确定</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="listDataTr">
+
+                                        <td class="listDataTrTd" style="word-break: break-all;" >
+                                            <a href="javaScript:viewDoc(0)" title="产品名称">产品名称</a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;" >
+                                            <a href="javaScript:viewDoc(0)" title="产品类别">产品类别</a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;" >
+                                            <a href="javaScript:viewDoc(0)" title="T">T</a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            <a href="javaScript:viewDoc(0)" title="产品规格">产品规格</a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            <button class="btn btn-info" >确定</button>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="listDataTr">
+
+                                        <td class="listDataTrTd" style="word-break: break-all;" >
+                                            <a href="javaScript:viewDoc(0)" title="产品名称">产品名称</a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;" >
+                                            <a href="javaScript:viewDoc(0)" title="产品类别">产品类别</a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;" >
+                                            <a href="javaScript:viewDoc(0)" title="T">T</a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            <a href="javaScript:viewDoc(0)" title="产品规格">产品规格</a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            <button class="btn btn-info" >确定</button>
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+//打开窗口
+function dakai(){
+//            event.preventDefault();
+
+$('.cd-popup').addClass('is-visible');
+
+}
+//关闭窗口
+$('.cd-popup-close').on('click', function(event){
+$(".cd-popup").removeClass('is-visible');
+});
+
+</script>
+<script src="../../Scripts/custom.js"></script>
+</body>
+
+</html>

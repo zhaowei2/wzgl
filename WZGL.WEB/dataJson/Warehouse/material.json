@@ -1,0 +1,16 @@
+[{
+  "code":"1",
+  "categoryname":"A种类",
+  "name":"A类型",
+  "standard":"35cm",
+  "unit":"个",
+  "unitprice":"500"
+},{
+  "code":"2",
+  "categoryname":"B种类",
+  "name":"B类型",
+  "standard":"35cm",
+  "unit":"个",
+  "unitprice":"500"
+}
+]

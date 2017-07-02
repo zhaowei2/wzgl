@@ -1,0 +1,436 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/bootstrap.min.css" />
+    <link href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../CSS/master.css" />
+    <link href="../../CSS/tree.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../CSS/System/userTable.css" />
+    <link rel="stylesheet" href="../../CSS/infomation.css" />
+
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/jquery.pagination.js"></script>
+    <script src="../../Scripts/tree.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+    <title></title>
+    <script></script>
+    <script>
+        //图片上传预览    IE是用了滤镜。
+
+    </script>
+    <style>
+        .form-control {
+            width: 176px;
+        }
+    </style>
+</head>
+<body style="padding-top:0px;">
+    <div id="documentContent">
+        <div class="container">
+            <div class="container_content">
+                <div class="container_btn" style="padding: 10px; border-bottom:1px solid #ddd">
+                    <ul class="btn_vessel lf">
+                        <li class="btn btn_newly">
+                            <a href="#">
+                                <i></i>
+                                新增
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="rt">
+                        <button id="searchBtn" type="button" class="btn btn-info search">
+                            <i></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="searchContent" class="searchDiv searchFromTable" style="display: none; border-bottom: 1px solid #dddddd; padding-bottom: 14px; padding-top: 14px;">
+                    <table style="width:100%;">
+                        <tbody>
+                            <tr>
+
+                                <td width="27%" style="text-align: right">用户名称</td>
+                                <td width="18%">
+
+                                        <div class="input-group date">
+                                            <input type="text" class="form-control" id="userName" >
+                                        </div>
+                                 
+                                </td>
+                                <!--<td width="150" style="text-align: right">来源</td>-->
+
+                                <td style="text-align: right" width="18%">角色</td>
+                                <td style="text-align: left" width="37%">
+
+                                    <span>
+                                        <select id="rolebox" style="width:179px;" name="角色" class="form-control component-select"></select>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="27%" style="text-align: right">部门名称</td>
+                                <td width="18%" style="position:relative;">
+                                    <!--<span>
+                                        <div class="input-group date">
+                                            <input type="text" class="form-control" id="section_name" >
+                                        </div>
+                                    </span>-->
+                                    <span style="display: inline-block">
+                                        <div id="wrapper" style="position: absolute; top: 6px; z-index: 888;">
+                                            <div class="card-drop" style="width:180px;"> 
+                                                <input type="hidden" id="selorganizationid" name="selorganizationid" />
+                                                <a class='toggle' href="#">
+                                                    <span class='label-active' id="label-active1">全部</span>
+                                                </a>
+                                                <ul class="tree treemenu" id="treeOrganization1"></ul>
+                                            </div>
+                                        </div>
+                                    </span>
+                                </td>
+                                <td style="text-align: right" width="18%">职务</td>
+                                <td style="text-align: left" width="37%">
+                                    <span>
+                                        <div class="input-group date">
+                                            <input type="text" class="form-control" id="job" >
+                                        </div>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>&nbsp;</p>
+                    <div>
+                        <div id="secBtn" class="text-center">
+                            <button type="button" class="btn btn-primary" onclick="selectUser()">查询</button>
+                            <button type="button" class="btn btn-default btn-reset">重置</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table_vessel" id="userview" style="margin-top:0px;">
+                    <table id="sectionInterface" class="table table-responsive">
+                        <thead>
+                            <tr>
+
+                                <th>头像</th>
+                                <th>用户姓名</th>
+                                <th>用户账号</th>
+                                <th>部门名称</th>
+                                <th>职务</th>
+                                <th>角色名称</th>
+                                <th>联系方式</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--<tr>
+                                <td>用户1</td>
+                                <td>user11111111</td>
+                                <td>职务1</td>
+                                <td>联系方式1</td>
+                                <td>
+                                    <a class="amend" href="#">修改</a>&nbsp;&nbsp;
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td>用户1</td>
+                                    <td>user11111111</td>
+                                    <td>职务1</td>
+                                    <td>联系方式1</td>
+                                    <td>
+                                        <a class="amend" href="#">修改</a>&nbsp;&nbsp;
+                                        <a class="delete" href="#">删除</a>
+                                    </td>
+                                </tr>
+                            <tr>
+
+                                <td>用户1</td>
+                                <td>user11111111</td>
+                                <td>职务1</td>
+                                <td>联系方式1</td>
+                                <td>
+                                    <a class="amend" href="#">修改</a>&nbsp;&nbsp;
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>用户1</td>
+                                <td>user11111111</td>
+                                <td>职务1</td>
+                                <td>联系方式1</td>
+                                <td>
+                                    <a class="amend" href="#">修改</a>&nbsp;&nbsp;
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>用户1</td>
+                                <td>user11111111</td>
+                                <td>职务1</td>
+                                <td>联系方式1</td>
+                                <td>
+                                    <a class="amend" href="#">修改</a>&nbsp;&nbsp;
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>用户1</td>
+                                <td>user11111111</td>
+                                <td>职务1</td>
+                                <td>联系方式1</td>
+                                <td>
+                                    <a class="amend" href="#">修改</a>&nbsp;&nbsp;
+                                    <a class="delete" href="#">删除</a>
+                                </td>
+                            </tr>-->
+
+                        </tbody>
+                    </table>
+                </div>
+                <table>
+                    <tr>
+                        <td width="1%" colspan="6">
+                            <div id="Pagination" class="pagination" style="float: right;">
+                                <!-- 这里显示分页 -->
+                            </div>
+                            <div id="hiddenresult" style="display: none;" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- 弹出新建-->
+        <!--遮罩-->
+        <div id="newShade" class="cd-popup">
+            <!--提示信息-->
+            <div id="toast-container" class="toast-top-right" aria-live="polite" role="alert">
+                <div class="toast toast-error" style="display: block;">
+                    <div class="toast-progress" style="width: 300px;"></div>
+                    <button type="button" class="toast-close-button" role="button">×</button>
+                    <div class="toast-message">
+                        <div id="roleuserNameTip"></div>
+                        <div id="userAccountTip"></div>
+                        <div id="contactInformationTip"></div>
+                        <div id="duty_err"></div>
+                        <div id="chosse_section"></div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="newShade_lay"></div>--><!--遮罩层-->
+            <div class="popUp_container">
+                <div class="popUp_header">
+                    <span id="userTitle" class="ph_popup_icon"></span>
+                    <a id="phPopUpClose" href="#" class="ph_popup_close">
+                        <span class=" fa fa-times"></span>
+                    </a>
+                </div>
+                
+                <div class="popUp_section" >
+                    <form class="form">
+                        <div class="form-group">
+                            <div class="label-image">
+                                <label>用户头像</label>
+                                <div class="big-photo">
+                                    <div id="preview">
+                                        <img id="imghead" border="0" src="../../Images/cross_uploading.png" width="90" height="90" onclick="$('#previewImg').click();">
+                                    </div>
+                                    <input type="file" onchange="previewImage(this)" style="display: none;" id="previewImg">
+                                    <!--<input id="uploaderInput" class="uploader__input" style="display: none;" type="file" accept="" multiple="">-->
+                                </div>
+                            </div>
+                        </div>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="userAccount"><span class="red">*</span>账号:</label>
+                                        <input autocomplete="off" id="userAccount" type="text" placeholder="由字母或数字组成" />
+                                        <!--<label id="userAccountTip" class=" control-success">请输入账号</label>-->
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="roleuserName"><span class="red">*</span>姓名:</label>
+                                        <input autocomplete="off" id="roleuserName" type="text" />
+                                        <!--<label id="roleuserNameTip" class=" control-success">请输入用户姓名</label>-->
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <!--<tr>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="userPsd">密码:<span class="red">*</span></label>
+                                        <input autocomplete="off" id="userPsd" placeholder="请输入8至12位数字或字母" type="password" />
+                                       
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="verifyPsd">确认密码:<span class="red">*</span></label>
+                                        <input autocomplete="off" id="verifyPsd" placeholder="请再次输入密码" type="password" />
+                                   
+                                    </div>
+                                </td>
+                            </tr>-->
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="role"><span class="red">*</span>角色:</label>
+                                        <select name="" id="role">
+                                            <!--<option value="1">
+                                            角色1
+                                        </option>
+                                        <option value="2">
+                                            角色2
+                                        </option>
+                                        <option value="3">
+                                            角色3
+                                        </option>-->
+                                        </select>
+                                    </div>
+                                </td>
+                                <td class="choose_section">
+                                    <div class="form-group form-section">
+                                        <label class="form-section-label"><span class="red">*</span>部门:</label>
+                                        <div class="card-drop1" id="cardDrop">
+                                            <a class='toggle1' href="#">
+                                                <span class='label-active' id="orglabel">请选择部门</span>
+                                            </a>
+                                            <ul class="tree1" id="orgtree">
+                                                <!--<li><a data-label="Home" href="#">Home</a></li>
+                                            <li>
+                                                <a data-label="jQuery" href="#">jQuery</a>
+
+                                                <ul>
+                                                    <li><a data-label="H1" href="#">H1</a></li>
+                                                    <li>
+                                                        <a data-label="j2" href="#">j2</a>
+                                                        <ul>
+                                                            <li><a data-label="j3" href="#">j3</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a data-label="j22" href="#">j22</a>
+                                                        <ul>
+                                                            <li><a data-label="j33" href="#">j33</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+
+                                            </li>
+                                            <li>
+                                                <a data-label="d1">d1</a>
+                                                <ul>
+                                                    <li><a href="#" data-label="d2">d2</a></li>
+                                                </ul>
+                                            </li>-->
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="duty">职务:</label>
+                                        <input autocomplete="off" id="duty" type="text" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="contactInformation">联系方式:</label>
+                                        <input autocomplete="off" id="contactInformation" type="text" placeholder="请输入手机号码或电话号码" />
+                                        <!--<label id="contactInformationTip" class=" control-success">请输入电话号码</label>-->
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <!--错误信息提示-->
+                        
+
+                    </form>
+                </div>
+                <div class="popUP_buttons" style="text-align:center;">
+                    <div class="activity-box" id="activityTable" style="margin: 0px; text-align: center; border-top: 1px solid #d5d9dc;padding: 0.5em;">
+                        <ul>
+                            <li class="btn btn_save">
+                                <a href="#"><i></i>保存</a>
+                            </li>
+                            <li class="btn btn_return">
+                                <a href="#"><i></i>返回</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="../../scripts/system/usertable.js"></script>
+   
+    <script>
+        function previewImage(file) {
+            console.log(file);
+            var MAXWIDTH = 90;
+            var MAXHEIGHT = 90;
+            var div = document.getElementById('preview');
+            console.log(file.files);
+            console.log(file.files[0]);
+            if (file.files && file.files[0]) {
+                div.innerHTML = '<img id=imghead onclick=$("#previewImg").click()>';
+                var img = document.getElementById('imghead');
+                img.onload = function () {
+                    var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                    img.width = rect.width;
+                    img.height = rect.height;
+                    //                 img.style.marginLeft = rect.left+'px';
+                    img.style.marginTop = rect.top + 'px';
+                };
+                var reader = new FileReader();
+                reader.onload = function (evt) { img.src = evt.target.result; }
+                reader.readAsDataURL(file.files[0]);
+            }
+            else //兼容IE
+            {
+                var sFilter = 'filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+                file.select();
+                var src = document.selection.createRange().text;
+                div.innerHTML = '<img id=imghead>';
+                var img = document.getElementById('imghead');
+                img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+                var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                status = ('rect:' + rect.top + ',' + rect.left + ',' + rect.width + ',' + rect.height);
+                div.innerHTML = "<div id=divhead style='width:" + rect.width + "px;height:" + rect.height + "px;margin-top:" + rect.top + "px;" + sFilter + src + "\"'></div>";
+            }
+        }
+        function clacImgZoomParam(maxWidth, maxHeight, width, height) {
+            var param = { top: 0, left: 0, width: width, height: height };
+            if (width > maxWidth || height > maxHeight) {
+                rateWidth = width / maxWidth;
+                rateHeight = height / maxHeight;
+
+                if (rateWidth > rateHeight) {
+                    param.width = maxWidth;
+                    param.height = Math.round(height / rateWidth);
+                } else {
+                    param.width = Math.round(width / rateHeight);
+                    param.height = maxHeight;
+                }
+            }
+            param.left = Math.round((maxWidth - param.width) / 2);
+            param.top = Math.round((maxHeight - param.height) / 2);
+            return param;
+        }
+
+        //$(function () {
+        //    $(".tree").treemenu({ delay: 300 }).openActive();
+        //});
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../CSS/home/material.css"/>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../Scripts/jquery-1.11.3.js"></script>
+    <script src="../Scripts/highcharts.js"></script>
+
+</head>
+<body>
+        <div class="material_header row" style="margin-bottom: 5px">
+            <div class="col-md-4  ">
+                <div class="item-header">
+                    <div class="lf">
+                        <span><img src="../Images/widget-icon05.png" alt=""></span>
+                        <span>本月材料情况</span>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="action rt">
+                        <a href="javascript:void(0);" class="refresh" title="刷新">
+
+                        </a>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="item-content">
+                        <div id="container4" style="min-width:400px; min-height: 180px">
+
+                        </div>
+                </div>
+
+            </div>
+            <div class=" col-md-4 " >
+                <div class="item-header">
+                    <div class="lf">
+                        <span><img src="../Images/widget-icon05.png" alt=""></span>
+                        <span>本月掘进记录</span>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="action rt">
+                        <a href="javascript:void(0);" class="refresh" title="刷新">
+
+                        </a>
+                        <!--<a href="javascript:void(0);" class="min" title="收起" style="display: block;">
+
+                        </a>
+                        <a href="javascript:void(0);" class="max" title="展开" style="display: none;">
+
+                        </a>
+                        <a href="javascript:void(0);" class="close" title="关闭">
+
+                        </a>-->
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="header-content heigh200">
+                    <div style="margin:0px;">
+                        <div id="container5" style="min-width:400px;min-height: 180px">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="item-header">
+                    <div class="lf">
+                        <span><img src="../Images/widget-icon05.png" alt=""></span>
+                        <span>本月生产情况</span>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="action rt">
+                        <a href="javascript:void(0);" class="refresh" title="刷新">
+
+                        </a>
+                        <!--<a href="javascript:void(0);" class="min" title="收起" style="display: block;">
+
+                        </a>
+                        <a href="javascript:void(0);" class="max" title="展开" style="display: none;">
+
+                        </a>
+                        <a href="javascript:void(0);" class="close" title="关闭">
+
+                        </a>-->
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="header-content">
+                    <div>
+                        <div id="container6" style="min-width:400px;min-height:180px">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+     </div>
+
+    <div class="row" style="margin: 0;">
+
+        <div class="col-md-6" id="container1" style="height:300px ;margin-bottom: 5px"></div>
+        <div class="portal_r_first col-md-6">
+            <div class="item-header">
+                <div class="lf">
+                    <span><img src="../Images/widget-icon05.png" alt=""></span>
+                    <span>流程处理</span>
+                    <div class="clear"></div>
+                </div>
+                <div class="action rt">
+                    <a href="javascript:void(0);" class="refresh" title="刷新">
+
+                    </a>
+                    <!--<a href="javascript:void(0);" class="min" title="收起" style="display: block;">
+
+                    </a>
+                    <a href="javascript:void(0);" class="max" title="展开" style="display: none;">
+
+                    </a>
+                    <a href="javascript:void(0);" class="close" title="关闭">
+
+                    </a>
+                    <div class="clear"></div>-->
+                </div>
+            </div>
+            <div class="item-content">
+                <ul style="padding:10px;margin:0px;">
+                    <div>
+                        <ul class="transaction">
+                            <li id="commission" class="lf w50 text-center">待办</li>
+                            <li id="handle" class="rt w50 text-center clickSwitcher">经办</li>
+                            <div class="clear"></div>
+                        </ul>
+                        <div class="tab-contentText">
+                            <ul id="commissionContent" class="tab-contentText-ul">
+                                <li class="">
+                                    <div class="tabLiFace">
+                                        <img src="http://shp.qpic.cn/bizmp/zW59iaTvSgb4pYDRfKInk8y3JMg6MIWaxWaVI7A7u1wvlB87uBVZ0fw/"><span class="isread"></span></div>
+                                    <div class="tabMessageBox">
+                                        <p><span class="font-w400">[通知] 钟总经理 标题：春节晚会</span></p>
+                                        <p><span class="fs12">微OA365钟经理 1小时前</span></p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul style="display: none" id="handleContent" class="tab-contentText-ul ">
+                                <li class="">
+                                    <div class="tabLiFace">
+                                        <img src="http://shp.qpic.cn/bizmp/zW59iaTvSgb4pYDRfKInk8y3JMg6MIWaxWaVI7A7u1wvlB87uBVZ0fw/"><span class="isread"></span></div>
+                                    <div class="tabMessageBox">
+                                    <p><span class="font-w400">[通知] 钟总经理 标题：春节晚会</span></p>
+                                    <p><span class="fs12">微OA365钟经理 1小时前</span></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tabLiFace"><img src="../Images/user_photo_01.jpg" /><span class="isread"></span></div>
+                                    <div class="tabMessageBox">
+                                        <p><span class="font-w400">[通知] 钟总经理 标题：元旦晚会</span></p>
+                                        <p><span class="fs12">微OA365钟经理 1小时前</span></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tabLiFace"><img src="../Images/user_photo_01.jpg" /><span class="isread"></span></div>
+                                    <div class="tabMessageBox">
+                                        <p><span class="font-w400">[通知] 钟总经理 标题：元旦晚会</span></p>
+                                        <p><span class="fs12">微OA365钟经理 1小时前</span></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tabLiFace"><img src="../Images/user_photo_01.jpg" /><span class="isread"></span></div>
+                                    <div class="tabMessageBox">
+                                        <p><span class="font-w400">[通知] 钟总经理 标题：元旦晚会</span></p>
+                                        <p><span class="fs12">微OA365钟经理 1小时前</span></p>
+                                    </div>
+                                </li>
+                                <!--<li>-->
+                                    <!--<div class="tabLiFace"><img src="../Images/user_photo_01.jpg"/><span class="isread"></span></div>-->
+                                    <!--<div class="tabMessageBox">-->
+                                        <!--<p><span class="font-w400">[通知] 钟总经理 标题：元旦晚会</span></p>-->
+                                        <!--<p><span class="fs12">微OA365钟经理 1小时前</span></p>-->
+                                    <!--</div>-->
+                                <!--</li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div style="margin: 0 auto;" class="row">
+
+        <div class="col-md-6"  id="container" style="min-height: 300px"></div>
+        <div class="col-md-6" style="padding: 0">
+            <div class="col-md-6" id="container2" style="min-height: 300px;"></div>
+            <div class="col-md-6" id="container3" style="min-height: 300px;"></div>
+        </div>
+    </div>
+  
+    <script>
+
+    </script>
+    <script src="../Scripts/home/material.js"></script>
+</body>
+</html>

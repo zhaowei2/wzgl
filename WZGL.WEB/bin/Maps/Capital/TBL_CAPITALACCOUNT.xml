@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="TBL_CAPITALACCOUNT" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+    <typeAlias alias="Tbl_capitalaccountInfo"  type="WZGL.MODEL.Capital.TBL_CAPITALACCOUNT,WZGL.MODEL" />
+  </alias>
+  <parameterMaps>
+    <parameterMap id="swapParas" class="Hashtable">
+      <parameter property="Sql"        dbType="VARCHAR(MAX)"/>
+      <parameter property="Sort"        dbType="VARCHAR2" />
+      <parameter property="Pindex"      dbType="Int32"/>
+      <parameter property="Psize"       dbType="Int32"/>
+      <parameter property="Pcount"       column="Pcount"      dbType="Int32" direction="Output" />
+      <parameter property="TotalCount"   column="TotalCount" dbType="Int32"   direction="Output"/>
+    </parameterMap>
+  </parameterMaps>
+  <statements>
+    <procedure id="GetListByProc" parameterMap="swapParas" resultClass="Tbl_capitalaccountInfo" >
+      getPageData
+    </procedure>
+    <insert id="Insert" parameterClass="Tbl_capitalaccountInfo" resultClass="Int32">
+      INSERT INTO Tbl_capitalaccount( capitalaccountid,capitalaccounttype,organizationid,balance)  VALUES( #capitalaccountid#,#capitalaccounttype#,#organizationid#,#balance#)
+    </insert>
+    <update id="Update" parameterClass="Tbl_capitalaccountInfo" resultClass="Int32">
+      UPDATE Tbl_capitalaccount SET capitalaccounttype=#capitalaccounttype#,organizationid=#organizationid#,balance=#balance#  where capitalaccountid=#capitalaccountid#
+    </update>
+    <delete id="Delete" parameterClass="string" resultClass="Int32">
+      DELETE FROM Tbl_capitalaccount WHERE  $value$
+    </delete>
+    <select id="GetCount" parameterClass="string" resultClass="Int32">
+      select  count(*) from  Tbl_capitalaccount
+      where  1=1   $value$
+    </select>
+    <select id="GetList" parameterClass="string" resultClass="Tbl_capitalaccountInfo">
+      select capitalaccountid,capitalaccounttype,organizationid,balance  FROM  Tbl_capitalaccount WHERE  $values$
+    </select>
+  </statements>
+</sqlMap>

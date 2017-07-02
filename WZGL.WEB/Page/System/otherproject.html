@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/bootstrap.min.css" />
+    <link href="../../CSS/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../CSS/master.css" />
+    <link href="../../CSS/index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../CSS/System/singleproject.css" />
+    <link href="../../CSS/layer.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <title></title>
+    <script src="../../Scripts/jquery.pagination.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+    <link href="../../CSS/layer.css" rel="stylesheet" />
+    <style>
+        .form-control {
+            width: 196px;
+        }
+    </style>
+</head>
+<body>
+    <div id="documentContent">
+        <div class="container">
+            <div class="container_content" >
+                <div class="container_btn" style="border-bottom:1px solid #dddddd">
+                    <ul class="btn_vessel lf">
+                        <li class="btn btn_newly">
+                            <a href="#">
+                                <i></i>
+                                新增
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="rt">
+                        <button id="searchBtn" type="button" class="btn btn-info search">
+                            <i></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="searchContent" class="searchDiv searchFromTable" style="display: none;padding-top:14px;">
+                    <table style="width:100%">
+                        <tbody>
+                            <tr>
+                                <td  style="text-align: right;width:27%">项目名称</td>
+                                <td style="width: 18%">
+                                    <span>
+                                        <div class="input-group date">
+                                            <input type="text" class="form-control" id="otherprojectname" placeholder="输入项目名称">
+                                        </div>
+                                    </span>
+                                </td>
+                                <td style="text-align: right;width:18%">项目类型</td>
+                                <td style="width:37%">
+                                    <span>
+                                        <select name="状态" id="otherprojecttypeid" class="form-control component-select" style="width: 200px"></select>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>&nbsp;</p>
+                    <div>
+                        <div id="secBtn" class="text-center">
+                            <button type="button" class="btn btn-primary" onclick="Select()">查询</button>
+                            <button type="button" class="btn btn-default btn-reset" onclick="Reset()">重置</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table_vessel">
+                    <table id="coalmines" class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <!--<th>选择</th>-->
+                                <th>项目名称</th>
+                                <th>项目类型</th>
+                                <th>项目描述</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <table>
+                        <tr>
+                            <td width="1%" colspan="6">
+                                <div id="Pagination" class="pagination" style="float: right;">
+                                    <!-- 这里显示分页 -->
+                                </div>
+                                <div id="hiddenresult" style="display: none;" />
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <!-- 弹出新建-->
+        <!--遮罩-->
+    </div>
+    <div class="cd-popup">
+        <div class="cd-popup-container">
+            <div class="aui_header">
+                <span class="aui_icon">添加其他项目</span>
+                <a href="#" class="cd-popup-close aui_close" style="line-height: 40px;">
+                    <span class=" fa fa-times" aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="cd-buttons" style="">
+                <div class="activity-box" id="activityTable" style="margin: 0px; text-align: left; border-bottom: 1px solid #d5d9dc;padding: 0.5em;">
+                    <ul>
+                        <li class="btn btn_save">
+                            <a href="#"><i></i>保存</a>
+                        </li>
+                        <li class="btn btn_return">
+                            <a href="#"><i></i>返回</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="cd-content">
+                <div class="searchDiv searchFromTable" style="padding-top: 1.5em;">
+                    <table align="center">
+                        <tbody>
+                            <tr>
+                                <td width="150" style="text-align: right">其他项目名称</td>
+                                <td width="30%">
+                                    <span>
+                                        <input id="otherprojectid" type="text" style="display:none" />
+                                        <input id="txt_otherprojectname" name="申请人" type="text" class="form-control component-input">
+                                    </span>
+                                </td>
+                                <td width="150" style="text-align: right">其他项目类型</td>
+                                <td style="text-align: left">
+                                    <span>
+                                        <select name="" id="type" style="width:195px"></select>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="150" style="text-align: right">项目描述</td>
+                                <td  colspan="3">
+                                    <textarea id="remark" style="width:100%;height:150px"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../../Scripts/System/otherproject.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/bootstrap.css"/>
+    <link rel="stylesheet" href="../../CSS/master.css"/>
+    <link rel="stylesheet" href="../../CSS/nr-date.css">
+    <link rel="stylesheet" href="../../CSS/index.css"/>
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/Capital/editCapital.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+    <title></title>
+</head>
+<body>
+<div class="container">
+    <form id="document_content">
+        <div id="container">
+            <div id="activityTable" class="activity-box" >
+                <ul>
+                    <li class="btn btn_commit"><a id="btnsubmit" href="#"><i></i>提交</a>
+                    </li>
+                    <li class="btn btn_save"><a id="btnsave" href="#"><i></i>保存</a>
+                    </li>
+                    <li class="btn btn_return"><a id="btnreturn" href="#"><i></i>返回</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="formTable" style="margin-top: 0.5em">
+                <div id="formHtml">
+                    <p style="text-align: right;margin-bottom: 7px">申请单号：<span>
+                        <input id="txt_capitalapplicantid" style="display:none" />
+                                                                             
+                        <input id="txt_ApplicationNo" style="width: 200px; display: inline-block;" discript="申请单号" class="form-control component-input" type="text" name="申请单号" value="YGQJ16120003" title="YGQJ16120003" disabled="disabled"></span>
+                    </p>
+                    <table border="1" cellpadding="1" cellspacing="1" style="  width: 98%;border: 1px solid rgb(180, 204, 238);" align="center">
+                        <tbody class="editTbody">
+                        <tr>
+                            <td style="border: 1px solid rgb(180, 204, 238);" width="150" colspan="6">
+                                <strong>申请表</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid rgb(180, 204, 238); text-align: right;">申请人：</td>
+                            <td style="border: 1px solid rgb(180, 204, 238);">
+                                       <span>
+                                           <input id="txt_ApplicantName" class="form-control component-input" type="text" name="申请人" style="width: 200px" disabled="disabled">
+                                       </span>
+                            </td>
+                            <td style="border: 1px solid rgb(180, 204, 238); text-align: right;">部门：</td>
+                            <td style="border: 1px solid rgb(180, 204, 238);">
+                                       <span>
+                                           
+                                           <input id="txt_Organizationid" class="form-control component-input" type="text" name="部门ID" style="display:none" disabled="disabled">
+                                           <input id="txt_OrganizationName" class="form-control component-input" type="text" name="部门" style="width: 200px" disabled="disabled">
+                                       </span>
+                            </td>
+                            <td style="border: 1px solid rgb(180, 204, 238); text-align: right;" width="150">申请日期：</td>
+                            <td style="border: 1px solid rgb(180, 204, 238);">
+                                       <span>
+                                           <div class="input-group date">
+                                               <input type="text" class="form-control
+                                                    wdate component-input" id="inp1" placeholder="申请日期" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false" disabled="disabled">
+                                              <span class="input-group-addon">
+                                                  <span class="glyphicon calendar"></span>
+                                              </span>
+                                           </div>
+                                       </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid rgb(180, 204, 238); text-align: right;">申请金额：(元)</td>
+                            <td style="border: 1px solid rgb(180, 204, 238);">
+                                       <span>
+                                           <input id="txt_Applicantamount" class="form-control component-input" type="text" name="申请金额" style="width: 200px">
+                                       </span>
+                            </td>
+
+                            <td style="border: 1px solid rgb(180, 204, 238); text-align: right;">批准金额：(元)</td>
+                            <td style="border: 1px solid rgb(180, 204, 238);" colspan="4">
+                                       <span>
+                                           <input id="txt_Approveamount" class="form-control component-input" type="text" name="批准金额" style="width: 200px">
+                                       </span>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid rgb(180, 204, 238); text-align: right;">
+                                申请说明：</td>
+                            <td style="border: 1px solid rgb(180, 204, 238);" colspan="5">
+                                       <span>
+                                           <textarea id="txt_Instructions" class="form-control" name="申请说明" style="margin: 0px; width: 674px; height: 68px;"></textarea>
+                                       </span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+<script src="../../Scripts/nr-date.js"></script>
+
+
+</body>
+</html>

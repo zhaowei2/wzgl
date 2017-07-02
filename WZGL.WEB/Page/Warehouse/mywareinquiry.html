@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../../CSS/master.css" />
+    <link rel="stylesheet" href="../../CSS/nr-date.css" />
+    <link rel="stylesheet" href="../../CSS/index.css" />
+    <link rel="stylesheet" href="../../CSS/infomation.css" />
+    <link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../CSS/tree.css" />
+    <link rel="stylesheet" href="../../CSS/layer.css" />
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+    <script src="../../Scripts/jquery.pagination.js"></script>
+
+    <title></title>
+    <style>
+        .form-control {
+            width: 196px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-content">
+        <div class="container">
+            <div class="activity-box" style="text-align: right; padding: 0px;">
+
+
+                <div class="from-group" style="display: inline-block;">
+
+                    <button type="button" class="btn bg-info flush">
+                        <i></i>
+                    </button>
+
+                    <button type="button" class="btn bg-info search">
+                        <i></i>
+                    </button>
+                </div>
+            </div>
+
+
+            <div id="yield" class="content-panel" style="">
+                <div class="searchDiv searchFromTable" style="padding-top: 1.5em; display: none;">
+                    <table align="center" width="100%">
+                        <tbody>
+                            <tr>
+                                <td style="text-align: right; width: 27%">仓库类型</td>
+                                <td style="width: 18%">
+                                    <span>
+                                        <select name="selcoalfaceid" id="selcoalfaceid" class="form-control component-select" onchange="selectOrg()">
+                                            <option value="" class="select-cmd">全矿</option>
+                                            <option value="C70CEDCC-FB20-436E-B35A-AA5A7BD8C488" class="select-cmd">矿属仓库</option>
+                                            <option value="FFA21F13-BD0C-4312-BDAB-952C78DC39EE" class="select-cmd">用料单位</option>
+
+                                        </select>
+                                    </span>
+                                </td>
+                                <td style="text-align: right; width: 18%;">仓库名称</td>
+                                <td style="width: 37%">
+                                    <span>
+                                        <select name="selstockid" id="selstockid" class="form-control component-select">
+                                        </select>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right;">材料类别</td>
+                                <td style="text-align: left; position: relative;">
+                                    <span style="display: inline-block">
+                                        <div style="position: absolute; top: 5px; z-index: 888; width: 250px;">
+                                            <div class="card-drop" >
+                                                <a class='toggle' href="#" style="">
+                                                    <span class='label-active' id="label-active1">全部</span>
+                                                </a>
+                                                <ul class="tree treemenu" id="treeCategory1">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </span>
+                                </td>
+                                <td style="text-align: right; width: 18%;">
+                                   <span>
+                                          <select class="component-select"  id="selchange">
+                                              <option value="名称" class="select-cmd">材料品名</option>
+                                              <option value="编码" class="select-cmd">材料编码</option>
+                                        </select>
+
+                                   </span>
+                                </td>
+                                <td style="width: 37%">
+                                    <span>
+                                        <input type="text" class="form-control component-input" id="txtname" name="txtname" />
+                                       
+                                    </span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <p>&nbsp;</p>
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <button type="button" class="btn btn-primary" onclick="search()">查询</button>
+                            <button type="button" class="btn btn-default btn-reset" onclick="reset()">重置</button>
+                        </div>
+                    </div>
+                </div>
+                <div style="border-bottom: 1px solid #dddddd;" id="dataTable-box-jl">
+                    <div class="dataTable text-center">
+                        <div id="viewHtml-jl">
+                            <div class="table-head">
+                                <table class="table table-hover" id="coalmines">
+
+                                    <thead>
+                                        <tr class="listDataTh" style="background: #F4F5F5;">
+                                            <td width="" title="单位" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; vertical-align: middle;">
+                                                <a style="cursor: pointer" href="#">仓库名称</a>
+                                            </td>
+                                             <td width="" title="材料类别" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; vertical-align: middle;">
+                                                <a style="cursor: pointer" href="#">材料类别</a>
+                                            </td>
+                                            <td width="" title="编码" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; vertical-align: middle;">
+                                                <a style="cursor: pointer" href="#">编码</a>
+                                            </td>
+                                            <td width="" title="品名" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; vertical-align: middle;">
+                                                <a style="cursor: pointer" href="#">品名</a>
+                                            </td>
+                                            <td width="" title="规格" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; vertical-align: middle;">
+                                                <a style="cursor: pointer" href="#">规格</a>
+                                            </td>
+                                            <td width="" title="品格" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; vertical-align: middle;">
+                                                <a style="cursor: pointer" href="#">单位</a>
+                                            </td>
+
+                                            <td width="" title="库存" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                <a style="cursor: pointer" href="#">数量</a>
+                                            </td>
+
+                                        </tr>
+
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <table>
+                    <tr>
+                        <td width="1%" colspan="6">
+                            <div id="Pagination" class="pagination" style="float: right;">
+                                <!-- 这里显示分页 -->
+                            </div>
+                            <div id="hiddenresult" style="display: none;" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="../../Scripts/Warehouse/mywareinquiry.js"></script>
+    <script src="../../Scripts/custom.js"></script>
+    <script src="../../Scripts/tree.js"></script>
+    <script>
+    </script>
+
+</body>
+</html>
+

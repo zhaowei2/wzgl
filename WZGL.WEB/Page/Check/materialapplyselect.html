@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../../CSS/master.css" />
+    <link rel="stylesheet" href="../../CSS/nr-date.css" />
+    <link rel="stylesheet" href="../../CSS/index.css" />
+    <link rel="stylesheet" href="../../CSS/infomation.css" />
+    <link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../CSS/tree.css" />
+    <link rel="stylesheet" href="../../CSS/layer.css" />
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/jquery.pagination.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+    <script src="../../Scripts/Check/materialapplyselect.js"></script>
+    <script src="../../Scripts/tree.js"></script>
+    <title></title>
+    <style>
+        .form-control {
+            width: 196px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="document_content" style="margin-top: 0px">
+            <div id="container">
+            
+
+
+
+
+                <div class="activity-box" style="text-align: right">
+
+
+                    <div class="from-group" style="display: inline-block; padding:0px;float:left;">
+                        <button type="button" class="btn btn_newly" onclick="add()" >
+                            <a href="#"><i></i>新增</a>
+                        </button>
+                    </div>
+                    <div class="from-group" style="display: inline-block; padding:0px;">
+
+
+
+                        <button type="button" class="btn bg-info search">
+                            <i></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="searchDiv searchFromTable" style="padding-top: 1.5em; display: none">
+                    <table style="width:100%">
+                        <tbody align="left">
+                            <tr>
+                                <td style="text-align: right; width: 27%">部门</td>
+                                <td style="text-align: left; position: relative; width: 18%">
+                                    <span style="display: inline-block">
+                                        <div id="wrapper" style="position: absolute;top: 5px; z-index: 888;">
+                                            <div class="card-drop">
+                                                <input type="hidden" id="selorganizationid" name="selorganizationid" />
+                                                <a class='toggle' href="#">
+                                                    <span class='label-active' id="label-active1">请选择部门</span>
+                                                </a>
+                                                <ul id="treeOrganization1" class="tree"></ul>
+                                            </div>
+                                        </div>
+                                    </span>
+                                </td>
+                                <!--<td style="text-align: right; width: 18%">提交人</td>
+                                <td style="width: 37%">
+                                    <span>
+                                        <input type="text" id="applicantname"  />
+                                    </span>
+                                </td>-->
+                                <td style="text-align: right; width: 18%">流程单号</td>
+                                <td style="width: 37%">
+                                    <span>
+                                        <input type="text" id="processnumber"  style="height:34px;width:192px;"/>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="150" style="text-align: right">提交日期</td>
+                                <td width="20%">
+                                    <span>
+                                        <div class="input-group date">
+                                            <input type="text" class="form-control
+                    wdate component-input" id="inp2" placeholder="提交日期" datefmt="yyyy-MM-dd" data-enhance="false" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon calendar"></span>
+                                            </span>
+                                        </div>
+                                    </span>
+                                </td>
+                               
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>&nbsp;</p>
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <button type="button" class="btn btn-primary" id="btn_Select" onclick="Select()">查询</button>
+                            <button type="button" class="btn btn-default btn-reset" id="btn_Reset" onclick="Reset()">重置</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="dataTable-box" style="border-bottom:1px solid #ddd">
+                    <div class="dataTable text-center">
+                        <div id="viewHtml">
+                            <div class="table-head">
+                                <table class="table table-hover" id="coalmines">
+                                    <thead>
+                                        <tr class="listDataTh">
+                                            <td width="" title="申请人" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                <a style="cursor:pointer" href="#">申请人</a>
+                                            </td>
+                                            <td width="" title="部门" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                <a style="cursor:pointer" href="#">部门</a>
+                                            </td>
+                                            <td width="" title="流程单号" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                <a style="cursor:pointer" href="#">流程单号</a>
+                                            </td>
+                                            <td width="" title="提交时间" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                <a style="cursor:pointer" href="#">提交时间</a>
+                                            </td>
+                                            <td width="" title="操作" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                                <a style="cursor:pointer" href="#">操作</a>
+                                            </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!--<tr class="listDataTr">
+
+                                            <td class="listDataTrTd" style="word-break: break-all;" >
+                                                <a href="javaScript:viewDoc(0)" title="产品名称">产品名称</a>
+                                            </td>
+                                            <td class="listDataTrTd" style="word-break: break-all;" >
+                                                <a href="javaScript:viewDoc(0)" title="产品类别">产品类别</a>
+                                            </td>
+                                            <td class="listDataTrTd" style="word-break: break-all;" >
+                                                <a href="javaScript:viewDoc(0)" title="T">T</a>
+                                            </td>
+                                            <td class="listDataTrTd" style="word-break: break-all;">
+                                                <a href="javaScript:viewDoc(0)" title="产品规格">产品规格</a>
+                                            </td>
+                                            <td class="listDataTrTd" style="word-break: break-all;">
+                                                <a href="javaScript:viewDoc(0)" title="11">11</a>
+                                            </td>
+                                            <td class="listDataTrTd" style="word-break: break-all;">
+                                                <a href="javaScript:viewDoc(0)" title="预警状态">危险</a>
+                                            </td>
+                                        </tr>-->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <table>
+                    <tr>
+                        <td width="1%" colspan="6">
+                            <div id="Pagination" class="pagination" style="float: right;">
+                                <!-- 这里显示分页 -->
+                            </div>
+                            <div id="hiddenresult" style="display: none;" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+
+    <script src="../../Scripts/nr-date.js"></script>
+    <script>
+    (function(){
+        calender("#inp2").init({format : 'yyyy-MM-dd',
+
+        },function(date){
+            this.value= date
+        });
+    })();
+
+
+
+    </script>
+    <script src="../../Scripts/custom.js"></script>
+
+</body>
+</html>

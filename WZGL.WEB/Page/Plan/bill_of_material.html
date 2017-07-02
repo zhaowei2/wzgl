@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../../CSS/master.css" />
+    <link rel="stylesheet" href="../../CSS/nr-date.css">
+    <link rel="stylesheet" href="../../CSS/index.css" />
+    <link rel="stylesheet" href="../../CSS/infomation.css" />
+
+
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/jquery.pagination.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+    <title>材料计划列表</title>
+    <style>
+        .grid-button-cancel {
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        }
+
+    
+    </style>
+
+
+
+</head>
+
+<body>
+    <div id="form-content">
+        <form id="document_content" style="margin-top: 0px">
+            <div id="container">
+
+                <div id="formList" style="text-align: right; padding: 10px;">
+                    <ul  style="display: inline-block; float: left;">
+                        <li class="btn btn_newly xingjian"><a href="#"><i></i>新建</a>
+                        </li>
+                        <li class="btn btn_return faqi"><a href="#"><i></i>生成采购计划</a></li>
+
+                    </ul>
+                    <button type="button" class="btn bg-info search">
+                        <i></i>
+                    </button>
+                </div>
+                <div class="searchDiv searchFromTable" style="padding-top: 1.5em; display: none; border-top: 1px solid #d5d9dc; border-bottom: 0px;">
+                    <table align="center" style="width: 100%">
+                        <tbody>
+                            <tr>
+                                <td style="text-align: right; width: 27%">流程单号</td>
+                                <td style="text-align: left; position: relative; width: 18%;">
+                                    <span>
+                                        <input type="text" class="form-control component-input" id="txt_processnumber">
+                                    </span>
+                                </td>
+
+                                <td style="text-align: right; width: 18%">计划类型</td>
+                                <td style="width: 37%;">
+                                    <span>
+                                        <select style="width: 196px;" class="form-control component-select" id="txt_Plantype" name="计划类型"  onchange="" >
+                                            <option value="" class="select-cmd">全部</option>
+                                            <option value="月计划" class="select-cmd">月计划</option>
+                                            <option value="临时计划" class="select-cmd">临时计划</option>
+                                        </select>
+                                    </span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp;</p>
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <button type="button" class="btn btn-primary" onclick="tsearch()">查询</button>
+                            <button type="button" class="btn btn-default btn-reset" onclick="treset()">重置</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="table_gridView" class="dataTable" style="border-bottom: 1px solid #ddd;">
+                    <table class="table listDataTable" id="gridTable" style="border-top: 1px solid #ddd; z-index: 1; table-layout: auto;" border="0" cellpadding="0" cellspacing="0">
+                        <thead>
+                            <tr class="listDataTh">
+                                <td class="listDataThFirstTd" scope="col">
+                                    <!-- <input type="checkbox" click="selectAll(this.checked)">-->
+                                </td>
+                                  <td class="listDataThTd" coltext="流程单号" coltype="COLUMN_TYPE_FIELD" nowrap="nowrap" style="overflow: hidden;">
+
+                                    <a style="cursor: pointer" href="#" onclick="sortTable('流程单号')">流程单号</a>
+                                </td>
+                                <td class="listDataThTd" coltext="计划类型" coltype="COLUMN_TYPE_FIELD" nowrap="nowrap" style="overflow: hidden;">
+
+                                    <a style="cursor: pointer" href="#" onclick="sortTable('计划类型')">计划类型</a>
+                                </td>
+                                <td class="listDataThTd" coltext="提交日期" coltype="COLUMN_TYPE_FIELD" nowrap="nowrap" style="overflow: hidden;">
+                                    <input id="材料名称_showType" value="00" type="hidden">
+                                    <a style="cursor: pointer" href="#" onclick="sortTable('提交日期')">提交日期</a>
+                                </td>
+                                <td class="listDataThTd" coltext="部门" coltype="COLUMN_TYPE_FIELD" nowrap="nowrap" style="overflow: hidden;">
+                                    <input id="到货日期_showType" value="00" type="hidden">
+                                    <a style="cursor: pointer" href="#" onclick="sortTable('部门')">部门</a>
+                                </td>
+                                <td class="listDataThTd" coltext="申请人" coltype="COLUMN_TYPE_FIELD" nowrap="nowrap" style="overflow: hidden;">
+                                    <input id="使用提点_showType" value="00" type="hidden">
+                                    <a style="cursor: pointer" href="#" onclick="sortTable('申请人')">申请人</a>
+                                </td>
+                                <td class="listDataThTd" coltext="添加人" coltype="COLUMN_TYPE_FIELD" nowrap="nowrap" style="overflow: hidden;">
+                                    <input id="Hidden1" value="00" type="hidden">
+                                    <a style="cursor: pointer" href="#" onclick="sortTable('添加人')">添加人</a>
+                                </td>
+                                <td class="listDataThTd" coltext="状态" coltype="COLUMN_TYPE_FIELD" nowrap="nowrap" style="overflow: hidden;">
+                                    <input id="Hidden2" value="00" type="hidden">
+                                    <a style="cursor: pointer" href="#" onclick="sortTable('状态')">生成采购计划</a>
+                                </td>
+                                <td class="listDataThTd" coltext="流程状态" coltype="COLUMN_TYPE_FIELD" nowrap="nowrap" style="overflow: hidden;">
+                                    <input id="Hidden3" value="00" type="hidden">
+                                    <a style="cursor: pointer" href="#" onclick="sortTable('状态')">流程状态</a>
+                                </td>
+                                <td class="listDataThTd" coltext="步骤编号" coltype="COLUMN_TYPE_FIELD" nowrap="nowrap" style="overflow: hidden;">
+                                    <input id="Hidden4" value="00" type="hidden">
+                                    <a style="cursor: pointer" href="#" onclick="sortTable('状态')">步骤编号</a>
+                                </td>
+                                <td class="listDataThTd" coltext="步骤名称" coltype="COLUMN_TYPE_FIELD" nowrap="nowrap" style="overflow: hidden;">
+                                    <input id="Hidden5" value="00" type="hidden">
+                                    <a style="cursor: pointer" href="#" onclick="sortTable('状态')">步骤名称</a>
+                                </td>
+
+                                <td class="listDataThTd" coltext="材料说明" coltype="COLUMN_TYPE_FIELD" nowrap="nowrap" style="overflow: hidden;">
+                                    <input id="数据_showType" value="00" type="hidden">
+                                    <a style="cursor: pointer" href="#" onclick="sortTable('数据')">材料说明</a>
+                                </td>
+                                <td class="listDataThTd" style="width: 120px">操作</td>
+                            </tr>
+                        </thead>
+                        <tbody id="dataBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+            <div>
+                <div id="tunnlPagination" class="pagination" style="float: right;">
+                    <!-- 这里显示分页 -->
+                </div>
+                <div id="tunnlhiddenresult" style="display: none;" />
+            </div>
+        </form>
+    </div>
+
+</body>
+
+<script>
+    (function () {
+        $("#inp2").init({
+            format: 'yyyy-MM-dd',
+            date: [2016, 12, 15],
+            button: true
+        }, function (date) {
+            this.value = date
+        });
+    })();
+</script>
+<script src="../../Scripts/custom.js"></script>
+<script src="../../Scripts/nr-date.js"></script>
+<script src="../../Scripts/Plan/bill_of_material.js"></script>
+
+</html>

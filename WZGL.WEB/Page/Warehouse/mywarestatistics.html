@@ -1,0 +1,388 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../../CSS/master.css" />
+    <link rel="stylesheet" href="../../CSS/index.css" />
+    <link rel="stylesheet" href="../../CSS/infomation.css" />
+    <link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../CSS/tree.css" />
+    <link rel="stylesheet" href="../../CSS/layer.css" />
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+    <script src="../../Scripts/jquery.pagination.js"></script>
+    <script src="../../Scripts/Warehouse/mywarestatistics.js"></script>
+    <script src="../../Scripts/highcharts.js"></script>
+    <title></title>
+    <style>
+        .form-control {
+            width: 196px;
+        }
+        .cd-content tbody td{
+            padding:7px;
+        }
+    </style>
+</head>
+<body>
+<div class="form-content">
+    <div class="container">
+        <form id="document_content">
+            <div id="portal" class="groupItem">
+                <div class="item-header">
+                    <span>仓库查询</span>
+                    <div class="action">
+                        <a href="#" class="refresh" title="刷新"></a>
+                        <a href="javascript:void(0)" class="min" title="收起"></a>
+                        <a href="javascript:void(0)" class="max" style="display: none" title="展开"></a>
+                    </div>
+                </div>
+                <div class="item-content" >
+                    <div id="portal-chart" >
+                       <div id="container" style="height: 300px"></div>
+
+                     
+                    </div>
+                 
+                </div>
+            </div>
+               </form>
+            <div class="activity-box" style="padding:0px;">
+                <ul class="re_application" style="display: inline-block;">
+                    <li class="tabs-itm active-box" id="active1"><a href="javaScript:void(0)" onclick="inti()">按类别统计</a></li>
+                    <li class="tabs-itm" id="active2"><a href="javaScript:void(0)" onclick="tinti()">按仓库统计</a></li>
+                </ul>
+                <div class="from-group" style="display: inline-block; padding: 0px 10px 0px 0px; float: right">
+                
+                    <button type="button" class="btn bg-info flush">
+                        <i></i>
+                    </button>
+               
+                    <button type="button" class="btn bg-info educe">
+                        <i></i>
+                    </button>
+                    <button type="button" class="btn bg-info search">
+                        <i></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="yield" class="content-panel" style="">
+                <div class="searchDiv searchFromTable" style="padding-top: 1.5em; display:none;">
+                    <table align="center" width="100%">
+                        <tbody>
+                        <tr>
+                            <td  style="text-align: right;width:27%">仓库类型</td>
+                            <td style="width: 18%">
+                                 <span> <select name="selcoalfaceid" id="selcoalfaceid" class="form-control component-select" onchange="selectOrg()">
+                                         <option value="" class="select-cmd">全矿</option>
+                                        <option value="C70CEDCC-FB20-436E-B35A-AA5A7BD8C488" class="select-cmd">矿属仓库</option>
+                                        <option value="FFA21F13-BD0C-4312-BDAB-952C78DC39EE" class="select-cmd">用料单位</option>
+                                      
+                                    </select>
+                                </span>
+                            </td>
+                              <td style="text-align: right; width: 18%;">仓库</td>
+                              <td style="width: 37%">
+                                 <span> <select name="selstockid" id="selstockid" class="form-control component-select">
+                         
+                                    </select>
+                                </span>
+                              </td>
+                            </tr>
+                            <tr>  
+                             <td style="text-align: right; ">材料类别</td>
+                            <td style="text-align: left; position: relative;">
+                                    <span style="display: inline-block">
+                                        <div style="position: absolute; top: 5px; z-index: 888; width:250px;">
+                                            <div class="card-drop" style="">
+                                                <a class='toggle' href="#" style="">
+                                                    <span class='label-active' id="label-active1">全部</span>
+                                                </a>
+                                                <ul class="tree treemenu" id="treeCategory1">
+                                                 
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </span>
+                                </td>
+                        </tr>
+                        
+                        </tbody>
+                    </table>
+                    <p>&nbsp;</p>
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <button type="button" class="btn btn-primary"  onclick="search()">查询</button>
+                            <button type="button" class="btn btn-default btn-reset" onclick="reset()">重置</button>
+                        </div>
+                    </div>
+                </div>
+                <div style="border-bottom: 1px solid #dddddd;" id="dataTable-box-jl">
+                    <div class="dataTable text-center">
+                        <div id="viewHtml-jl">
+                            <div class="table-head">
+                                <table class="table table-hover"  id="coalmines">
+                                    
+                                    <thead>
+                                         <tr class="listDataTh" style="background: #F4F5F5;">
+                                         
+                                        <td width="" title="品格" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;vertical-align:middle;" >
+                                            <a style="cursor:pointer" href="#">材料类别</a>
+                                        </td>
+                                     
+                                         <td width="" title="库存" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;" >
+                                            <a style="cursor:pointer" href="#">库存数量</a>
+                                        </td>
+
+                                    </tr>
+                                        
+                                    </thead>
+                                    <tbody>
+                                  
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                    <table>
+                    <tr>
+                        <td width="1%" colspan="6">
+                            <div id="Pagination" class="pagination" style="float: right;">
+                                <!-- 这里显示分页 -->
+                            </div>
+                            <div id="hiddenresult" style="display: none;" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+
+                <div id="driving" class="content-panel" style="display: none;width:100%;">
+
+                <div class="searchDiv searchFromTable" style="padding-top: 1.5em; display:none;">
+                    <table align="center" style="width:100%;">
+                        <tbody>
+                        <tr>
+                            <td  style="text-align: right;width:11%;">仓库类型</td>
+                            <td style="width:18%;">
+                                 <span> <select name="seltcoalfaceid" id="seltcoalfaceid" class="form-control component-select" onchange="selectOrg()">
+                                         <option value="" class="select-cmd">全部</option>
+                                        <option value="C70CEDCC-FB20-436E-B35A-AA5A7BD8C488" class="select-cmd">矿属仓库</option>
+                                        <option value="FFA21F13-BD0C-4312-BDAB-952C78DC39EE" class="select-cmd">用料单位</option>
+                                      
+                                    </select>
+                                </span>
+                            </td>
+                             <td style="text-align: right;width:12%">材料类别</td>
+                            <td style="text-align: left; position: relative;width:15%">
+                                    <span style="display: inline-block">
+                                        <div style="position: absolute; top: 5px; z-index: 888; width:250px;">
+                                            <div class="card-drop" style="border: 1px solid #CCCCCC;">         
+                                                <a class='toggle' href="#" style="">
+                                                    <span class='label-active' id="label-active2">全部</span>
+                                                </a>
+                                                <ul class="tree treemenu" id="treeCategory2">
+                                                 
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </span>
+                                </td>
+                             <td style="text-align: right;width:21%;" >
+                               品名&nbsp; <input type="text"  class="form-control component-input" name="txtcode" style="width:194px;display:inline-block">
+               
+                                 <a  onclick="initMaterialGrid()" class="btn btn-info"  style="position: relative;top: -1px;margin-left: 5px;height:32px;">列表</a>
+                          
+                        
+                             </td>
+                            </tr>
+                         
+                        
+                        </tbody>
+                    </table>
+                    <p>&nbsp;</p>
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <button type="button" class="btn btn-primary"  onclick="tsearch()">查询</button>
+                            <button type="button" class="btn btn-default btn-reset" onclick="treset()">重置</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="dataTable-box" style="border: 1px solid #dddddd; border-top: 0px;">
+                    <div class="dataTable text-center">
+                        <div id="viewHtml">
+                            <div class="table-head">
+                                <table class="table table-hover"  id="tunnelCoals">
+                                    <thead>
+                                         <tr class="listDataTh" style="background: #F4F5F5;">
+                                            <td width="" title="单位" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;vertical-align:middle;" >
+                                            <a style="cursor:pointer" href="#">单位</a>
+                                        </td>
+                                         <td width="" title="库存" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;" >
+                                            <a style="cursor:pointer" href="#">数量</a>
+                                        </td>
+
+                                    </tr>
+                                        
+                                    </thead>
+                                    <tbody>
+                                    
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                       <table>
+                    <tr>
+                        <td width="1%" colspan="7">
+                            <div id="tunnlPagination" class="pagination" style="float: right;">
+                                <!-- 这里显示分页 -->
+                            </div>
+                            <div id="tunnlhiddenresult" style="display: none;" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </div>
+    
+     
+</div>
+
+     <div class="cd-popup" id="cd2">
+        <div class="cd-popup-container">
+            <div class="aui_header" style="z-index: 20;">
+                <span>材料分类</span>
+                <a class="cd-popup-close aui_close" id="close2" style="line-height: 40px;" href="#">
+                    <span class=" fa fa-times" aria-hidden="true"></span>
+                </a>
+            </div>
+            <div style="padding: 5px;">
+                <div class="cd-content" style="z-index: 55;">
+                    <div class="searchDiv" style="padding-top: 1.5em;">
+                        <table style="margin: 0px auto;">
+                            <tbody>
+                                <tr>
+                                    <td style="text-align: right">材料类别</td>
+                                    <td style="position:relative;width:34%;">
+                                        <span style="display:inline-block">
+                                            <div style="position: absolute; top: 4px; z-index: 68;width:176px">
+                                                <div class="card-drop" style=" margin: 0">
+                                                    <a class='toggle' href="#">
+                                                        <span class='label-active'>请选择类型</span>
+                                                        <input type="hidden" />
+                                                    </a>
+                                                    <ul class="tree treemenu"></ul>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                    <td style="text-align: right;width:26%;" id="txt_type">
+                                        <span>
+                                            <select class="component-select" onchange="" style="">
+                                                <option value="名称" class="select-cmd">名称</option>
+                                                <option value="编码" class="select-cmd">编码</option>
+                                            </select>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <input id="txt_name" type="text" style="width: 150px; height: 34px;">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>&nbsp;</p>
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <button class="btn btn-primary" onclick="search()" type="button">查询</button>
+                                <button class="btn btn-default btn-reset" onclick="reset()" type="button">重置</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="dataTable-box">
+                        <div class="dataTable text-center">
+                            <div id="viewHtml">
+                                <div class="table-head">
+                                    <table class="table table-hover" id="materialTable">
+                                        <thead>
+                                            <tr class="listDataTh" style="border-top-color: rgb(221, 221, 221); border-top-width: 1px; border-top-style: solid;">
+                                                <td width="" title="申请人" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; -ms-text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer;" href="#">材料编码</a>
+                                                </td>
+                                                <td width="" title="部门" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; -ms-text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer;" href="#">材料名称</a>
+                                                </td>
+                                                <td width="" title="申请金额" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; -ms-text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer;" href="#">单价</a>
+                                                </td>
+                                                <td width="" title="批准金额" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; -ms-text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer;" href="#">计量单位</a>
+                                                </td>
+                                                <td width="" title="状态" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; -ms-text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer;" href="#">操作</a>
+                                                </td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody> </tbody>
+                                    </table>
+                                </div>
+                                <div>
+                                         <table>
+                            <tr>
+                        <td width="1%" colspan="7">
+                            <div id="matPagination" class="pagination" style="float: right;">
+                                <!-- 这里显示分页 -->
+                            </div>
+                            <div id="mathiddenresult" style="display: none;" />
+                        </td>
+                    </tr>
+                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+       </div>
+
+    <script src="../../Scripts/custom.js"></script>
+    <script src="../../Scripts/tree.js"></script>
+<script type="text/javascript">
+    /*弹框JS内容*/
+    jQuery(document).ready(function ($) {
+        //打开窗口
+        $('.cd-popup-trigger0').on('click', function (event) {
+            event.preventDefault();
+            $('.cd-popup').addClass('is-visible');
+        });
+        //关闭窗口
+        $('.cd-popup-close').on('click', function (event) {
+            $(".cd-popup").removeClass('is-visible');
+            parent.deleteGlobalShade();
+        });
+        //返回按钮事件
+        $('.btn_return').on('click', function (event) {
+            $(".cd-popup").removeClass('is-visible');
+            parent.deleteGlobalShade();
+        });
+        //ESC关闭
+        $(document).keyup(function (event) {
+            if (event.which == '27') {
+                $('.cd-popup').removeClass('is-visible');
+            }
+        });
+    });
+</script>
+</body>
+</html>
+

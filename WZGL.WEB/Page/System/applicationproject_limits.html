@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../CSS/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../CSS/master.css" />
+    <link rel="stylesheet" href="../../CSS/System/singleproject_limits.css" />
+    <title></title>
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+</head>
+<body>
+    <div id="documentContent">
+        <div class="container">
+            <div class="container_content">
+                <div class="container_btn">
+                    <ul class="btn_vessel lf">
+                        <li class="btn btn_save">
+                            <a href="#">
+                                <i></i>
+                                保存
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class="table_vessel" style=" border-top: 1px solid #dddddd;">
+                    <table id="limitsset" class="table jurisdiction table-responsive">
+                        <thead>
+                            <tr>
+                                <th>部门</th>
+                                <th colspan="8" style="text-align:center">权限分配</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--<tr>
+                <td class="part0"><span></span>生产</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+
+
+            </tr>
+            <tr>
+                <td class="part1"><span></span>生产科</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+
+            </tr>
+            <tr>
+                <td class="part2"><span></span>综一到准队</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+
+            </tr>
+            <tr>
+                <td class="part2"><span></span>皮带二队</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+
+            </tr>
+            <tr>
+                <td class="part1"><span></span>综机办</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+
+            </tr>
+            <tr>
+                <td class="part2"><span></span>综安队</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+
+            </tr>
+            <tr>
+                <td class="part2"><span></span>综机工厂</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+
+            </tr>-->
+                        </tbody>
+                        <!--<tbody>
+            <tr>
+                <td class="part0"><span></span>开掘</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+
+            </tr>
+            <tr>
+                <td class="part1"><span></span>开拓科</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+
+            </tr>
+            <tr>
+                <td class="part2"><span></span>开一到开三</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+
+            </tr>
+            <tr>
+                <td class="part2"><span></span>掘一到掘七</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+
+            </tr>
+            <tr>
+                <td class="part0"><span></span>机电</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+
+            </tr>
+            <tr>
+                <td class="part0"><span></span>通修防突</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+
+            </tr>
+            <tr>
+                <td class="part0"><span></span>经营</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+            </tr>
+            <tr>
+                <td class="part0"><span></span>后勤</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+            </tr>
+            <tr>
+                <td class="part0"><span></span>多经</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+            </tr>
+            <tr>
+                <td class="part0"><span></span>工会</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+            </tr>
+            <tr>
+                <td class="part0"><span></span>政工</td>
+                <td><input type="checkbox" /><label>原煤开采</label></td>
+                <td><input type="checkbox" /><label>开掘工程</label></td>
+                <td><input type="checkbox" /><label>单项工程</label></td>
+                <td><input type="checkbox" /><label>修理材料</label></td>
+                <td><input type="checkbox" /><label>其他项目</label></td>
+            </tr>
+        </tbody>-->
+
+                    </table>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+    <script src="../../Scripts/System/applicationproject_limits.js"></script>
+</body>
+</html>

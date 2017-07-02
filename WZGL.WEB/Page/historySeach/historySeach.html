@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <link rel="stylesheet" href="../../CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../CSS/nr-date.css" />
+    <link rel="stylesheet" href="../../CSS/message.css" />
+    <link href="../../CSS/master.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../CSS/infomation.css" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <title></title>
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/nr-date.js"></script>
+    <script src="../../Scripts/jquery.pagination.js"></script>
+
+    <style>
+        .data {
+            /*width: 120px;*/
+            /*display: inline-block;*/
+            /*position: relative;*/
+        }
+
+        .lf {
+            float: left;
+        }
+
+        #headerNav .finishedSeach .data input {
+            width: auto;
+            /*margin-left: 120px;*/
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="contentBox" class="content_box">
+        <div id="headerNav" class="toCreate">
+            <ul class="header_nav">
+                <!-- <li class="stration"><a class="on_active " href="#">行政办公</a><span></span></li>
+                <li class="user"><a href="#">客户管理</a><span></span></li>
+                 <li class="user"><a href="#">客户管理</a><span></span></li>
+                 <li class="user"><a href="#">客户管理</a><span></span></li>
+                 <li class="user"><a href="#">客户管理</a><span></span></li>-->
+
+            </ul>
+            <div class="finishedSeach">
+                <div id="myStartBtn" class="myStartBtn">
+                    <input id="MyStartChecked" type="checkbox" /><label for="MyStartChecked">我发起的</label>
+                </div>
+                <div class="data lf">
+                    <input type="text" class="" id="inp2" placeholder="开始日期" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false" /><span>至</span> &nbsp;<input type="text" class="" id="inp3" placeholder="结束日期" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false" />
+                </div>
+                <div class="input-group">
+                    <input id="searchInform" type="text" placeholder="请输入搜索内容" />
+                    <div class="input-group-btn" style="left:-3px;top:0px;">
+                        <button onclick="search()" class="btn btn-info search">
+                            <i></i>
+                        </button>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="div_list">
+            </div>
+        </div>
+    </div>
+    <script>
+        calender("#inp2").init({
+           format: 'yyyy--MM--dd',
+            button: true,
+        }, function (date) {
+            console.log(date)
+            this.value = date
+        });
+        debugger;
+        //(function () {
+        //    calender("#inp2").init({
+              
+        //        format: 'yyyy-MM-dd',
+              
+        //    }, function (date) {
+        //        this.value = date
+        //    });
+        //})();
+        (function () {
+            calender("#inp3").init({
+               
+                format: 'yyyy-MM-dd',
+             
+            }, function (date) {
+                this.value = date
+            });
+        })();
+
+
+    </script>
+    <script src="../../Scripts/newFlow/historySeach.js"></script>
+
+</body>
+</html>

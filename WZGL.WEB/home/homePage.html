@@ -1,0 +1,927 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="../CSS/home/style.css" />
+    <link rel="stylesheet" href="../CSS/layer.css" />
+    <link rel="stylesheet" href="../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../CSS/master.css" />
+    <!--<link rel="stylesheet" href="../CSS/System/userTable.css" />-->
+    <title>homePage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script src="../Scripts/jquery-1.11.3.js"></script>
+    <script src="../Scripts/jquery.slimscroll.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <!--<script src="../Scripts/Common/md5.js"></script>-->
+    <!--<script src="../Scripts/Common/wzglcommon.js"></script>-->
+    <script src="../Scripts/html2canvas.js"></script>
+    <style>
+        #mask {
+            z-index: 800;
+        }
+    </style>
+</head>
+<body>
+    <div class="cd-popup-all" id="mask_all"></div>
+    <div class="cd-popup" id="mask_top" style="height:60px"></div>
+    <div class="cd-popup" id="mask_left" style="width:220px;top:60px"></div>
+    <div id="header">
+        <div class="header-inner">
+            <div class="navbar-item text-center logo">
+                测试版管理系统
+            </div>
+            <div id="navMaxWidth" class="navbar-item navbar-tabs">
+                <div class="navbar-tabs-panel">
+                    <ul id="navWidth" class="header-nav">
+                        <li class="activeBlue">
+                            <a id="home">主页</a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="navPreview" class="d3">
+                    <i class="fa fa-window-restore"></i>
+                    <span id="badgeLabel" class="badge">1</span>
+                </div>
+            </div>
+            <div class="navbar-item text-center">
+                <div class="header-userInfor rt">
+                    <div class="userPhoto">
+                        <img id="userPhoto" alt="user" />
+                        <ul class="user-control expansionHide">
+                            <li><i class="fa fa-volume-up"></i><a href="#">消息中心</a></li>
+                            <li id="d3"><i class="fa fa-user"></i><a href="#">个人设置</a></li>
+                            <li onclick="loginOut()"><i class="fa fa-power-off"></i><a href="#">注销</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--main-->
+    <div id="main">
+        <div id="leftAside">
+            <div id=""></div>
+            <ul id="accordion1" class="menu-fist panel">
+                <li class="">
+                    <a href="#flowManagemen" data-toggle="collapse" data-parent="#leftAside" class="collapsed">
+                        <span class="icon-main-menu icon-flowcenter">
+
+                        </span>
+                        <h5 class="aside-active">流程中心</h5>
+                    </a>
+                    <ul id="flowManagemen" class="menu-secend collapse">
+                        <li>
+                            <a href="#newFlow">发起新建</a>
+                        </li>
+                        <li>
+                            <a href="#commission">我的待办</a>
+                        </li>
+                        <li>
+                            <a href="#handle">经办跟踪</a>
+                        </li>
+                        <li>
+                            <a href="#historySeach">历史查询</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div id="asideContainer">
+                <ul id="test0" class="first-menu plane" data-toggle="collapse" data-parent="#leftAside">
+                   
+                    <li id="d1" class="zero-menu-item">
+                        <ul>
+                            <li class="pL10">仓库管理</li>
+                            <li class='first-menu-item'>
+                                <a href='#1' class='first-menu-name active'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5>仓库管理</h5></a>
+                                <ul style="display:block;" class='second-menu second-menu-pad' id='dataId0'>
+                                    <li class='second-menu-item'>
+                                        <a class='second-menu-content' href='#DF6F78D3-851E-41F1-8815-A7841B001068'>我的仓库</a>
+                                    </li>
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#36C966A2-7932-44A6-B2A5-7DF65BDC58FB'>材料类别管理</a></li>
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#82C2BC3F-F3A1-41A9-B72E-16CB80B384EE'>材料编码库管理</a></li>
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#CE229170-9972-4FB5-B858-1BB70815FAFA`'>材料回收管理</a></li>
+                                    <li class='second-menu-item'>
+                                        <a class='second-menu-content' href='#986B96A2-C561-4A71-8099-2C6184D73BF3'>周转性材料管理</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#852D5877-2CCA-4E13-B8EC-C9AE54E701D6'>全矿库存查询</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li id="d2" class="zero-menu-item" style="display:none;">
+                        <ul>
+                            <li class="pL10">资金管理</li>
+                            <li class='first-menu-item'>
+                                <a href='#8' class='first-menu-name active'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5>资金管理</h5></a>
+                                <ul style="display:block;" class='second-menu' id='dataId1'>
+                                    <li class='second-menu-item'>
+                                        <a class='second-menu-content' href='#51F7CEFB-3FE7-4108-B175-0FB312B77FF9'>我的账户</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+                                        <a class='second-menu-content' href='#C1018F0A-ECB5-422A-B7D9-71E7BB168B5A'>新建资金申请</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+                                        <a class='second-menu-content' href='#1EA2577E-DB05-4B0D-A0B7-D94641D642A3'>资金申请查询</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#D3E165AD-EEA1-48AA-AACE-B3389138A23F'>全矿资金账户查询</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#639B4105-9D7E-4729-918A-C60E58D239DA'>资金账户流水查询</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li id="d3" class="zero-menu-item" style="display:none;">
+                        <ul>
+                            <li class="pL10">生产与预算</li>
+                            <li class='first-menu-item'>
+                                <a href='#13' class='first-menu-name active'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5>生产记录</h5></a>
+                                <ul style="display:block;" class='second-menu' id='dataId2'>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#coalminedailyrecord'>原煤生产记录</a>
+                                    </li>
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#'>开拓掘进记录</a></li>
+                                </ul>
+                            </li>
+                            <li class='first-menu-item'>
+                                <a href='#15' class='first-menu-name'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5>月度生产计划</h5></a>
+                                <ul class='second-menu ' id='dataId3'>
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#113'>月度生产经营汇总计划</a></li>
+
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#16'>月度原煤生产经营计划</a></li>
+
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#17'>月度开拓掘进计划</a></li>
+
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#18'>月度支撑钢使用及修旧计划</a></li>
+
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#19'>月度单项工程计划</a></li>
+
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#20'>月度后勤单位工作计划</a></li>
+                                </ul>
+                            </li>
+                            <li class='first-menu-item'>
+                                <a href='#21' class='first-menu-name'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5>年生产计划</h5></a>
+                                <ul class='second-menu ' id='dataId4'>
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#22'>采面接替与原煤产量滚动计划</a></li>
+
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#'>年度井巷工程排队计划</a></li>
+                                </ul>
+                            </li>
+                            <li class='first-menu-item'>
+                                <a href='23' class='first-menu-name'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5>年度材料预算</h5></a>
+                                <ul class='second-menu ' id='dataId5'>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#24'>年度全矿材料预算</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#25'>年度大型材料预算</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#26'>年度原煤生产材料指标</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#27'>年度开拓掘进材料指标</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='first-menu-item'>
+                                <a href='#28' class='first-menu-name'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5>月度材料计划</h5></a>
+                                <ul class='second-menu collapse' id='dataId6'>
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#'>月度全矿材料预算</a></li>
+
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#29'>月度大型材料预算</a></li>
+
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#30'>月度原煤生产材料指标</a></li>
+
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#31'>月度开拓掘进材料指标</a></li>
+
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#32'>单位材料限额指标</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li id="d4" class="zero-menu-item" style="display:none;">
+                        <ul>
+                            <li class="pL10">计划与验收</li>
+                            <li class='first-menu-item'>
+                                <a href='#33' class='first-menu-name active'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5>材料计划</h5></a>
+                                <ul style="display:block;" class='second-menu ' id='dataId7'>
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#45364B42-1425-4A65-9EEC-957CA2D80907'>新建材料计划</a></li>
+
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#45364B42-1425-4A65-9EEC-957CA2D80907'>材料计划查询</a></li>
+                                </ul>
+                            </li>
+                            <li class='first-menu-item'>
+                                <a href='#DB3E9CA4-2C5E-415C-970E-9DB1F75EFBD3' class='first-menu-name'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5>采购计划</h5></a>
+                                <ul class='second-menu ' id='dataId8'><li class='second-menu-item'><a class='second-menu-content' href='#45364B42-1425-4A65-9EEC-957CA2D80907'>新建采购计划</a></li><li class='second-menu-item'><a class='second-menu-content' href='#'>采购计划查询</a></li></ul>
+                            </li>
+                            <li class='first-menu-item'>
+                                <a href='#2DFA1150-0F9B-4817-AA0C-07AF99B55CD4' class='first-menu-name'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5>材料验收</h5></a>
+                                <ul class='second-menu ' id='dataId9'>
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#39'>新建验收通知</a></li>
+
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#40'>材料验收查询</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li id="d5" class="zero-menu-item" style="display:none;">
+                        <ul>
+
+
+                            <li class="pL10">批控与考核</li>
+                            <li class='first-menu-item'>
+                                <a href='#41' class='first-menu-name active'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5> 材料批控</h5></a>
+                                <ul style="display:block;" class='second-menu collapse' id='dataId10'>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#45364B42-1425-4A65-9EEC-957CA2D80907'>新建材料申请</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#43'>材料申请查询</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#44'>材料消耗查询</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='first-menu-item'>
+                                <a href='#46' class='first-menu-name'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5>材料考核</h5></a>
+                                <ul class='second-menu collapse' id='dataId11'>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#47'>材料考核查询</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#2DFA1150-0F9B-4817-AA0C-07AF99B55CD4'>材料回收考核</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#49'>材料考核统计</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li id="d6" class="zero-menu-item" style="display:none;">
+                        <ul>
+
+
+                            <li class="pL10">统计与查询</li>
+                            <li class='first-menu-item'>
+                                <a href='#50' class='first-menu-name active'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5>查询</h5></a>
+                                <ul style="display:block;" class='second-menu collapse' id='dataId12'>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#51'>全矿库库存查询</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#52'>全矿资金账户查询</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#53'>材料计划查询</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#54'>材料消耗查询</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='first-menu-item'>
+                                <a href='#dataId14' class='first-menu-name'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5>统计</h5></a>
+                                <ul class='second-menu collapse' id='dataId13'>
+                                    <li class='second-menu-item'><a class='second-menu-content' href='#55'>全矿材料考核统计</a></li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#56'>全矿材料消耗统计</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#57'>全矿大型材料投入统计</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#58'>直接队材料消耗统计</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#59'>全矿材料考核算表</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li id="d7" class="zero-menu-item" style="display:none;">
+                        <ul>
+                            <li class="pL10">系统管理</li>
+                            <li class='first-menu-item'>
+                                <a href='60' class='first-menu-name active'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5>用户权限</h5></a>
+                                <ul style="display:block;" class='second-menu collapse' id='dataId15'>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#159C63B0-2137-4395-B3A7-DF8BD49424A1'>用户管理</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#14846AE9-1DD2-4B11-A521-ABCADB34CDA5'>角色管理</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+
+                                        <a class='second-menu-content' href='#9CA6B03B-96AE-4539-A283-2C76F7109966'>部门管理</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='first-menu-item'>
+                                <a href='#64' class='first-menu-name'><span class='icon-main-menu'><img src='../Images/2.png' /></span><h5>项目管理</h5></a>
+                                <ul class='second-menu collapse' id='dataId15'>
+                                    <li class='second-menu-item'>
+                                        <a class='second-menu-content' href='#F5BC6AF6-9F3F-4513-9227-6AA041EF53C5'>井巷工程管理</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+                                        <a class='second-menu-content' href='#ECF98248-F819-497A-8ACC-44909CEEA8EF'>单项工程管理</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+                                        <a class='second-menu-content' href='#DA6DB310-6142-4207-965D-E5FB67FBA3BF'>采面管理</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+                                        <a class='second-menu-content' href='#AFD57A1F-8194-43D5-B24E-6F616DA14FD3'>单项工程权限配置</a>
+                                    </li>
+                                    <li class='second-menu-item'>
+                                        <a class='second-menu-content' href='#C505E4B0-6AFA-4A2D-9C95-2D812B0B3EE1'>材料申请项目权限配置</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                   
+
+                </ul>
+
+                <div id="asideFooter">
+                    <ul class="functionManagemen">
+                        <li class="active">
+                            <a href="#C1018F0A-ECB5-422A-B7D9-71E7BB168B5A" menu_id="d1" class="foot-menu-name">仓库管理</a>
+                        </li>
+
+                        <li class="">
+                            <a href="#51F7CEFB-3FE7-4108-B175-0FB312B77FF9" menu_id="d2" class="foot-menu-name">资金管理</a>
+                        </li>
+                        <li class="">
+                            <a href="" menu_id="d3" class="foot-menu-name">生产与预算</a>
+                        </li>
+                        <li>
+                            <a href="" menu_id="d4" class="foot-menu-name">计划与验收</a>
+                        </li>
+                        <li>
+                            <a href="" menu_id="d5" class="foot-menu-name">批控与考核</a>
+                        </li>
+                        <li>
+                            <a menu_id="d6" class="foot-menu-name">统计与查询</a>
+                        </li>
+                        <li class="wPercentage100">
+                            <a menu_id="d7" class="foot-menu-name">系统管理</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--<ul id="test0" class="first-menu plane" data-toggle="collapse" data-parent="#leftAside"></ul>
+
+            <div id="asideFooter">
+                <ul class="functionManagemen">
+                    <li class="" >
+                        <a href="##0">仓库管理</a>
+                    </li>
+
+                    <li class="">
+                        <a href="##1">资金管理</a>
+                    </li>
+                    <li class="">
+                        <a href="##2">生产与预算</a>
+                    </li>
+                    <li>
+                        <a href="##3">计划与验收</a>
+                    </li>
+                    <li>
+                        <a href="##4">批控与考核</a>
+                    </li>
+                    <li>
+                        <a href="##5">统计与查询</a>
+                    </li>
+                    <li class="wPercentage100">
+                        <a href="##6">系统管理</a>
+                    </li>
+                </ul>
+            </div>-->
+        </div>
+        <div id="section">
+            <div id="portal">
+                <!--<div class="portal_l lf">-->
+                <!--<div class="portal_l_first">-->
+                <!--<div class="item-header">-->
+                <!--<div class="lf">-->
+                <!--<span><img src="../Images/widget-icon05.png" alt=""/></span>-->
+                <!--<span>销售漏斗</span>-->
+                <!--<div class="clear"></div>-->
+                <!--</div>-->
+                <!--<div class="action rt">-->
+                <!--<a href="javascript:void(0);" class="refresh" title="刷新">-->
+                <!--</a>-->
+                <!--<a href="javascript:void(0);" class="min" title="收起" style="display: block;">-->
+                <!--</a>-->
+                <!--<a href="javascript:void(0);" class="max" title="展开" style="display: none;">-->
+                <!--</a>-->
+                <!--<a href="javascript:void(0);" class="close" title="关闭">-->
+                <!--</a>-->
+                <!--<div class="clear"></div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="item-content">-->
+                <!--<ul style="padding:10px;margin:0px;">-->
+                <!--<div>-->
+                <!--<div>-->
+                <!--<div style="text-align:center">全部机会<span style="display:inline-block;width:75%;background-color:#BCEE68;margin:0 5px">&nbsp;</span>100%</div>-->
+                <!--<div style="text-align:center">初期沟通<span style="display:inline-block;width:70.3125%;background-color:#C6E2FF;margin:0px 5px;margin-top:0px;">&nbsp;</span>93.75%</div>-->
+                <!--<div style="text-align:center">立项跟踪<span style="display:inline-block;width:23.4375%;background-color:#80FFFF;margin:0px 5px;margin-top:0px;">&nbsp;</span>31.25%</div>-->
+                <!--<div style="text-align:center">呈报方案<span style="display:inline-block;width:14.0625%;background-color:#FFE4B5;margin:0px 5px;margin-top:0px;">&nbsp;</span>18.75%</div>-->
+                <!--<div style="text-align:center">商务谈判<span style="display:inline-block;width:9.375%;background-color:#EEE685;margin:0px 5px;margin-top:0px;">&nbsp;</span>12.5%</div>-->
+                <!--<div style="text-align:center">签约成交<span style="display:inline-block;width:4.6875%;background-color:#ADFF2F;margin:0px 5px;margin-top:0px;">&nbsp;</span>6.25%</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</ul>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="portal_l_first">-->
+                <!--<div class="item-header">-->
+                <!--<div class="lf">-->
+                <!--<span><img src="../Images/widget-icon05.png" alt=""/></span>-->
+                <!--<span>合同情况</span>-->
+                <!--<div class="clear"></div>-->
+                <!--</div>-->
+                <!--<div class="action rt">-->
+                <!--<a href="javascript:void(0);" class="refresh" title="刷新">-->
+                <!--</a>-->
+                <!--<a href="javascript:void(0);" class="min" title="收起" style="display: block;">-->
+                <!--</a>-->
+                <!--<a href="javascript:void(0);" class="max" title="展开" style="display: none;">-->
+                <!--</a>-->
+                <!--<a href="javascript:void(0);" class="close" title="关闭">-->
+                <!--</a>-->
+                <!--<div class="clear"></div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="item-content">-->
+                <!--<ul style="padding:10px;margin:0px;">-->
+                <!--<div>-->
+                <!--<div>-->
+                <!--<div><a>今年合同总金额：30000元</a></div>-->
+                <!--<div><a>今年合同付款总金额：0元</a></div>-->
+                <!--<div><a>本月合同金额：0元</a></div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</ul>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="portal_r rt">-->
+                <!--<div class="portal_r_first">-->
+                <!--<div class="item-header">-->
+                <!--<div class="lf">-->
+                <!--<span><img src="../Images/widget-icon05.png" alt=""/></span>-->
+                <!--<span>流程处理</span>-->
+                <!--<div class="clear"></div>-->
+                <!--</div>-->
+                <!--<div class="action rt">-->
+                <!--<a href="javascript:void(0);" class="refresh" title="刷新">-->
+                <!--</a>-->
+                <!--<a href="javascript:void(0);" class="min" title="收起" style="display: block;">-->
+                <!--</a>-->
+                <!--<a href="javascript:void(0);" class="max" title="展开" style="display: none;">-->
+                <!--</a>-->
+                <!--<a href="javascript:void(0);" class="close" title="关闭">-->
+                <!--</a>-->
+                <!--<div class="clear"></div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="item-content">-->
+                <!--<ul style="padding:10px;margin:0px;">-->
+                <!--<div>-->
+                <!--<ul class="transaction">-->
+                <!--<li id="commission"  class="lf w50 text-center">代办</li>-->
+                <!--<li id="handle" class="rt w50 text-center clickSwitcher">经办</li>-->
+                <!--<div class="clear"></div>-->
+                <!--</ul>-->
+                <!--<div class="tab-contentText">-->
+                <!--<ul id="commissionContent" class="tab-contentText-ul">-->
+                <!--<li class="">-->
+                <!--<div class="tabLiFace"><img src="http://shp.qpic.cn/bizmp/zW59iaTvSgb4pYDRfKInk8y3JMg6MIWaxWaVI7A7u1wvlB87uBVZ0fw/"><span class="isread"></span></div>-->
+                <!--<div class="tabMessageBox">-->
+                <!--<p><span class="font-w400">[通知] 钟总经理 标题：春节晚会</span></p>-->
+                <!--<p><span class="fs12">微OA365钟经理 1小时前</span></p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<div class="tabLiFace"><img src="http://shp.qpic.cn/bizmp/zW59iaTvSgb4pYDRfKInk8y3JMg6MIWaxWaVI7A7u1wvlB87uBVZ0fw/"><span class="isread"></span></div>-->
+                <!--<div class="tabMessageBox">-->
+                <!--<p><span class="font-w400">[通知] 钟总经理 标题：春节晚会</span></p>-->
+                <!--<p><span class="fs12">微OA365钟经理 1小时前</span></p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<div class="tabLiFace"><img src="http://shp.qpic.cn/bizmp/zW59iaTvSgb4pYDRfKInk8y3JMg6MIWaxWaVI7A7u1wvlB87uBVZ0fw/"><span class="isread"></span></div>-->
+                <!--<div class="tabMessageBox">-->
+                <!--<p><span class="font-w400">[通知] 钟总经理 标题：春节晚会</span></p>-->
+                <!--<p><span class="fs12">微OA365钟经理 1小时前</span></p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<div class="tabLiFace"><img src="http://shp.qpic.cn/bizmp/zW59iaTvSgb4pYDRfKInk8y3JMg6MIWaxWaVI7A7u1wvlB87uBVZ0fw/"><span class="isread"></span></div>-->
+                <!--<div class="tabMessageBox">-->
+                <!--<p><span class="font-w400">[通知] 钟总经理 标题：春节晚会</span></p>-->
+                <!--<p><span class="fs12">微OA365钟经理 1小时前</span></p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<div class="tabLiFace"><img src="http://shp.qpic.cn/bizmp/zW59iaTvSgb4pYDRfKInk8y3JMg6MIWaxWaVI7A7u1wvlB87uBVZ0fw/"><span class="isread"></span></div>-->
+                <!--<div class="tabMessageBox">-->
+                <!--<p><span class="font-w400">[通知] 钟总经理 标题：春节晚会</span></p>-->
+                <!--<p><span class="fs12">微OA365钟经理 1小时前</span></p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--</ul>-->
+                <!--<ul style="display: none" id="handleContent" class="tab-contentText-ul ">-->
+                <!--&lt;!&ndash;<li class="">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="tabLiFace"><img src="http://shp.qpic.cn/bizmp/zW59iaTvSgb4pYDRfKInk8y3JMg6MIWaxWaVI7A7u1wvlB87uBVZ0fw/"><span class="isread"></span></div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="tabMessageBox">&ndash;&gt;-->
+                <!--&lt;!&ndash;<p><span class="font-w400">[通知] 钟总经理 标题：春节晚会</span></p>&ndash;&gt;-->
+                <!--&lt;!&ndash;<p><span class="fs12">微OA365钟经理 1小时前</span></p>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--<li>-->
+                <!--<div class="tabLiFace"><img src="http://shp.qpic.cn/bizmp/zW59iaTvSgb4pYDRfKInk8y3JMg6MIWaxWaVI7A7u1wvlB87uBVZ0fw/"><span class="isread"></span></div>-->
+                <!--<div class="tabMessageBox">-->
+                <!--<p><span class="font-w400">[通知] 钟总经理 标题：春节晚会</span></p>-->
+                <!--<p><span class="fs12">微OA365钟经理 1小时前</span></p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<div class="tabLiFace"><img src="http://shp.qpic.cn/bizmp/zW59iaTvSgb4pYDRfKInk8y3JMg6MIWaxWaVI7A7u1wvlB87uBVZ0fw/"><span class="isread"></span></div>-->
+                <!--<div class="tabMessageBox">-->
+                <!--<p><span class="font-w400">[通知] 钟总经理 标题：春节晚会</span></p>-->
+                <!--<p><span class="fs12">微OA365钟经理 1小时前</span></p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<div class="tabLiFace"><img src="http://shp.qpic.cn/bizmp/zW59iaTvSgb4pYDRfKInk8y3JMg6MIWaxWaVI7A7u1wvlB87uBVZ0fw/"><span class="isread"></span></div>-->
+                <!--<div class="tabMessageBox">-->
+                <!--<p><span class="font-w400">[通知] 钟总经理 标题：春节晚会</span></p>-->
+                <!--<p><span class="fs12">微OA365钟经理 1小时前</span></p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<div class="tabLiFace"><img src="http://shp.qpic.cn/bizmp/zW59iaTvSgb4pYDRfKInk8y3JMg6MIWaxWaVI7A7u1wvlB87uBVZ0fw/"><span class="isread"></span></div>-->
+                <!--<div class="tabMessageBox">-->
+                <!--<p><span class="font-w400">[通知] 钟总经理 标题：春节晚会</span></p>-->
+                <!--<p><span class="fs12">微OA365钟经理 1小时前</span></p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--</ul>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</ul>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="portal_r_first">-->
+                <!--<div class="item-header">-->
+                <!--<div class="lf">-->
+                <!--<span><img src="../Images/widget-icon05.png" alt=""/></span>-->
+                <!--<span>流程处理</span>-->
+                <!--<div class="clear"></div>-->
+                <!--</div>-->
+                <!--<div class="action rt">-->
+                <!--<a href="javascript:void(0);" class="refresh" title="刷新">-->
+                <!--</a>-->
+                <!--<a href="javascript:void(0);" class="min" title="收起" style="display: block;">-->
+                <!--</a>-->
+                <!--<a href="javascript:void(0);" class="max" title="展开" style="display: none;">-->
+                <!--</a>-->
+                <!--<a href="javascript:void(0);" class="close" title="关闭">-->
+                <!--</a>-->
+                <!--<div class="clear"></div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="item-content">-->
+                <!--<ul style="padding:10px;margin:0px;">-->
+                <!--<div>-->
+                <!--<div>-->
+                <!--<div><a>今年合同总金额：30000元</a></div>-->
+                <!--<div><a>今年合同付款总金额：0元</a></div>-->
+                <!--<div><a>本月合同金额：0元</a></div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</ul>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div id="rightAside">-->
+                <!--<div id="configBtn">-->
+                <!--<span></span>-->
+                <!--</div>-->
+                <!--<div id="configIcon">-->
+                <!--<a href="#321321">-->
+                <!--<div class="icons">-->
+                <!--<i class="fa fa-plane icon-evection"></i>-->
+                <!--</div>-->
+                <!--<p class="icon-text">出差申请</p>-->
+                <!--</a>-->
+                <!--<a href="#42345223">-->
+                <!--<div class="icons">-->
+                <!--<i class="fa fa-plane icon-evection"></i>-->
+                <!--</div>-->
+                <!--<p class="icon-text">出差申请</p>-->
+                <!--</a>-->
+                <!--<a href="#455435">-->
+                <!--<div class="icons">-->
+                <!--<i class="fa fa-plane icon-evection"></i>-->
+                <!--</div>-->
+                <!--<p class="icon-text">出差申请</p>-->
+                <!--</a>-->
+                <!--</div>-->
+                <!--</div>-->
+            </div>
+            <div id="portalSecond">
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <div id="tabPreview">
+        <div id="slimScroll" class="slimScrollDiv">
+            <ul id="tabsContainer" class="tabs-preview-panel">
+                <li class="active">
+                    <a class="homePage" href="#homePage" data-url="homepage.jsp">
+                        <div class="nav-title">主页</div>
+                    </a>
+                    <img src="../Images/tab-home.jpg" style="width: 100%;height: 100%;">
+                    <i class="fa fa-lock"></i>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="nav-closeAll">
+            <a href="#" class="nav-btn">关闭窗口</a>
+        </div>
+        <!-- 遮罩层-->
+        <div id="backShade"></div>
+    </div>
+    <!--个人设置-->
+    <div class="cd-popup" id="cd2" style="">
+        <div class="cd-popup-container">
+            <div class="aui_header">
+                <span>个人设置</span>
+                <a href="#" id="close" class="cd-popup-close aui_close" style="line-height: 40px;">
+                    <span class=" fa fa-times" aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="cd-content">
+                <div class="from-group" style="text-align: left; padding: 10px ;border-bottom: 1px solid #dddddd;">
+                    <ul>
+                        <li class="btn btn_save" onclick="save()"><a href="#"><i></i>保存</a></li>
+                    </ul>
+                </div>
+                <form class="form" style="padding-bottom:10px;margin:10px;">
+                    <fieldset style="border: 1px dashed #d8d8d8;margin:10px 5px;text-align:left;">
+                        <legend>基本信息</legend>
+                        <div class="form-group" style="text-align: left; ">
+                            <div class="labe-image">
+                                <label>头像</label>
+                                <div class="big-photo">
+                                    <div id="preview">
+                                        <img id="imghead" border="0" width="90" height="90">
+                                    </div>
+                                    <input autocomplete="off" type="file" onchange="previewImage(this)" style="display: none;" id="previewImg">
+                                </div>
+                            </div>
+                        </div>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="form-group" style="text-align: left; ">
+                                        <label for="userAccount">账号<span class="red">*</span></label>
+                                        <input autocomplete="off" id="userAccount" type="text" value="用户账号" disabled="disabled" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group form-section" style="text-align: left;">
+                                        <label class="form-section-label">部门<span class="red">*</span></label>
+                                        <!--<div class="card-drop" id="cardDrop" style="border: 0px;">-->
+                                        <input autocomplete="off" type="text" id="org" value="1111" disabled="disabled" />
+                                        <!--</div>-->
+                                    </div>
+                                </td>
+                                
+                                
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group" style="text-align: left; ">
+                                        <label for="roleuserName">姓名<span class="red">*</span> </label>
+                                        <input autocomplete="off" id="roleuserName" placeholder="" type="text" />
+                                        <!--<label id="roleuserNameTip" class=" control-success">用户姓名不能为空</label>-->
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group" style="text-align: left;">
+                                        <label for="duty">职务<span class="red">*</span></label>
+                                        <input autocomplete="off" id="duty" type="text" value="企管科批料员" disabled="disabled" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group" style="text-align: left; ">
+                                        <label for="contactInformation">联系方式<span class="red">*</span>    </label>
+                                        <input autocomplete="off" id="contactInformation" type="text" placeholder="请输入手机号码或电话" />
+                                        <!--<label id="contactInformationTip" class=" control-success">请输入电话号码</label>-->
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <fieldset style="border: 1px dashed #d8d8d8;margin:10px 5px;text-align:left;">
+                        <legend>
+                            修改密码
+                        </legend>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="form-group" style="text-align: left; ">
+                                        <label for="userPsd">原密码&nbsp;</label>
+                                        <input autocomplete="off" id="userPsdold" placeholder="请输入原始密码" type="password" />
+                                        <!--<label id="passwordold" class=" control-success">请输入6至12位的数字.</label>-->
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group" style="text-align: left; ">
+                                        <label for="userPsd">新密码&nbsp;</label>
+                                        <input autocomplete="off" id="userPsd" placeholder="请输入8至12数字或字母" type="password" />
+                                        <!--<label id="passwordTip" class=" control-success">请输入6至12位的数字.</label>-->
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group" style="text-align: left; ">
+                                        <label for="verifyPsd">确认密码&nbsp;</label>
+                                        <input autocomplete="off" id="verifyPsd" placeholder="再次输入新密码" type="password" />
+                                        <!--<label id="passwordTip1" class=" control-success">请输入6至12位的数字.</label>-->
+                                    </div>
+                                 </td>
+                                <td></td>
+                            </tr>
+                        </table>  
+                    </fieldset>
+                   
+                </form>
+
+            </div>
+        </div>
+        <div id="toast-container" class="toast-top-right" aria-live="polite" role="alert">
+            <div class="toast toast-error" style="display: block;">
+                <div class="toast-progress" style="width: 300px;"></div>
+                <button type="button" class="toast-close-button" role="button">×</button>
+                <div class="toast-message">
+                    <div id="roleuserNameTip"></div>
+                    <div id="userAccountTip"></div>
+                    <div id="contactInformationTip"></div>
+                    <div id="passwordTip"></div>
+                    <div id="passwordTip1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- TODO 基于 jQuery 实现的 -->
+    <script src="../Scripts/home/homePage.js">
+    </script>
+    <script>
+        jQuery(document).ready(function ($) {
+            //打开窗口
+            $('#d3').on('click', function (event) {
+                //            event.preventDefault();
+                $('.cd-popup').addClass('is-visible');
+                $("#mask_left").css("display", "none");
+                $("#mask_top").css("display","none");
+            });
+            //关闭窗口
+            $('.cd-popup-close').on('click', function (event) {
+                $(".cd-popup").removeClass('is-visible');
+                $("#mask_left").css("display", "block");
+                $("#mask_top").css("display", "block");
+            });
+        });
+    </script>
+    <!--<script>
+        if ($("#asideFooter .functionManagemen li").length % 2 == 1) {
+            $("#leftAside #asideFooter .functionManagemen li:last-child").css({
+                "width": "100%",
+                "textAlign": "center"
+            })
+            ;
+        }
+    </script>-->
+  
+    <script>
+   function previewImage(file) {
+       console.log(file);
+       var MAXWIDTH = 90;
+       var MAXHEIGHT = 90;
+       var div = document.getElementById('preview');
+       console.log(file.files);
+       console.log(file.files[0]);
+       if (file.files && file.files[0]) {
+           div.innerHTML = '<img id=imghead onclick=$("#previewImg").click()>';
+           var img = document.getElementById('imghead');
+           img.onload = function () {
+               var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+               img.width = rect.width;
+               img.height = rect.height;
+               //                 img.style.marginLeft = rect.left+'px';
+               img.style.marginTop = rect.top + 'px';
+           };
+           var reader = new FileReader();
+           reader.onload = function (evt) { img.src = evt.target.result; }
+           reader.readAsDataURL(file.files[0]);
+       }
+       else //兼容IE
+       {
+           var sFilter = 'filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+           file.select();
+           var src = document.selection.createRange().text;
+           div.innerHTML = '<img id=imghead>';
+           var img = document.getElementById('imghead');
+           img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+           var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+           status = ('rect:' + rect.top + ',' + rect.left + ',' + rect.width + ',' + rect.height);
+           div.innerHTML = "<div id=divhead style='width:" + rect.width + "px;height:" + rect.height + "px;margin-top:" + rect.top + "px;" + sFilter + src + "\"'></div>";
+       }
+   }
+    function clacImgZoomParam(maxWidth, maxHeight, width, height) {
+        var param = { top: 0, left: 0, width: width, height: height };
+        if (width > maxWidth || height > maxHeight) {
+            rateWidth = width / maxWidth;
+            rateHeight = height / maxHeight;
+
+            if (rateWidth > rateHeight) {
+                param.width = maxWidth;
+                param.height = Math.round(height / rateWidth);
+            } else {
+                param.width = Math.round(width / rateHeight);
+                param.height = maxHeight;
+            }
+        }
+        param.left = Math.round((maxWidth - param.width) / 2);
+        param.top = Math.round((maxHeight - param.height) / 2);
+        return param;
+    }
+
+    //$(function () {
+    //    $(".tree").treemenu({ delay: 300 }).openActive();
+    //});
+    </script>
+    
+    <script src="../Scripts/home/userset.js"></script>
+</body>
+</html>

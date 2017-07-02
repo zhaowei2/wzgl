@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../../CSS/master.css" />
+    <link rel="stylesheet" href="../../CSS/nr-date.css">
+    <link rel="stylesheet" href="../../CSS/index.css" />
+    <link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="../../CSS/layer.css" />
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/jquery.pagination.js"></script>
+    <script src="../../Scripts/System/dict.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+    <title></title>
+    <style>
+        .grid-button-cancel {
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        }
+
+        .grid-button-redact {
+            height: 34px;
+            padding: 3px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        }
+
+        .form-control {
+            width: 196px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-content">
+        <form id="document_content">
+            <div id="container">
+                <div>
+                    <div id="activityTable1" class="activity-box" style=" padding: 10px ;border-bottom: 1px solid #dddddd;">
+                        <ul style="display: inline-block">
+                            <li class="btn btn_newly" id="new1">
+                                <a href="#"><i></i>新建</a>
+                            </li>
+                            <!--<li class="btn btn_save" id="baochun1">
+                                <a href="#"><i></i>保存</a>
+                            </li>-->
+                        </ul>
+                        <button type="button" class="btn bg-info search" style="display: inline-block;float: right">
+                            <i></i>
+                        </button>
+                    </div>
+                    <div class="searchDiv searchFromTable" style="padding-top: 1.5em;display: none">
+                        <table style="margin: 0 auto">
+                            <tbody align="left">
+                                <tr>
+                                    <td style="text-align: right">字典名称</td>
+                                    <td>
+                                        <span>
+                                           
+                                            <input class="form-control component-input" type="text" name="字典名称" id="txt_name1" style="width: 200px">
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>&nbsp;</p>
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <button type="button" class="btn btn-primary" onclick="Select()">查询</button>
+                                <button type="button" class="btn btn-default btn-reset" onclick="Reset()">重置</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cd-popup">
+                        <div class="cd-popup-container">
+                            <div class="aui_header">
+                                <span>添加</span>
+                                <a href="#" id="close" class="cd-popup-close aui_close" style="line-height: 40px;">
+                                    <span class=" fa fa-times" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                            <div>
+                                <p style="padding-bottom: 10px;border-bottom: 1px solid #dddddd; text-align: left;padding-left: 10px; padding-top: 10px;">
+                                    <button type="button" id="quer" class="btn btn-info">保存</button>
+                                    <button type="button" id="fanh" style="margin-left: 10px;background: #93DE3E;border: 1px solid #93DE3E; " class="btn btn-info">返回</button>
+                                </p>
+                                <div class="cd-content" style="padding: 20px 0px">
+                                    <div  id="div_XH" style="text-align: left;display:none">
+                                        <span style="display: inline-block; width: 50px">序号&nbsp; :&nbsp; </span>
+                                        <span style="display: inline-block; width: 196px;">
+                                            <input class="form-control component-input" type="text" id="txt_dictid" style="width: 200px;display:none" />
+                                            <input class="form-control component-input" type="text" id="txt_itemid" style="width: 200px;display:none" />
+                                            <input class="form-control component-input" id="txt_XH" type="text" name="材料编码" />
+                                        </span>
+                                    </div>
+                                    <div style="text-align: left;display:inline-block">
+                                        <span style="display: inline-block; width: 100px" id="sp_name" >字典名称&nbsp; :&nbsp; </span>
+                                        <span style="display: inline-block; width: 196px;">
+                                            <input class="form-control component-input" id="txt_name" type="text">
+                                        </span>
+                                    </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div id="dataTable-box1">
+                        <div class="dataTable text-center">
+                            <div id="viewHtml1">
+                                <div class="table-head">
+                                    <table class="table table-hover" id="stockCoals1">
+                                        <thead>
+                                            <tr class="listDataTh" style="background: #F4F5F5;">
+                                                <td width="" title="字典名称" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;vertical-align:middle;">
+                                                    <a style="cursor:pointer" href="#">字典名称</a>
+                                                </td>
+                                                <td width="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;vertical-align:middle;">
+                                                    <a style="cursor:pointer" href="#">操作</a>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="dataBody1"></tbody>
+                                    </table>
+                                    <table>
+                                        <tr>
+                                            <td width="1%" colspan="6">
+                                                <div id="Pagination" class="pagination" style="float: right;">
+                                                    <!-- 这里显示分页 -->
+                                                </div>
+                                                <div id="hiddenresult" style="display: none;" />
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div>
+                    <div id="activityTable" class="activity-box">
+                        <ul>
+                            <li class="btn btn_newly" id="new">
+                                <a href="#"><i></i>新增</a>
+                            </li>
+                            <!--<li class="btn btn_save" id="baochun">
+                                <a href="#"><i></i>保存</a>
+                            </li>-->
+                            <li class="btn btn_return" onclick="up()">
+                                <a href="#">上移</a>
+                            </li>
+                            <li class="btn btn_return" onclick="down()" style="background-color: #5bc0de">
+                                <a href="#">下移</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="dataTable-box">
+                        <div class="dataTable text-center">
+                            <div id="viewHtml">
+                                <div class="table-head">
+                                    <table class="table table-hover" id="stockCoals">
+                                        <thead>
+                                            <tr class="listDataTh" style="background: #F4F5F5;">
+                                                <td width="" title="序号" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;vertical-align:middle;">
+                                                    <a style="cursor:pointer" href="#">序号</a>
+                                                </td>
+                                                <td width="" title="字典项名称" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;vertical-align:middle;">
+                                                    <a style="cursor:pointer" href="#">字典项名称</a>
+                                                </td>
+                                                <td width="" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;vertical-align:middle;">
+                                                    <a style="cursor:pointer" href="#">操作</a>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="dataBody"></tbody>
+                                    </table>
+                                    <table>
+                                        <tr>
+                                            <td width="1%" colspan="6">
+                                                <div id="Pagination1" class="pagination" style="float: right;">
+                                                    <!-- 这里显示分页 -->
+                                                </div>
+                                                <div id="hiddenresult" style="display: none;" />
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <script>
+                </script>
+                <script>
+                    //function up() {
+                    //    $.each($("table input:checkbox"), function () {
+                    //        var onthis = $(this).parent().parent();
+                    //        var getUp = onthis.prev();
+
+                    //        if ($(getUp).has("input").size() == 0) {
+                    //            return;
+                    //        }
+                    //        $(onthis).after(getUp);
+                    //    });
+                    //}
+                    //function down() {
+
+                    //    $.each($("table input:checkbox"), function () {
+                    //        var onthis = $(this).parent().parent();
+
+                    //        var getdown = onthis.next();
+
+                    //        $(getdown).after(onthis);
+                    //    });
+                    //}
+                </script>
+            </div>
+        </form>
+    </div>
+    <script src="../../Scripts/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,721 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../../CSS/master.css" />
+    <link rel="stylesheet" href="../../CSS/nr-date.css">
+    <link rel="stylesheet" href="../../CSS/index.css" />
+    <link href="../../CSS/tree.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="../../CSS/layer.css" />
+    <link rel="stylesheet" href="../../CSS/infomation.css" />
+
+    <link href="../../CSS/Plan/message.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/jquery.pagination.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+    <title>材料计划编辑</title>
+    <style>
+        .grid-button-cancel {
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        }
+
+        .table tr td {
+            border: 1px solid #ddd;
+        }
+
+        .grid-button-redact {
+            height: 28px;
+            padding: 3px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="form-content">
+        <div class="container">
+            <form id="document_content">
+                <div id="container">
+                    <div id="activityTable" class="activity-box">
+                        <ul>
+                            <li class="btn btn_commit" id="btn_commit"><a href="#"><i></i>提交</a>    
+                            </li>
+                            <li class="btn btn_save" id="btnsave"><a href="#"><i></i>保存</a>
+                            </li>
+
+                            <li class="btn btn-info" id="btnapproval" style="display:none">
+                                <a href="#"><i></i>审批记录</a>
+                            </li>
+                            <li class="btn btn_return" id="btn_return"><a href="#"><i></i>返回</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="searchDiv" id="tiy" style="display: none; opacity: 1; position: fixed; width: 100%; z-index: 10; background-color: #FFFFFF; border-top: 0px; border-bottom: 1px solid #2a91da; padding: 10px;">
+                        <div id="flowHtmlForm" style="width: 75%; padding: 0 15px; margin: auto; position: relative;">
+                            <fieldset style="border-radius: 4px; border: solid 1px #d9d9d9;">
+                                <legend style="border: none; width: 80px; margin-left: 10px; margin-bottom: 0px; font-size: 16px; color: #33333f; padding-left: 15px;">意见</legend>
+                                <div id="textarea_counter" style="position: absolute; right: 42px; top: 0px; background: #fff; padding: 0 20px;"><span class="count">0</span>/240</div>
+                                <textarea name="_attitude" cols="" rows="4" id="document_content__attitude" class="form-control textarea_frame" maxlength="240" placeholder="提交备注" style="border: none; box-shadow: none; resize: none;"></textarea>
+                             
+                            </fieldset>
+                        </div>
+                        <div id="div_button_place" class="button-css text-center" style="margin-top: 15px">
+                            <button type="button" class="btn btn-primary" name="btn_act_committo" onclick="save()">确认提交</button>
+                        </div>
+                    </div>
+                    <script src="../../Scripts/Plan/message_board.js"></script>
+                    <div id="toast-container" class="toast-top-right" aria-live="polite" role="alert">
+                        
+                    </div>
+                    <script src="../../Scripts/Plan/experience.js"></script>
+                    <div class="cd-popup" id="cd3">
+                        <div class="cd-popup-container">
+                            <div class="aui_header" style="z-index: 20">
+                                <span>审批记录</span>
+                                <a href="#" id="close3" class="cd-popup-close aui_close" style="line-height: 40px;">
+                                    <span class=" fa fa-times" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                            <div class="activity-box" style="padding: 10px 10px 0px 0px; text-align: left;">
+                                <ul class="re_application" style="display: inline-block;">
+                                    <li class="tabs-itm active-box" id="approval1"><a href="javaScript:void(0)">审核步骤</a></li>
+                                    <li class="tabs-itm " id="approval2"><a href="javaScript:void(0)">审核日志</a></li>
+
+                                </ul>
+
+                            </div>
+                            <div class="cd-content" style="z-index: 55; padding-bottom: 10px;">
+                                <div id="jl1">
+                                    <table class="table table-hover" id="Table1">
+                                        <thead>
+                                            <tr class="listDataTh">
+
+                                                <td width="" title="步骤编码" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">步骤编码</a>
+                                                </td>
+                                                <td width="" title="步骤名称" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">步骤名称</a>
+                                                </td>
+                                                <td width="" title="顺序" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">顺序</a>
+                                                </td>
+                                                <td width="" title="状态" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">状态</a>
+                                                </td>
+                                                <td width="" title="审核人" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">审核人</a>
+                                                </td>
+                                                <td width="" title="审核时间" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">审核时间</a>
+                                                </td>
+                                                <td width="" title="备注" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">备注</a>
+                                                </td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                                <div id="jl2" style="display: none;">
+                                    <table class="table table-hover" id="Table2">
+                                        <thead>
+                                            <tr class="listDataTh">
+                                                <td width="" title="步骤编码" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">步骤编码</a>
+                                                </td>
+                                                <td width="" title="步骤名称" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">步骤名称</a>
+                                                </td>
+                                                <td width="" title="顺序" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">顺序</a>
+                                                </td>
+                                                <td width="" title="审核人" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">审核人</a>
+                                                </td>
+                                                <td width="" title="审核时间" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">审核时间</a>
+                                                </td>
+                                                <td width="" title="备注" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">备注</a>
+                                                </td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--审核记录DIV JS----------------------------begin---->
+                    <script>
+                        $("#btnapproval").on("click", function () {
+                            $("#cd3").addClass("is-visible");
+                            //加载数据
+                            LoadFlowData();
+                        });
+                        $("#close3").click(function () {
+                            $('#cd3').removeClass("is-visible");
+                        });
+                        $(".tabs-itm").on("click", function () {
+                            var id = $(this).attr("id");
+                            if (id == "approval1") {
+                                $("#approval1").addClass("active-box");
+                                $("#approval2").removeClass("active-box");
+                                $("#jl1").show();
+                                $("#jl2").hide();
+                            } else if (id == "approval2") {
+                                $("#approval1").removeClass("active-box");
+                                $("#approval2").addClass("active-box");
+                                $("#jl1").hide();
+                                $("#jl2").show();
+                            }
+
+                        });
+                    </script>
+                    <!--审核记录DIV JS----------------------------end---->
+
+
+                    <div id="toAll" class="formTable" style="margin-top: 0.5em">
+                        <div id="formHtml">
+                            <p style="text-align: right; margin-bottom: 7px">
+                                申请单号：<span>
+                                    <input style="width: 179px; display: inline-block;" readonly discript="申请单号" id="Processnumber" class="form-control component-input" type="text"
+                                        name="申请单号" value="YGQJ16120003" text="readonly">
+                                    <input type="hidden" id="Materialplanid" />
+                                </span>
+                            </p>
+                            <table border="1" cellpadding="1" cellspacing="1" style="width: 98%; border: 1px solid rgb(180, 204, 238);" align="center">
+                                <tbody id="editTbody">
+                                    <tr>
+                                        <td style="border: 1px solid rgb(180, 204, 238);" width="150" colspan="6">
+                                            <strong>基本信息</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid rgb(180, 204, 238); text-align: right;">申请人：</td>
+                                        <td style="border: 1px solid rgb(180, 204, 238);">
+                                            <span>
+                                                <input class="form-control component-input" id="Applicantname" type="text" name="申请人">
+                                                <input type="hidden" id="Applicantid" />
+                                            </span>
+                                        </td>
+                                        <td style="border: 1px solid rgb(180, 204, 238); text-align: right;">部门：</td>
+                                        <td style="border: 1px solid rgb(180, 204, 238); position: relative" colspan="3">
+                                            <span>
+
+                                                <div id="wrapper" style="position: absolute; top: 6px; z-index: 8;">
+                                                    <div class="card-drop" style="margin: 0;">
+                                                        <a class='toggle' href="#">
+                                                            <span class='label-active' id="orglabel">请选择部门</span>
+                                                            <input type="hidden" id="Organizationid" />
+                                                        </a>
+                                                        <ul class="tree treemenu" id="orgtree">
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <!--<input class="form-control component-input" type="text" id="Organizationid" name="部门" style="width: 15%">-->
+                                            </span>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid rgb(180, 204, 238); text-align: right;" width="150">计划类型：</td>
+                                        <td style="border: 1px solid rgb(180, 204, 238);">
+                                            <span>
+                                                <select class="form-control component-select" name="计划类型" id="Plantype" iscommonfilter="false" fieldtype="SelectField" readonlyshowvalonly="false" onchange="" style="">
+                                                    <option value=" " class="select-cmd"></option>
+                                                    <option value="月计划" class="select-cmd">月计划</option>
+                                                    <option value="临时计划" class="select-cmd">临时计划</option>
+                                                </select>
+                                            </span>
+                                        </td>
+                                        <td style="border: 1px solid rgb(180, 204, 238); text-align: right;" width="150">提交日期：</td>
+                                        <td style="border: 1px solid rgb(180, 204, 238);">
+                                            <span>
+                                                <div class="input-group date">
+                                                    <input type="text" class="form-control
+                                                    wdate component-input"
+                                                        id="inp1" placeholder="添加日期" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false">
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon  calendar"></span>
+                                                    </span>
+                                                </div>
+                                            </span>
+                                        </td>
+                                        <td style="border: 1px solid rgb(180, 204, 238); text-align: right;" width="150">年月：</td>
+                                        <td style="border: 1px solid rgb(180, 204, 238);">
+                                            <span>
+                                                <div class="input-group date">
+                                                    <input type="text" class="form-control
+                                                    wdate component-input"
+                                                        id="inp2" placeholder="年月" name="Date" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false">
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon  calendar"></span>
+                                                    </span>
+                                                </div>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border: 1px solid rgb(180, 204, 238); text-align: right;">材料说明：</td>
+                                        <td style="border: 1px solid rgb(180, 204, 238);" colspan="5">
+                                            <span>
+                                                <textarea class="form-control" name="材料说明" id="Materialexplain" style="margin: 0px; width: 674px; height: 68px;"></textarea>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border: 1px solid rgb(180, 204, 238); padding: 5px 10px;" colspan="6">
+                                            <strong style="line-height: 36px">材料明细</strong>
+                                            <button type="button" id='inp' class="btn btn-info new" style="float: right">
+                                                <i></i>
+                                                新增
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cd-popup" id="cd1">
+                    <div class="cd-popup-container" style="width: 487px;">
+                        <div class="aui_header">
+                            <span class="aui_icon">创建新单项工程</span>
+                            <a href="#" id="close1" onclick="close()" class="cd-popup-close aui_close" style="line-height: 40px;">
+                                <span class=" fa fa-times" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <p style="padding-bottom: 10px; border-bottom: 1px solid #dddddd; text-align: left; padding-left: 10px; padding-top: 10px;">
+                            <button type="button" id="quer" class="btn btn-info">确定</button>
+                            <button type="button" id="fanh" style="margin-left: 10px; background: #93DE3E; border: 1px solid #93DE3E;" class="btn btn-info">返回</button>
+                        </p>
+                        <div class="cd-content" style="padding: 10px; text-align: left;">
+                            <div>
+                                <p style="margin: 7px 10px">
+                                    <span>项目名称 &nbsp:&nbsp</span>
+                                    <input id="text_projname" type="text" style="width: 196px; height: 30px; display: inline-block; position: relative; top: 1px; left: 4px; padding: 3px 10px;">
+                                </p>
+                                <div style="margin: 10px 10px; height: 34px;">
+                                    <span style="display: inline-block; position: relative; top: -10px;">到货日期 &nbsp:  &nbsp </span>
+                                    <div class="input-group date">
+                                        <input type="text" class="form-control wdate  component-input" id="inp3" placeholder="添加日期" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon  calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <p style="margin: 10px 10px;">
+                                    <span style="display: inline-block; position: relative; top: -40px;">材料用途 &nbsp:  &nbsp </span>
+                                    <span style="display: inline-block;">
+                                        <textarea class="form-control" name="材料说明" id="txt_sm" style="margin: 0px; width: 274px; height: 58px;"></textarea></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="cd-popup" id="cd2" style="">
+        <div class="cd-popup-container">
+            <div class="aui_header" style="z-index: 20">
+                <span>材料分类</span>
+                <a href="#" id="close2" class="cd-popup-close aui_close" style="line-height: 40px;">
+                    <span class=" fa fa-times" aria-hidden="true"></span>
+                </a>
+            </div>
+            <div style="overflow: hidden; overflow-y: scroll; padding: 5px">
+                  <div class="cd-content" style="z-index: 55">
+                    <div class="searchDiv searchFromTable" style="padding-top: 1.5em; border-bottom:0px;">
+                        <table style="margin: 0 auto">
+                            <tbody >
+                               <tr>
+                                    <td style="text-align: right">材料类别</td>
+                                    <td style="position:relative;width:34%;">
+                                        <!--<input id="txt_code" type="text" style="width: 150px; height: 30px;">-->
+                                        <span style="display:inline-block">
+                                            <div  style="position: absolute; top: 4px; z-index: 8;width:176px">
+                                                <div class="card-drop" style=" margin: 0">
+                                                    <a class='toggle' href="#">
+                                                        <span class='label-active' id="txt_lx">请选择类型</span>
+                                                        <input type="hidden" id="caterotyid" />
+                                                    </a>
+                                                    <ul class="tree treemenu" id="lxtree"></ul>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                    <td style="text-align: right;width:26%;" >
+                                      <span>
+                                        <select class="component-select" onchange="" id="txt_type" style="">
+                                              <option value="name" class="select-cmd">名称</option>
+                                              <option value="code" class="select-cmd">编码</option>
+                                        </select>
+                                      </span>
+                                    </td>
+                                    <td>
+                                        <input id="txt_namecode" type="text" style="width: 150px; height: 34px;">
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <p>&nbsp;</p>
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <button type="button" class="btn btn-primary" onclick="search()">查询</button>
+                                <button type="button" class="btn btn-default btn-reset" onclick="reset()">重置</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="dataTable-box">
+                        <div class="dataTable text-center">
+                            <div id="viewHtml">
+                                <div class="table-head">
+                                    <table class="table table-hover" id="materialTable">
+                                        <thead>
+                                            <tr class="listDataTh" style="border-top: 1px solid #dddddd;">
+                                                <td width="" title="材料类型" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">材料类型</a>
+                                                </td>
+                                                <td width="" title="材料编码" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">材料编码</a>
+                                                </td>
+                                                <td width="" title="材料名称" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">材料名称</a>
+                                                </td>
+                                                <td width="" title="单价" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">单价</a>
+                                                </td>
+                                                <td width="" title="计量单位" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">计量单位</a>
+                                                </td>
+                                                <td width="" title="操作" class="listDataThTd nowrap" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                                    <a style="cursor: pointer" href="#">操作</a>
+                                                </td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div>
+                                    <div id="tunnlPagination" class="pagination" style="float: right;">
+                                        <!-- 这里显示分页 -->
+                                    </div>
+                                    <div id="tunnlhiddenresult" style="display: none;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+        var index = 1, tr_index = 1, projtype = 'add', projindex = 0;
+
+        //新增单项工程，弹出div
+        $('#inp').click(function () {
+            $('#cd1').addClass("is-visible");
+
+            // ×关闭遮罩层
+            $("#close1").click(function () {
+                $('#cd1').removeClass("is-visible");
+            });
+            //返回关闭遮罩成
+            $('#fanh').click(function () {
+                $('#cd1').removeClass("is-visible");
+            });
+            calender("#inp3").init({
+                format: 'yyyy-MM-dd',
+         
+            }, function (date) {
+                this.value = date
+            });
+            $('#inp3').css("z-index", '10000');
+            $('#text_projname').val('');
+            $('#inp3').val('');
+            $('#txt_sm').val('');
+            //创建 单项工程，确定事件
+
+        });
+
+
+        $("#quer").on("click", function () {
+            projtype = 'add';
+            var prjname = $('#text_projname').val();
+            if (prjname == '') {
+                alert("请输入单项工程名称");
+                return;
+            }
+            var dhrq = $('#inp3').val();
+            var dhsm = $('#txt_sm').val();
+
+            if (projtype == 'edit') {
+                $('#proj' + projindex).text($('#text_projname').val());
+                $('#aogdata' + projindex).text($('#inp3').val());
+                $('#app' + projindex).text($('#txt_sm').val());
+                $('#cd1').removeClass("is-visible");
+                return;
+            }
+
+            var tr = "<tr class='tr1'>" +
+                    "<td colspan='6'>" +
+                    "<div style='width: 100% ; border: 1px solid rgb(180, 204, 238);'>" +
+                    "<div style='border-bottom: 1px solid rgb(180, 204, 238);overflow: hidden; padding: 5px 10px '>" +
+                    "<div style='display: inline-block;line-height: 35px'>项目名称：<span id='proj" + index + "'>" + prjname + "</span>到货日期：<span id='aogdata" + index + "'style='margin-left: 10px'>" + dhrq + "</span></div>" +
+                    "<button type='button' class='btn btn-info edit'style='float: right;margin-left: 10px' onclick='editProj(" + index + ")'><i></i></button>" +
+                    "<button style='float: right;' type='button'  class='btn btn_delete delete' onclick='delProj(this," + index + ")'><i></i>删除</button>" +
+                    "</div>" +
+                    "<div style='border-bottom: 1px solid rgb(180, 204, 238); line-height: 35px;padding: 4px 10px'>材料用途：<span id='app" + index + "'>" + dhsm + "</span></div>" +
+                    "<div style='margin:5px '>" +
+                    "<div id='formList'> " +
+                    "<ul style='margin-left: 24px;'>" +
+                    "<li class='btn btn_newly xingjian' onclick=add(" + index + ") style='margin-right: 5px'><a href='#'><i></i>新建</a> </li>" +
+                    "<li class='btn btn_delete shanchu' ><a href='#'><i></i>删除</a> </li> " +
+                    "<li class='btn baochun' style='border: 1px solid #ccc; display: none; margin-right: 5px;ss'><a style='color: #101010 ' href='#'>保存</a> </li>" +
+                    "<li class='btn quxiao' style='border: 1px solid #ccc; display: none;'><a style='color: #101010' href='#'>取消所有</a></li>" +
+                    "</ul>" +
+                    "</div>" +
+                    "<div id='table_gridView' class='dataTable' style='margin-top: 0.5em'>" +
+                    "<table class='table listDataTable' id='gridTable_" + index + "' style='border-top:1px solid #ddd;z-index:1;table-layout:auto;' border='0' cellpadding='0' cellspacing='0'> " +
+                    "<thead>" +
+                    " <tr class='listDataTh'>" +
+                    " <td class='listDataThFirstTd' scope='col' > <input type='checkbox' click='selectAll(this.checked)'> </td>" +
+                    " <td class='listDataThTd' coltext=''   style='display: none;'> </td>" +
+                    " <td class='listDataThTd' coltext='材料编码'   style='overflow: hidden;'> <input  value='00' type='hidden'> <a style='cursor:pointer' href='#'>材料编码</a> </td>" +
+                    " <td class='listDataThTd'   style='overflow: hidden;'> <input  value='00' type='hidden'> <a>材料名称</a> </td> " +
+                    " <td class='listDataThTd' coltext='单价' style='overflow: hidden;'  > <input value='00' type='hidden'> <a style='cursor:pointer' href='#'>单价</a> </td> " +
+                    " <td class='listDataThTd'  style='overflow: hidden;'> <input  value='00' type='hidden'> <a style='cursor:pointer' href='#' >计量单位</a> </td> " +
+                    " <td class='listDataThTd' coltext='数量'  style='overflow: hidden;' > <input  value='00' type='hidden'> <a style='cursor:pointer' href='#' >数量</a> </td>" +
+                    "<td class='listDataThTd'   nowrap='nowrap' style='overflow: hidden;' > <input  value='00' type='hidden'> <a style='cursor:pointer' href='#'>金额</a> </td> " +
+                    "<td class='listDataThTd' style='width:120px'>操作</td> " +
+                    "</tr> " +
+                    "</thead> " +
+                    "<tbody  id='td_" + index + "'  class='dataBody'> </tbody>" +
+                    "</table>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>" +
+                    "</td>" +
+                    "</tr>";
+            var html1 = $("#text1").val();
+
+            $("#s3").text(html1);
+            projindex = index;
+            pindex.push(index);
+            index++;
+            $("#editTbody").append(tr);
+            $('#cd1').removeClass("is-visible");
+            //删除工程
+            $(".delete").on("click", function () {
+                //$(this).parents("tr").remove();
+            });
+
+            $(".edit").on("click", function () {
+                // $('#cd1').addClass("is-visible");
+            })
+            //    添加
+            var type = 0;
+            $(".xingjian").on("click", function () {
+                $(this).siblings().show();
+
+                $(".grid-button-redact").hide();
+                //取消当前行
+                $(".grid-button-cancel").on("click", function () {
+                    $(this).parent().parent().remove();
+                    $(".shanchu").nextAll("li").hide();
+                    type = 1;
+                });
+                //取消
+                $(".quxiao").on("click", function () {
+                    $("#dataBody").empty();
+                    $(".baochun").hide();
+                    $(".grid-button-redact").show();
+                    $(this).hide();
+                });
+
+
+            });
+            //    保存
+            $(".baochun").on("click", function () {
+                var tr = (this.parentNode.parentNode.nextElementSibling.firstElementChild.lastElementChild.lastElementChild);
+                var tbo = (this.parentNode.parentNode.nextElementSibling.firstElementChild.lastElementChild);
+                console.log(tr);
+                //                console.log(tbo);
+                //                $('.component-input').each(function(){
+                var tdContent;
+                var newfont = $('td.component-input').val();
+                var newfont1 = $(this.parentNode.parentNode.nextElementSibling.firstElementChild.lastElementChild.lastElementChild);
+                var inputList = newfont1.find("input.component-input");
+                for (var i = 0; i < inputList.length; i++) {
+                    console.log(inputList[i].value)
+                    if (inputList[i].name == "Materialid") {
+                        tdContent += "<td name='" + inputList[i].name + "' style='display:none'>" + inputList[i].value + "</td>";
+                    } else {
+                        tdContent += "<td name='" + inputList[i].name + "'>" + inputList[i].value + "</td>";
+                    }
+                }
+                if (tdContent) {
+                    $(tr).html('<td class="listDataThFirstTd" scope="col"> <input type="checkbox" click="selectAll(this.checked)"> </td>' + tdContent + '<td class="listDataThTd" style="width:120px">操作</td>');
+                }
+                $(tr).find('td').html(newfont);
+                console.log($(tr).find('td'));
+                $(".grid-button-cancel").hide();
+                $(".grid-button-redact").show();
+                $(".baochun").hide();
+                $(this).nextAll("li").hide();
+
+
+                // 操作表格
+            });
+
+            //    删除
+            $(".shanchu").on("click", function () {
+                var tbo = (this.parentNode.parentNode.nextElementSibling.firstElementChild.lastElementChild);
+                var check = $(tbo).find("input");
+                for (var i = 0; i < check.length; i++) {
+                    if (check[i].checked) {
+                        //document.getElementById(tbo.id).deleteRow(i);
+                        //i--;
+                        $(check[i].parentNode.parentNode).remove();
+                    }
+                }
+                $(this).nextAll("li").hide();
+            });
+
+
+        });
+        //创建行内容
+        function add(index) {
+            var tr1 = "<tr class='s' id='td_" + index + "_" + tr_index + "'>" +
+                   "<td ><input type=\"checkbox\" name=\"check\"/> </td>" +
+                    "<td name='Materialid' style='display:none'><input  class=\"form-control component-input\"  type=\"text\"  name=\"Materialid\" > </td>" +
+                    "<td name='Code'><input  class=\"form-control component-input\"  type=\"text\" readonly  name=\"\"  style='width: 65%;display: inline-block;' ><a id='liebiao'  class='btn btn-info liebiao' onclick='dakai(" + index + "," + tr_index + ")' style='position: relative;top: -1px;margin-left: 5px'>材料</a></td>" +
+                    "<td name='Name' ><input  class=\"form-control component-input\"  type=\"text\" readonly  name=\"Name\" ></td>" +
+                    "<td name='Unitprice'><input  class=\"form-control component-input\"  type=\"text\" readonly  name=\"Unitprice\" ></td>" +
+                    "<td name='Unit'><input  class=\"form-control component-input\"  type=\"text\"  readonly name=\"Unit\" ></td>" +
+                    "<td name='Num'><input  class=\"form-control component-input\"  type=\"text\"  name=\"Num\" onchange='calAmount(this)'></td>" +
+                    "<td name='Amountmoney'><input  class=\"form-control component-input\"  type=\"text\"  name=\"Amountmoney\" ></td>" +
+                    "<td ><input type=\"button\" value=\"取消\"  class=\"grid-button-cancel\">" +
+                    "</td>" +
+                    "</tr>";
+            $("#td_" + index).append(tr1);
+
+            tr_index++;
+        }
+
+
+    </script>
+    <script>
+
+    </script>
+    <script type="text/javascript">
+        /*弹框JS内容*/
+        jQuery(document).ready(function ($) {
+            //打开窗口
+            $('#inp').on('click', function (event) {
+                event.preventDefault();
+                $('#cd1').addClass('is-visible');
+            });
+            //关闭窗口
+            $('#close1').on('click', function (event) {
+                $("#cd1").removeClass('is-visible');
+            });
+            $('#close2').on('click', function (event) {
+                $("#cd2").removeClass('is-visible');
+            });
+        });
+    </script>
+    <script src="../../Scripts/nr-date.js"></script>
+    <script>
+        (function () {
+            calender("#inp1").init({
+                format: 'yyyy-MM-dd',
+             
+            }, function (date) {
+                this.value = date
+            });
+        })();
+        (function () {
+            calender("#inp2").init({
+                format: 'yyyy-MM',
+         
+            }, function (date) {
+                this.value = date
+            });
+        })();
+        //(function () {
+        //    calender("#inp3").init({
+        //        format: 'yyyy-MM-dd',
+        //        date: [2016, 12, 15],
+        //        button: true
+        //    }, function (date) {
+        //        this.value = date
+        //    });
+        //})();
+
+    </script>
+    <script src="../../Scripts/tree.js"></script>
+    <script src="../../Scripts/Plan/edit_material.js"></script>
+
+    <script>
+
+        ////打开窗口
+
+        function dakai(index, trindex) {
+            // event.preventDefault();
+            //    console.log("1");
+            $('#cd2').addClass('is-visible');
+            initMaterialGrid();
+            cindex = index;
+            ctrindex = trindex;
+        };
+        ////关闭窗口
+        $('.cd-popup-close').on('click', function (event) {
+            $("#cd2").removeClass('is-visible');
+        });
+
+    </script>
+
+</body>
+</html>

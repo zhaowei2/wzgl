@@ -1,0 +1,424 @@
+s<html><head lang="en">
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="../../CSS/bootstrap.css"/>
+    <!--<link rel="stylesheet" href="css/master.css">-->
+    <link rel="stylesheet" href="../../CSS/master.css"/>
+
+    <!--<link rel="stylesheet" href="css/nr-date.css">-->
+    <link rel="stylesheet" href="../../CSS/nr-date.css"/>
+
+    <!--<link rel="stylesheet" href="css/index.css">-->
+    <link rel="stylesheet" href="../../CSS/index.css"/>
+
+    <!--<link rel="stylesheet" href="css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="../../CSS/layer.css"/>
+    <!--<script src="js/jquery-1.11.3.js"></script>-->
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+
+    <!--<script src="js/highcharts.js"></script>-->
+    <script src="../../Scripts/highcharts.js"></script>
+
+    <!--<script src="../js/pic_chart.js"></script>-->
+    <script src="../../Scripts/pic_chart.js"></script>
+
+    <title></title>
+</head>
+<body>
+<div class="form-content">
+    <div class="container">
+        <form id="document_content">
+            <div id="portal" class="groupItem">
+                <div class="item-header">
+                    <span>全矿生产、掘进情况</span>
+                    <div class="action">
+                        <a href="#" class="refresh" title="刷新"></a>
+                        <a href="javascript:void(0)" class="min" title="收起"></a>
+                        <a href="javascript:void(0)" class="max" style="display: none" title="展开"></a>
+                    </div>
+                </div>
+                <div class="item-content" >
+                    <div id="portal-chart" >
+                        <div id="container2" class="chart "></div>
+                        <div id="container1" class="chart " ></div>
+                        <div id="educe">
+                            <button type="button" class="btn btn-info educe">
+                                <i></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p><span>产量</span>(t)</p>
+                    <p><span>进尺</span>(m)</p>
+                </div>
+            </div>
+            <div class="activity-box">
+                <ul class="box_wrap_left" style="display: inline-block;">
+                    <li class="box_wrap_item active" id="active1"><a href="#">生产</a></li>
+                    <li class="box_wrap_item" id="active2"><a href="#">掘进</a></li>
+                </ul>
+                <div class="from-group" style="display: inline-block;float: right">
+                    <button type="button" class="btn btn_newly cd-popup-trigger0">
+                        <a href="#"><i></i>新增记录</a>
+                    </button>
+                    <button type="button" class="btn bg-info flush">
+                        <i></i>
+                    </button>
+                    <button type="button" class="btn bg-info edit">
+                        <i></i>
+                    </button>
+                    <button type="button" class="btn bg-info educe">
+                        <i></i>
+                    </button>
+                    <button type="button" class="btn bg-info search">
+                        <i></i>
+                    </button>
+                </div>
+            </div>
+            <div id="yield" class="content-panel" style="">
+                <div class="searchDiv searchFromTable" style="padding-top: 1.5em;">
+                    <table align="center">
+                        <tbody>
+                        <tr>
+                            <td width="150" style="text-align: right">日期</td>
+                            <td width="20%">
+                                <span>
+                                     <div class="input-group date">
+                                         <input type="text" class="form-control
+                    wdate component-input" id="inp1" placeholder="添加日期" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false">
+                                    <span class="input-group-addon">
+                                           <span class="glyphicon glyphicon-calendar calendar"></span>
+                                     </span>
+                                     </div>
+                                </span>
+                            </td>
+                            <td width="150" style="text-align: right">来源</td>
+                            <td style="text-align: left">
+                                <span>
+                                    <select name="来源" class="form-control component-select">
+                                        <option value="3" class="select-cmd">3</option>
+                                        <option value="2" class="select-cmd">2</option>
+                                        <option value="1" class="select-cmd">1</option>
+                                    </select>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right">出入类型</td>
+                            <td>
+                                <span>
+                                    <select name="出入类型" class="form-control component-select">
+                                        <option value="3" class="select-cmd">3</option>
+                                        <option value="2" class="select-cmd">2</option>
+                                        <option value="1" class="select-cmd">1</option>
+                                    </select>
+                                </span>
+                            </td>
+                            <td width="150" style="text-align: right">单号</td>
+                            <td width="30%">
+                                <span><input name="单号" type="text" class="form-control component-input">
+                                </span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p>&nbsp;</p>
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <button type="button" class="btn btn-primary">查询</button>
+                            <button type="button" class="btn btn-default btn-reset">重置</button>
+                        </div>
+                    </div>
+                </div>
+                <div style="border: 1px solid #dddddd;" id="dataTable-box-jl">
+                    <div class="dataTable text-center">
+                        <div id="viewHtml-jl">
+                            <div class="table-head">
+                                <table class="table table-hover"  id="coalmines">
+                                    <thead>
+                                    <tr class="listDataTh" style="background: #F4F5F5;">
+                                        <td width="" title="单位" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;vertical-align:middle;border:1px solid #dddddd"  rowspan="2">
+                                            <a style="cursor:pointer" href="#">单位</a>
+                                        </td>
+                                        <td width="" title="工作面名称" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;vertical-align:middle;border:1px solid #dddddd"  rowspan="2">
+                                            <a style="cursor:pointer" href="#">工作面名称</a>
+                                        </td>
+                                        <td width="" title="月计划" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;vertical-align:middle;border:1px solid #dddddd"  rowspan="2">
+                                            <a style="cursor:pointer" href="#">类型</a>
+                                        </td>
+                                        <td width="" title="当日完成" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;border:1px solid #dddddd" colspan="2">
+                                            <a style="cursor:pointer" href="#">产量计划完成情况</a>
+                                        </td>
+                                       
+                                            <td width="" title="结算余额" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis; vertical-align:middle; border:1px solid #dddddd" rowspan="2">
+                                            <a style="cursor:pointer" href="#">操作</a>
+                                        </td>
+
+                                    </tr>
+                                        <tr class="listDataTh" style="background: #F4F5F5;">
+                                        <td width="" title="当日完成" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;border:1px solid #dddddd" >
+                                            <a style="cursor:pointer" href="#">当日完成(T)</a>
+                                        </td>
+                                        <td width="" title="累计完成" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;border:1px solid #dddddd">
+                                            <a style="cursor:pointer" href="#">累计完成(T)</a>
+                                        </td>                            
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                  
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="driving" class="content-panel" style="display: none">
+
+                <div class="searchDiv searchFromTable" style="padding-top: 1.5em; display: none;">
+                    <table align="center">
+                        <tbody>
+                        <tr>
+                            <td width="150" style="text-align: right">申请人</td>
+                            <td width="30%">
+                                <span><input name="申请人" type="text" class="form-control component-input">
+                                </span>
+                            </td>
+                            <td width="150" style="text-align: right">状态</td>
+                            <td style="text-align: left">
+                                <span>
+                                    <select name="状态" class="form-control component-select">
+                                        <option value="3" class="select-cmd">3</option>
+                                        <option value="2" class="select-cmd">2</option>
+                                        <option value="1" class="select-cmd">1</option>
+                                    </select>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="150" style="text-align: right">日期</td>
+                            <td width="20%">
+                                <span>
+                                     <div class="input-group date">
+                                         <input type="text" class="form-control
+                    wdate component-input" id="inp2" placeholder="添加日期" datefmt="yyyy-MM-dd HH:mm:ss" data-enhance="false">
+                                    <span class="input-group-addon">
+                                           <span class="glyphicon glyphicon-calendar calendar"></span>
+                                     </span>
+                                     </div>
+                                </span>
+                            </td>
+                            <td width="150" style="text-align: right">单号</td>
+                            <td width="30%">
+                                <span><input name="单号" type="text" class="form-control component-input">
+                                </span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p>&nbsp;</p>
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <button type="button" class="btn btn-primary">查询</button>
+                            <button type="button" class="btn btn-default btn-reset">重置</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="dataTable-box" style="border: 1px solid #dddddd;">
+                    <div class="dataTable text-center">
+                        <div id="viewHtml">
+                            <div class="table-head">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr class="listDataTh" style=" background: #F4F5F5;">
+                                        <td width="" title="日期" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            <a style="cursor:pointer" href="#">日期</a>
+                                        </td>
+                                        <td width="" title="出入类型" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            <a style="cursor:pointer" href="#">出入类型</a>
+                                        </td>
+                                        <td width="" title="来源" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            <a style="cursor:pointer" href="#">来源</a>
+                                        </td>
+                                        <td width="" title="单号" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            <a style="cursor:pointer" href="#">单号</a>
+                                        </td>
+                                        <td width="" title="责任人" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            <a style="cursor:pointer" href="#">责任人</a>
+                                        </td>
+                                        <td width="" title="金额" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            <a style="cursor:pointer" href="#">金额</a>
+                                        </td>
+                                        <td width="" title="结算余额" class="listDataThTd nowrap" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">
+                                            <a style="cursor:pointer" href="#">结算余额</a>
+                                        </td>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="listDataTr">
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            <a href="javaScript:viewDoc(0)" title="日期">2016 12 09</a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            <a href="javaScript:viewDoc(0)" title="出入类型">出账</a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            <a href="javaScript:viewDoc(0)" title="来源">批料单</a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            <a href="javaScript:viewDoc(0)" title="单号"></a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            <a href="javaScript:viewDoc(0)" title="责任人"></a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            <a href="javaScript:viewDoc(0)" title="11产品规格"></a>
+                                        </td>
+                                        <td class="listDataTrTd" style="word-break: break-all;">
+                                            <a href="javaScript:viewDoc(0)" title="预警状态"></a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cd-popup">
+                <div class="cd-popup-container">
+                    <div class="aui_header">
+                        <span class="aui_icon">添加物资</span>
+                        <a href="#" class="cd-popup-close aui_close" style="line-height: 40px;">
+                            <span class=" fa fa-times" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    
+                <div class="cd-content">
+                        <div class="searchDiv searchFromTable" style="padding-top: 1.5em;">
+                         
+                                <table align="center"  id="divcoalmines" style="display:block">
+                        <tbody>
+                        <tr>
+                            <td width="150" style="text-align: right">单位：</td>
+                            <td width="30%">
+                                   <span>
+                                    <select name="organizationid"  id="organizationid" class="form-control component-select">
+                                        <option></option>
+                                        <option value="3" class="select-cmd">3</option>
+                                        <option value="2" class="select-cmd">2</option>
+                                        <option value="1" class="select-cmd">1</option>
+                                    </select>
+                                </span>
+                            </td>
+                            <td width="150" style="text-align: right">工作面</td>
+                            <td style="text-align: left">
+                                <span>
+                                    <select name="coalfaceid" id="coalfaceid" class="form-control component-select">
+                                        <option></option>
+                                        <option value="3" class="select-cmd">3</option>
+                                        <option value="2" class="select-cmd">2</option>
+                                        <option value="1" class="select-cmd">1</option>
+                                    </select>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right">类型</td>
+                            <td>
+                                <span>
+                                    <select name="coalfaceid" id="coalminetype" class="form-control component-select">
+                                        <option></option>
+                                        <option value="回采煤" class="select-cmd">回采煤</option>
+                                        <option value="掘进煤" class="select-cmd">掘进煤</option>
+                                    </select>
+                                </span>
+                            </td>
+                            <td width="150" style="text-align: right">当日完成</td>
+                            <td width="30%">
+                                <span><input name="daycompletion" id="daycompletion" type="text" class="form-control component-input"/>
+                                    <input name="coalminedailyrecordid" id="coalminedailyrecordid" type="hidden"/>
+                                </span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                  
+                            
+                           
+                        
+                  
+                </div>
+                    </div>
+                    <div class="cd-buttons"style="">
+                        <div class="activity-box" id="activityTable" style="margin: 0px; text-align: left; border-bottom: 1px solid #d5d9dc;padding: 0.5em;">
+                            <ul>
+                                <li class="btn btn_save"><a href="#"><i></i>保存</a>
+                                </li>
+                                <li class="btn btn_return"><a href="#"><i></i>返回</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<!-- <script src="js/"></script> -->
+<script src="../../Scripts/nr-date.js"></script>
+<script>
+    (function(){
+        calender("#inp2").init({format : 'yyyy-MM-dd',
+            date : [2016,12,15],
+            button : true
+        },function(date){
+            this.value= date
+        });
+    })();
+    (function(){
+        calender("#inp1").init({format : 'yyyy-MM-dd',
+            date : [2016,12,15],
+            button : true
+        },function(date){
+            this.value= date
+        });
+    })();
+
+</script>
+
+<script src="../../Scripts/custom.js"></script>
+<script type="text/javascript">
+    /*弹框JS内容*/
+    jQuery(document).ready(function($){
+        //打开窗口
+        $('.cd-popup-trigger0').on('click', function(event){
+            event.preventDefault();
+            $('.cd-popup').addClass('is-visible');
+        });
+        //关闭窗口
+        $('.cd-popup').on('click', function(event){
+            if( $(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup') ) {
+                event.preventDefault();
+                $(".cd-popup").removeClass('is-visible');
+            }
+        });
+        //ESC关闭
+        $(document).keyup(function(event){
+            if(event.which=='27'){
+                $('.cd-popup').removeClass('is-visible');
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>

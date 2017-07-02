@@ -1,0 +1,351 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+html {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+q, blockquote {
+    quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none;
+}
+a{
+    text-decoration: none;
+}
+
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+
+body {
+
+    overflow: hidden;
+
+    font-family: helvetica, arial, sans-serif;
+    font-size: 1em;
+}
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/*** 内容部  ***/
+#wrapper {
+    width:100%;
+    
+
+}
+.card-drop{
+    max-width:196px;
+    position: relative;
+    /*margin: 0 auto;*/
+    perspective: 800px;
+    border-radius: 4px;
+}
+
+.card-drop a{
+    display:inline-block;
+    width: 100%;
+    height: 34px;
+    color: #1e2929;
+    border-bottom: 1px solid #CCCCCC;
+    transition: all 0.3s ease-out;
+    padding: 6px 0 6px 15px;
+
+    background-color: #FFFFFF;
+    /*border-top: 1px solid #4e6a6a;*/
+}
+.card-drop  > a.toggle{
+    position: relative;
+    z-index: 300;
+    backface-visibility:hidden ;
+    transform-style: preserve-3d;
+    transform-origin: 50% 0%;
+    transition:0.1s linear;
+    background-color: #FFFFFF;
+    border-radius:4px;
+
+}
+.tree{
+
+   display:none;
+   /*过高加滚动条*/
+   /*height:240px;
+   overflow-y:auto;*/
+}
+.card-drop > a.toggle.active:before {
+    content: "\f0d8";
+}
+.card-drop > a.toggle:before{
+    font-family: 'fontAwesome';
+    content: '\f0d7';
+    font-size: 1.3em;
+    color: #344646;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 33px;
+    line-height: 33px;
+    width: 34px;
+    text-align: center;
+    display: block;
+
+}
+/* .card-drop > a.toggle:active {
+    -moz-transform: rotateX(60deg);
+    -webkit-transform: rotateX(60deg);
+    transform: rotateX(60deg);
+} */
+li{
+    position: relative;
+
+}
+.treemenu .toggler{
+    position: absolute;
+    top: 0px;
+
+    cursor: pointer;
+}
+.treemenu .toggler:before{
+    display: inline-block;
+    margin-right: 3px;
+}
+
+.tree li > span{
+    padding: 5px;
+    border-radius: 4px;
+}
+li.tree-empty > .toggler { color: #aaa; }
+li.tree-empty > .toggler:before { content: "\2212"; }
+li.tree-closed > .toggler:before { content: "+"; }
+li.tree-opened > .toggler:before { content: "\2212"; }
+
+.card-drop ul a:hover{
+    background-color: #23ACF1;
+    color: #dce5e5;
+}
+
+/*.card-drop ul {*/
+    /*position: absolute;*/
+    /*height: 100%;*/
+    /*top: 0;*/
+    /*display: block;*/
+    /*width: 100%;*/
+/*}*/
+/*.card-drop ul li {*/
+    /*margin: 0 auto;*/
+    /*-moz-transition: all, 0.3s ease-out;*/
+    /*-o-transition: all, 0.3s ease-out;*/
+    /*-webkit-transition: all, 0.3s ease-out;*/
+    /*transition: all, 0.3s ease-out;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*z-index: 0;*/
+    /*width: 100%;*/
+/*}*/
+.card-drop{
+    border: 1px solid #CCCCCC;
+   border-bottom: 0px;
+
+}
+
+
+.card-drop ul li.active>a {
+   background-color: #23ACF1;
+
+    cursor: default;
+}
+/*第二颗树*/
+#wrapper .card-drop1 {
+    max-width:196px;
+    position: relative;
+    left:0;
+    /*margin: 0 auto;*/
+    perspective: 800px;
+    border-radius: 4px;
+}
+
+.card-drop1{
+    /*max-width:196px;*/
+    width:230px;
+    position: absolute;
+    left:124px;
+    top:0px;
+    /*margin: 0 auto;*/
+    perspective: 800px;
+    border-radius: 4px;
+    display:inline-block;
+    background:#fff;
+    border:1px solid #aaa;
+}
+
+.card-drop1 a{
+    display:inline-block;
+    width: 100%;
+    height: 34px;
+    color: #1e2929;
+    border-bottom: 1px solid #AAA;
+    transition: all 0.3s ease-out;
+    padding: 6px 0 6px 15px;
+
+    background-color: #FFFFFF;
+    /*border-top: 1px solid #4e6a6a;*/
+}
+.card-drop1  > a.toggle1{
+    position: relative;
+    z-index: 300;
+    backface-visibility:hidden ;
+    transform-style: preserve-3d;
+    transform-origin: 50% 0%;
+    transition:0.1s linear;
+    background-color: #FFFFFF;
+    border-radius:4px;
+
+}
+.tree1{
+
+   display:none;
+
+
+}
+.card-drop1 > a.toggle1.active:before {
+    content: "\f0d8";
+}
+.card-drop1 > a.toggle1:before{
+    font-family: 'fontAwesome';
+    content: '\f0d7';
+    font-size: 1.3em;
+    color: #344646;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 33px;
+    line-height: 33px;
+    width: 34px;
+    text-align: center;
+    display: block;
+
+}
+/* .card-drop > a.toggle:active {
+    -moz-transform: rotateX(60deg);
+    -webkit-transform: rotateX(60deg);
+    transform: rotateX(60deg);
+} */
+li{
+    position: relative;
+
+}
+.treemenu .toggler1{
+    position: absolute;
+    top: 0px;
+
+    cursor: pointer;
+}
+.treemenu .toggler1:before{
+    display: inline-block;
+    margin-right: 3px;
+}
+
+.tree1 li > span{
+    padding: 5px;
+    border-radius: 4px;
+}
+li.tree-empty > .toggler1 { color: #aaa; }
+li.tree-empty > .toggler1:before { content: "\2212"; }
+li.tree-closed > .toggler1:before { content: "+"; }
+li.tree-opened > .toggler1:before { content: "\2212"; }
+
+.card-drop ul a:hover{
+    background-color: #23ACF1;
+    color: #dce5e5;
+}
+
+/*.card-drop ul {*/
+    /*position: absolute;*/
+    /*height: 100%;*/
+    /*top: 0;*/
+    /*display: block;*/
+    /*width: 100%;*/
+/*}*/
+/*.card-drop ul li {*/
+    /*margin: 0 auto;*/
+    /*-moz-transition: all, 0.3s ease-out;*/
+    /*-o-transition: all, 0.3s ease-out;*/
+    /*-webkit-transition: all, 0.3s ease-out;*/
+    /*transition: all, 0.3s ease-out;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*z-index: 0;*/
+    /*width: 100%;*/
+/*}*/
+
+.card-drop1{
+    border: 1px solid #AAA;
+    border-bottom: 0px;
+}
+
+.card-drop1.outline {
+    outline: 1px solid #7B9DD4
+}
+.card-drop1 ul li.active>a {
+   
+background-color: #23ACF1;
+    cursor: default;
+}
+#treeOrganization1 {
+    border-bottom:1px solid #ccc;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

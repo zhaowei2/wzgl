@@ -1,0 +1,179 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../../CSS/master.css" />
+    <link rel="stylesheet" href="../../CSS/nr-date.css" />
+    <link rel="stylesheet" href="../../CSS/index.css" />
+    <link rel="stylesheet" href="../../CSS/infomation.css" />
+    <link rel="stylesheet" href="../../CSS/Warehouse/materialcategory.css" />
+    <link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../CSS/tree.css" />
+    <link rel="stylesheet" href="../../CSS/layer.css" />
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/alert.js"></script>
+    <title></title>
+     <style>
+        .form-control {
+            width:196px;
+        }
+    </style>
+</head>
+<body style="overflow-y:scroll">
+
+    <div class="form-content">
+        <div class="container">
+
+            <div class="activity-box" style="text-align: right">
+
+                
+                <div class="from-group" style="display: inline-block; padding:0px;float:left;">
+                    <button type="button" class="btn btn_newly" onclick="add()">
+                        <a href="javaScript:void(0)"><i></i>新增记录</a>
+                    </button>
+                </div>
+                <div class="from-group" style="display: inline-block; padding:0px;">
+                    
+                    <button type="button" class="btn bg-info flush">
+                        <i></i>
+                    </button>
+
+                    <button type="button" class="btn bg-info search">
+                        <i></i>
+                    </button>
+                </div>
+            </div>
+            <div id="yield" class="content-panel" style="">
+                <div class="searchDiv searchFromTable" style="padding-top: 1.5em; display:none;">
+                    <table align="center" style="width:100%">
+                        <tbody>
+                            <tr>
+                                    <td  style="text-align: right;width:27%">父级类别</td>
+                                <td style="text-align: left; position: relative;width:18%;" >
+                                    <span style="display: inline-block">
+                                        <div id="wrapper" style="position: absolute; top: 5px; z-index: 888;">
+                                            <div class="card-drop">
+                                                <a class='toggle' href="#">
+                                                    <span class='label-active' id="label-active1">全部</span>
+                                                </a>    
+                                                <ul class="tree" id="treeCategory">
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                    </span>
+                                </td>
+                                <td style="text-align: right;width:18%;">类别名称</td>
+                                <td style="width:37%;">
+                                    <span>
+                                        <input type="text" class="form-control component-input" id="txtcategoryname" name="txtcategoryname" />
+                                    </span>
+                                </td>
+                            
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <p>&nbsp;</p>
+                    <div class="row">
+                        <div class="col-xs-12 text-center" style="margin-bottom: 2px;">
+                            <button type="button" class="btn btn-primary" onclick="search()">查询</button>
+                            <button type="button" class="btn btn-default btn-reset" onclick="reset()">重置</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="container_content">
+                    <div class="table_vessel" id="orgview">
+                    </div>
+                </div>
+                <table>
+                    <tr>
+                        <td width="1%" colspan="6">
+                            <div id="Pagination" class="pagination" style="float: right;">
+                                <!-- 这里显示分页 -->
+                            </div>
+                            <div id="hiddenresult" style="display: none;" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="cd-popup" id="maskIframe">
+            <div class="cd-popup-container">
+                <div class="aui_header">
+                    <span class="aui_icon">添加采煤量</span>
+                    <a href="#" class="cd-popup-close aui_close" style="line-height: 40px;">
+                        <span class=" fa fa-times" aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <div class="cd-content">
+                    <div class="searchDiv searchFromTable1" style="padding-top: 1.5em;">
+
+                        <table align="center" id="divcoalmines" style="display: block">
+                            <tbody>
+                                <tr>
+                                    <td width="150" style="text-align: right">类别名称</td>
+                                    <td width="80%" colspan="3">
+                                        <span>
+                                            <input type="text" class="form-control component-input" id="categoryname" name="categoryname" style="width: 380px;" />
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="cd-buttons" style="">
+                    <div class="activity-box" id="activityTable" style="margin: 0px; text-align: left; border-bottom: 1px solid #d5d9dc; padding: 0.5em; text-align: center;">
+                        <ul>
+                            <li class="btn btn_save" onclick="save()"><a href="javaScript:void(0)"><i></i>保存</a>
+                            </li>
+                            <li class="btn btn_return"><a href="javaScript:void(0)"><i></i>返回</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../Scripts/custom.js"></script>
+    <script type="text/javascript">
+        /*弹框JS内容*/
+        jQuery(document).ready(function ($) {
+            //打开窗口
+            $('.cd-popup-trigger0').on('click', function (event) {
+                event.preventDefault();
+                $('.cd-popup').addClass('is-visible');
+            });
+            //关闭窗口
+            $('.cd-popup-close').on('click', function (event) {
+                $(".cd-popup").removeClass('is-visible');
+                parent.deleteGlobalShade();
+            });
+            //返回按钮事件
+            $('.btn_return').on('click', function (event) {
+                $(".cd-popup").removeClass('is-visible');
+                parent.deleteGlobalShade();
+            });
+            //ESC关闭
+            $(document).keyup(function (event) {
+                if (event.which == '27') {
+                    $('.cd-popup').removeClass('is-visible');
+                }
+            });
+        });
+    </script>
+    <script src="../../Scripts/Warehouse/materialcategory.js"></script>
+    <script src="../../Scripts/Warehouse/materialcategorytree.js"></script>
+    <script src="../../Scripts/tree.js"></script>
+</body>
+</html>
+
+

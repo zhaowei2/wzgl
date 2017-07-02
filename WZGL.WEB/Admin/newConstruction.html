@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../WebPageCss/font-awesome-4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../WebPageCss/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../WebPageCss/master.css"/>
+    <title></title>
+    <style>
+        #popUPWindow{
+            position: fixed;
+            top: 0;
+            right:0;
+            left:0;
+            bottom: 0;
+            z-index: 1001;
+        }
+        #popUP{
+            width: 80%;
+            padding-bottom: 5px; ;
+            margin: 0 auto;
+            margin-top: 5% ;
+            border-radius: 5px;
+            background: #f7f7f7;
+
+        }
+        #popUP .popUp-header{
+            height: 40px;
+            line-height: 40px;
+            padding:0 15px;
+            border-bottom: 1px solid #d5d9dc;
+            border-radius: 5px 5px 0px 0px;
+            background: #f8f8f8;
+        }
+        #popUP .popUp-btn{
+            padding: 10px;;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #d5d9dc;
+            background: #FFFFFF;
+
+        }
+        #popUP div.popUp-btn .btn-succes{
+            padding: 5px 0px;
+            background-color: #5CB85C;
+
+        }
+        #popUP div.popUp-btn .btn-black{
+            background-color: #fff;
+        }
+        #popUP div.popUp-main{
+            height: 500px;
+            margin: 5px 0 10px 0;
+            padding: 15px;
+            background: #FFFFFF;
+        }
+        .model{
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            opacity: 0.5;
+            background: rgb(0,0,0);
+        }
+    </style>
+
+</head>
+<body>
+    <div id="popUPWindow">
+        <div id="popUP">
+            <div class="popUp-header text-right">
+                <i class="fa fa-times"></i>
+            </div>
+            <div class="popUp-btn">
+                <div class="btn btn_save">
+                    <a href="#"><i></i>保存</a>
+                </div>
+                <div class="btn btn_return"><a href="#"><i></i>返回</a></div>
+            </div>
+            <div class="popUp-main">
+
+            </div>
+        </div >
+    </div>
+    <!-- 遮罩层-->
+    <div class="model">
+
+    </div>
+</body>
+<script>
+
+</script>
+</html>
