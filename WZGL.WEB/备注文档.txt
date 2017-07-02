@@ -1,7 +1,0 @@
-Warehouse   仓库管理 文件夹
-Capital     资金管理 文件夹
-Production  生产预算 文件夹
-Plan        计划验收 文件夹
-Check       披控考核 文件夹
-Report       统计查询 文件夹
-System      系统管理 文件夹
